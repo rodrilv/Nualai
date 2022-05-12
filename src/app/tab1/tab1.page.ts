@@ -14,9 +14,6 @@ export class Tab1Page {
   }
 
   ngOnInit() {
-    this.miembro1._id="180270";
-    this.miembro1.datosGenerales.nombres = "12";
-
-    console.log(this.miembro1);
+    console.log(this.miembro1.miembro);
   }
 }

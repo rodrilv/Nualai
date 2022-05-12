@@ -1,10 +1,12 @@
 export class Miembro {
-    _id: String;
-    datosGenerales? : {
-        nombres: String;
-        edad: String;
-        apellido_paterno: String;
-        apellido_materno: String;
-
-    };
+ public miembro: any = {
+     _id: String,
+     datosGenerales:{
+        nombres: String,
+        apellidos: String,
+        edad: String,
+        direccion: String,
+        telefono: String,
+     }
+ }
 }
