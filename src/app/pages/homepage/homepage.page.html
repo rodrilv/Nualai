@@ -3,7 +3,7 @@
 <ion-content [fullscreen]="true">
   <div class="square"></div>
   <div class="imagen">
-    <img style="box-shadow:0px 0px 0px 0px ;border-radius: 90px; border: 2px solid rgba(1, 124, 255, 0.772) " src="../../../assets/descargar.jfif" />
+    <img (click)="openSomething()" style="box-shadow:0px 0px 0px 0px ;border-radius: 150px; border: 2px solid rgba(1, 124, 255, 0.772) " src="../../../assets/nualai-logo.png" />
   </div>
 
   <div button (click)="openRegisterMember()" class="card">
@@ -14,7 +14,7 @@
         font-size: medium;
       ">Nuevo Miembro</ion-text>
   </div>
-  <div button (click)="navigateToDashboard()" class="card">
+  <div button (click)="openViewMembers()" class="card">
     <ion-text style="
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
           'Lucida Sans', Arial, sans-serif;
@@ -22,7 +22,7 @@
         font-size: medium;
       ">Seguimientos</ion-text>
   </div>
-  <div button (click)="navigateToDashboard()" class="card">
+  <div button (click)="openDebts()" class="card">
     <ion-text style="
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
           'Lucida Sans', Arial, sans-serif;
