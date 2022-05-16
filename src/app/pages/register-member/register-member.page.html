@@ -1,9 +1,101 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title><ion-icon (click)="closeModal()" name="arrow-back-outline"></ion-icon></ion-title>
+    <ion-title
+      ><ion-icon (click)="closeModal()" name="arrow-back-outline"></ion-icon
+    ></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form #forms="ngForm">
+    <ion-item>
+      <ion-label position="floating">Nombre(s)</ion-label>
+      <ion-input
+        required
+        name="nombre"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.nombres"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido(s)</ion-label>
+      <ion-input
+        required
+        name="apellidos"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.apellidos"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Edad</ion-label>
+      <ion-input
+        required
+        name="edad"
+        type="number"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.edad"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Genero</ion-label>
+      <ion-input
+        required
+        name="genero"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.genero"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Domicilio</ion-label>
+      <ion-input
+        required
+        name="domicilio"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.domicilio"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input
+        required
+        name="telefono"
+        type="number"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.telefono"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input
+        required
+        name="correo"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.correo"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ocupación</ion-label>
+      <ion-input
+        required
+        name="ocupacion"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.ocupacion"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Estado Civil</ion-label>
+      <ion-input
+        required
+        name="estado_civil"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.estado_civil"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Actividad Física</ion-label>
+      <ion-input
+        required
+        name="actividad_fisica"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.actividad_fisica"
+      ></ion-input>
+    </ion-item>
+    <ion-button
+      expand="full"
+      [disabled]="!forms.valid"
+      (click)="register()"
+      >Registrar Miembro</ion-button
+    >
+  </form>
 </ion-content>
