@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon (click)="closeModal()" name="arrow-back-outline"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar por ID" (ionChange)="buscarMiembro($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card button *ngFor="let member of this.members | filter: text: '_id' ">
+    <ion-card-header button (click)="seguimiento(member._id)">
+      <ion-card-subtitle>{{member._id}}</ion-card-subtitle>
+      <ion-card-title
+        >{{member.datosGenerales.nombres+"
+        "+member.datosGenerales.apellidos}}</ion-card-title
+      >
+      <ion-text>{{"Teléfono: "+member.datosGenerales.telefono}}</ion-text><br />
+      <ion-text style="font-weight: bold;">{{"Domicilio: "+member.datosGenerales.domicilio}}</ion-text
+      ><br />
+      <ion-text>{{"Correo: "+member.datosGenerales.correo}}</ion-text><br>
+      <ion-text style="font-weight: bold;">{{"Género: "+member.datosGenerales.genero}}</ion-text>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-icon name="trash" size="large" (click)="eliminarMiembro(member._id)"></ion-icon>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
