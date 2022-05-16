@@ -55,14 +55,13 @@
                 ></ion-checkbox>
               </ion-item>
             </div>
-            <ion-item>
-              <ion-button
-                [disabled]="this.total === 0 || this.buttonFlag"
-                expand="full"
-                (click)="pagarSemanalidades()"
-                >PAGAR</ion-button
-              >
-            </ion-item>
+
+            <ion-button
+              [disabled]="this.total === 0 || this.buttonFlag"
+              expand="full"
+              (click)="pagarSemanalidades(mb._id)"
+              >PAGAR</ion-button
+            >
           </ion-list>
         </ion-accordion>
       </ion-accordion-group>

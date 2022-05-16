@@ -44,10 +44,11 @@ export class DebtsPage implements OnInit {
     console.log(this.semanas);
     
   }
-  async pagarSemanalidades(){
+  async pagarSemanalidades(id: any){
     this.formFlag = true;
     this.buttonFlag = true;
     let pago = {
+      id: id,
       semanas: this.semanas,
       total: this.total
     }
