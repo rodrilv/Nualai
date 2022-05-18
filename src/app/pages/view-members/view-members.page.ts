@@ -13,7 +13,7 @@ export class ViewMembersPage implements OnInit {
   text: any;
   
 
-  constructor(private modal: ModalController, private miembroService: MiembrosService, private router: Router) { }
+  constructor(private modal: ModalController, public miembroService: MiembrosService, private router: Router) { }
 
   async ngOnInit() {
     await this.miembroService.getMiembros();
