@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-card button *ngFor="let member of this.members | filter: text: '_id' ">
+  <ion-card button *ngFor="let member of this.miembroService.miembros[0]?.members | filter: text: '_id' ">
     <ion-card-header button (click)="seguimiento(member._id)">
       <ion-card-subtitle>{{member._id}}</ion-card-subtitle>
       <ion-card-title
