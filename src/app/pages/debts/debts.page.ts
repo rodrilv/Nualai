@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, IterableDiffers, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MiembrosService } from 'src/app/services/miembros.service';
 import { PagosService } from 'src/app/services/pagos.service';
@@ -13,49 +13,70 @@ export class DebtsPage implements OnInit {
   buttonFlag: boolean = false;
   members: any;
   text: any;
-  private semanalidad = 365;
+  private mensualidad = 365;
   total: number = 0;
-  semanas = []
+  meses = [];
+  private mb: any;
+  private folio: any;
 
   constructor(
-    private modal: ModalController, 
+    private modal: ModalController,
     public miembroService: MiembrosService,
-    public pagoService: PagosService) { }
+    public pagoService: PagosService
+  ) {}
 
   async ngOnInit() {
     await this.miembroService.getMiembros();
     this.members = this.miembroService.miembros[0].members;
   }
 
-  calcularSemanalidades(event: any){
-    //console.log(event);
-    if(event.detail.checked === true){
-      this.total += this.semanalidad
-      this.semanas.push(event.detail.value)
-    }else if(event.detail.checked === false){
-      this.total -= this.semanalidad
-      for(let i=0; i < this.semanas.length; i++){
-        if(this.semanas[i] === event.detail.value){
-          this.semanas.splice(i,1);
+  calcularMensualidades(event: any, mb: any, folio: any) {
+    this.mb = mb;
+    this.folio = folio;
+    if (event.detail.checked === true) {
+      this.total += this.mensualidad;
+      this.meses.push(event.detail.value);
+      this.formFlag = true;
+    } else if (event.detail.checked === false) {
+      this.total -= this.mensualidad;
+      for (let i = 0; i < this.meses.length; i++) {
+        if (this.meses[i] === event.detail.value) {
+          this.meses.splice(i, 1);
         }
       }
     }
-    console.log(this.total)
-    console.log(this.semanas);
-    
+    console.log(this.total);
+    console.log(this.meses);
   }
-  async pagarSemanalidades(id: any){
+
+
+  async pagarMensualidades(id: any) {
+    let mensualidades = [];
+    let meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    let f = new Date();
+    let d = `${f.getDate()}/${meses[f.getMonth()]}/${f.getFullYear()}`;
     this.formFlag = true;
     this.buttonFlag = true;
-    let pago = {
-      id: id,
-      semanas: this.semanas,
-      total: this.total
+    for (let i = 0; i < this.meses.length; i++) {
+      let item = {
+        nombre: `${this.mb.datosGenerales.nombres+" "+this.mb.datosGenerales.apellidos}`,
+        correo: this.mb.datosGenerales.correo,
+        folio: this.folio,
+        mes: this.meses[i],
+        fecha: d,
+        status: 'PAGADO',
+      };
+      mensualidades.push(item);
     }
-    await this.pagoService.pagarSemanalidades(pago);
-    
+    let pago = {
+      datosPago: {
+        mensualidades: mensualidades,
+      },
+      total: this.total,
+    };
+    await this.pagoService.pagarMensualidades(id, pago);
   }
-  buscarMiembro(event: any){
+  buscarMiembro(event: any) {
     console.log(event.detail.value);
     this.text = event.detail.value;
   }
@@ -64,5 +85,4 @@ export class DebtsPage implements OnInit {
       this.modal = null;
     });
   }
-
 }
