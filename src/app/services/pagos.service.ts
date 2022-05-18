@@ -10,8 +10,9 @@ export class PagosService {
   private devUrl: string = environment.devUrl;
   constructor(private http: HttpClient) {}
 
-  async pagarSemanalidades(pago: any) {
+  async pagarMensualidades(id: any, pago: any) {
     Swal.fire({
+      //Aviso: Cobro de Mensualidades
       icon: 'warning',
       toast: true,
       title: 'AVISO',
@@ -25,6 +26,7 @@ export class PagosService {
     }).then(async (result) => {
       if (result.isConfirmed) {
         Swal.fire({
+          //Recibe la cantidad
           timerProgressBar: true,
           toast: true,
           title: 'OPERACIÓN',
@@ -42,6 +44,7 @@ export class PagosService {
           if (result.isConfirmed) {
             this.closeSwal(true);
             Swal.fire({
+              // Realizando Pago...
               icon: 'warning',
               title: 'Realizando Pagos...',
               timerProgressBar: true,
@@ -51,20 +54,33 @@ export class PagosService {
                 Swal.showLoading();
               },
             });
-            let subject: any = await this.http.patch(`${this.devUrl}pagar-semanas`, pago).toPromise();
-            if(subject.ok){
+            let subject: any = await this.http
+              .patch(`${this.devUrl}pagar-mensualidades/${id}`, pago)
+              .toPromise();
+            if (subject.ok) {
+              console.log(subject.updDB);
               Swal.fire({
+                //Pagado
                 toast: true,
-                title: "PAGADO",
-                text: "Los cambios se verán reflejados cuando entres nuevamente al módulo",
-                icon: "success"
+                title: 'PAGADO',
+                text: 'Los cambios se verán reflejados cuando entres nuevamente al módulo',
+                icon: 'success',
+                showConfirmButton: true,
+                confirmButtonText: 'Enviar Recibo',
+                confirmButtonColor: 'green',
+                showCancelButton: true,
+                cancelButtonText: 'OK',
+              }).then(async (result) => {
+                if (result.isConfirmed) {
+                  this.enviarRecibo(pago);
+                } 
               });
-            }else{
+            } else {
               Swal.fire({
                 toast: true,
-                title: "Hubo un error",
-                text: "No se pudo realizar la transacción",
-                icon: "error"
+                title: 'Hubo un error',
+                text: 'No se pudo realizar la transacción',
+                icon: 'error',
               });
             }
           } else {
@@ -75,6 +91,55 @@ export class PagosService {
         this.swalCancel();
       }
     });
+  }
+
+  async enviarRecibo(pago: any) {
+    Swal.fire({
+      title: 'Enviando Recibo',
+      timerProgressBar: true,
+      toast: true,
+      showConfirmButton: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    let subject: any = await this.http
+      .post(`${this.devUrl}enviar-recibo`, pago)
+      .toPromise();
+    if (subject.ok) {
+      this.closeSwal(true);
+      Swal.fire({
+        toast: true,
+        title: 'Todo Listo',
+        text: 'Puede salir del Módulo...',
+        icon: 'success',
+      });
+    } else {
+      this.closeSwal(true);
+      Swal.fire({
+        toast: true,
+        title: 'Hubo un error...',
+        text: 'No se pudo enviar el recibo. ¿Deseas intentar nuevamente?',
+        icon: 'warning',
+        showConfirmButton: true,
+        confirmButtonColor: 'green',
+        confirmButtonText: 'Si',
+        showCancelButton: true,
+        cancelButtonText: 'No es necesario...',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          this.enviarRecibo(pago);
+        } else {
+          Swal.fire({
+            toast: true,
+            title: 'AVISO',
+            text: 'No se envió el recibo, pero el pago ya está confirmado. Puede salir del módulo.',
+            icon: 'warning',
+            showConfirmButton: true,
+          });
+        }
+      });
+    }
   }
 
   swalCancel() {
