@@ -68,11 +68,10 @@ export class MiembrosService {
           .delete(`${this.devUrl}eliminar-miembro/${id}`)
           .toPromise();
         if (del.ok) {
-          Swal.fire({ title: 'Eliminado', icon: 'warning', toast: true }).then(
-            async () => {
-              await this.getMiembros();
-            }
-          );
+          Swal.fire({ title: 'Eliminado', icon: 'warning', toast: true })
+          .then(async () => {
+            await this.getMiembros();
+          })
         } else {
           Swal.fire({
             title: 'Hubo un error al eliminar el Miembro',
