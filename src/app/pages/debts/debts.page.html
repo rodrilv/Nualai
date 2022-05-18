@@ -5,10 +5,7 @@
     </ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar
-      placeholder="Buscar por ID"
-      (ionChange)="buscarMiembro($event)"
-    ></ion-searchbar>
+    <ion-searchbar placeholder="Buscar por ID" (ionChange)="buscarMiembro($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -17,10 +14,8 @@
     <ion-card-header>
       <ion-card-subtitle style="color: green">INSCRITO</ion-card-subtitle>
       <ion-card-subtitle style="color: grey">{{mb._id}}</ion-card-subtitle>
-      <ion-card-title
-        >{{mb.datosGenerales.nombres+"
-        "+mb.datosGenerales.apellidos}}</ion-card-title
-      >
+      <ion-card-title>{{mb.datosGenerales.nombres+"
+        "+mb.datosGenerales.apellidos}}</ion-card-title>
       <ion-text>{{"Teléfono: "+mb.datosGenerales.telefono}}</ion-text><br />
       <ion-text>{{"Correo: "+mb.datosGenerales.correo}}</ion-text>
     </ion-card-header>
@@ -29,39 +24,30 @@
       <ion-accordion-group>
         <ion-accordion value="colors" toggle-icon="arrow-down-circle">
           <ion-item slot="header">
-            <ion-label>Semanalidades</ion-label>
+            <ion-label>Mensualidades</ion-label>
           </ion-item>
 
           <ion-list slot="content">
-            <div *ngFor="let pago of mb.datosPago.semanas">
+            <div *ngFor="let pago of mb.datosPago.mensualidades">
               <ion-item *ngIf="pago.status === 'PAGADO'" disabled>
-                <ion-label
-                  >{{"Semana: "+pago.semana }}<ion-text style="color: green"
-                    >{{" "+pago.status}}</ion-text
-                  ></ion-label
-                >
+                <ion-label>{{pago.mes }}<ion-text style="color: green">{{" "+pago.status}}</ion-text>
+                  <ion-text>{{" Folio: "+pago.folio+" |"}}</ion-text>
+                  <ion-text>{{" Fecha de Pago: "+pago.fecha}}</ion-text>
+                </ion-label>
                 <ion-checkbox checked="true"></ion-checkbox>
               </ion-item>
               <ion-item *ngIf="pago.status === 'ADEUDO'">
-                <ion-label
-                  >{{"Semana: "+pago.semana }}<ion-text style="color: red"
-                    >{{" "+pago.status}}</ion-text
-                  ></ion-label
-                >
-                <ion-checkbox
-                  value="{{pago.semana}}"
-                  (ionChange)="calcularSemanalidades($event)"
-                  [disabled]="this.formFlag"
-                ></ion-checkbox>
+                <ion-label>{{pago.mes }}<ion-text style="color: red">{{" "+pago.status}}</ion-text>
+                  <ion-text style="color: grey;">{{" Folio: "+pago.folio}}</ion-text>
+                </ion-label>
+
+                <ion-checkbox value="{{pago.mes}}" (ionChange)="calcularMensualidades($event, mb, pago.folio)"
+                  [disabled]="this.formFlag"></ion-checkbox>
               </ion-item>
             </div>
 
-            <ion-button
-              [disabled]="this.total === 0 || this.buttonFlag"
-              expand="full"
-              (click)="pagarSemanalidades(mb._id)"
-              >PAGAR</ion-button
-            >
+            <ion-button [disabled]="this.total === 0 || this.buttonFlag" expand="full"
+              (click)="pagarMensualidades(mb._id)">PAGAR</ion-button>
           </ion-list>
         </ion-accordion>
       </ion-accordion-group>
