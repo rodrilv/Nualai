@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  devUrl: "https://fathomless-meadow-94267.herokuapp.com/api/miembros"
+  devUrl: "https://fathomless-meadow-94267.herokuapp.com/api/miembros/"
 };
 
 /*
