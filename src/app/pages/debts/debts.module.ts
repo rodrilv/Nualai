@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DebtsPageRoutingModule } from './debts-routing.module';
 
 import { DebtsPage } from './debts.page';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DebtsPageRoutingModule
+    DebtsPageRoutingModule,
+    PipesModule
   ],
   declarations: [DebtsPage]
 })

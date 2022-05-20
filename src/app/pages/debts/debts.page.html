@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let mb of this.members">
+  <ion-card *ngFor="let mb of this.members | filter: text: '_id'">
     <ion-card-header>
       <ion-card-subtitle style="color: green">INSCRITO</ion-card-subtitle>
       <ion-card-subtitle style="color: grey">{{mb._id}}</ion-card-subtitle>
@@ -36,17 +36,23 @@
                 </ion-label>
                 <ion-checkbox checked="true"></ion-checkbox>
               </ion-item>
-              <ion-item *ngIf="pago.status === 'ADEUDO'">
+              <ion-item *ngIf="pago.status === 'PENDIENTE'">
                 <ion-label>{{pago.mes }}<ion-text style="color: red">{{" "+pago.status}}</ion-text>
-                  <ion-text style="color: grey;">{{" Folio: "+pago.folio}}</ion-text>
                 </ion-label>
+
+                <ion-label style="margin-left: 5%;">$</ion-label>
+                <ion-input type="number" [disabled]="this.formFlag" placeholder="Precio" (ionChange)="this.mensualidad = $event" ></ion-input>
+                <ion-label>%</ion-label>
+                <ion-input type="number" [disabled]="this.formFlag" style="margin-right: 1%;" placeholder="Descuento (si existe)" (ionChange)="this.descuento = $event"></ion-input>
+                
 
                 <ion-checkbox value="{{pago.mes}}" (ionChange)="calcularMensualidades($event, mb, pago.folio)"
                   [disabled]="this.formFlag"></ion-checkbox>
               </ion-item>
             </div>
 
-            <ion-button [disabled]="this.total === 0 || this.buttonFlag" expand="full"
+            <ion-button 
+            [disabled]="this.buttonFlag == false" expand="full"
               (click)="pagarMensualidades(mb._id)">PAGAR</ion-button>
           </ion-list>
         </ion-accordion>
