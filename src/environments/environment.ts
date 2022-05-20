@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  devUrl: "http://localhost:3000/api/miembros/"
+  devUrl: "https://fathomless-meadow-94267.herokuapp.com/api/miembros"
 };
 
 /*

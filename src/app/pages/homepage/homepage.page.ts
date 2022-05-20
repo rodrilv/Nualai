@@ -40,5 +40,10 @@ export class HomepagePage implements OnInit {
     });
     return await modal.present();
   }
+  /*async openPersonal(){
+    const modal = await this.modal.create({
+      component: 
+    })
+  }*/
 
 }

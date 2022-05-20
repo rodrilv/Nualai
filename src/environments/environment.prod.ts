@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  devUrl: "https://fathomless-meadow-94267.herokuapp.com/api/miembros"
 };
