@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 })
 export class MiembrosService {
   private devUrl: String = environment.devUrl;
-  miembros = [];
+  public miembros: any = [];
   constructor(private http: HttpClient) {}
 
   async getMiembros() {
@@ -24,7 +24,7 @@ export class MiembrosService {
     });
     try {
       return await this.http
-        .get(`${this.devUrl}obtener-miembros`)
+        .get(`${this.devUrl}miembros/obtener-miembros`)
         .toPromise()
         .then((result: any) => {
           this.miembros.push(result);
@@ -65,7 +65,7 @@ export class MiembrosService {
         });
       } else if (result.isDenied) {
         let del: any = await this.http
-          .delete(`${this.devUrl}eliminar-miembro/${id}`)
+          .delete(`${this.devUrl}miembros/eliminar-miembro/${id}`)
           .toPromise();
         if (del.ok) {
           Swal.fire({ title: 'Eliminado', icon: 'warning', toast: true })

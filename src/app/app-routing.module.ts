@@ -24,6 +24,10 @@ const routes: Routes = [
   {
     path: 'debts',
     loadChildren: () => import('./pages/debts/debts.module').then( m => m.DebtsPageModule)
+  },
+  {
+    path: 'personal',
+    loadChildren: () => import('./pages/personal/personal.module').then( m => m.PersonalPageModule)
   }
 
 

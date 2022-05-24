@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { RegisterMemberPage } from '../register-member/register-member.page';
 import { ViewMembersPage } from '../view-members/view-members.page';
 import { DebtsPage } from '../debts/debts.page';
+import { PersonalPage } from '../personal/personal.page';
 import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -40,10 +42,11 @@ export class HomepagePage implements OnInit {
     });
     return await modal.present();
   }
-  /*async openPersonal(){
+  async openPersonal(){
     const modal = await this.modal.create({
-      component: 
+      component: PersonalPage
     })
-  }*/
+    return await modal.present();
+  }
 
 }

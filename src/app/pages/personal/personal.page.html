@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon (click)="closeModal()" name="arrow-back-outline"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment color="success" (ionChange)="changeFlag($event)" [(ngModel)]="this.formFlag">
+      <ion-segment-button value="1">
+        <ion-label>Registrar</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Consultar</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="this.formFlag == 1">
+    <form #forms="ngForm">
+      <ion-item>
+        <ion-label position="floating">Nombre(s)</ion-label>
+        <ion-input required name="nombre" [(ngModel)]="this.newPersonal.Personal.nombres"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido(s)</ion-label>
+        <ion-input required name="apellidos" [(ngModel)]="this.newPersonal.Personal.apellidos"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Edad</ion-label>
+        <ion-input required name="edad" type="number" [(ngModel)]="this.newPersonal.Personal.edad"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Genero</ion-label>
+        <ion-input required name="genero" [(ngModel)]="this.newPersonal.Personal.genero"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Domicilio</ion-label>
+        <ion-input required name="domicilio" [(ngModel)]="this.newPersonal.Personal.domicilio"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input required name="telefono" type="number" [(ngModel)]="this.newPersonal.Personal.telefono"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input required name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="this.newPersonal.Personal.correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Rol a ejercer</ion-label>
+        <ion-select interface="popover" name="rol" [(ngModel)]="this.newPersonal.Personal.rol">
+          <ion-select-option value="medico">Médico</ion-select-option>
+          <ion-select-option value="psicologo">Psicólogo</ion-select-option>
+          <ion-select-option value="fisioterapeuta">Fisioterapeuta</ion-select-option>
+          <ion-select-option value="nutriologo">Nutriólogo</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Estado Civil</ion-label>
+        <ion-input required name="estado_civil" [(ngModel)]="this.newPersonal.Personal.estado_civil"></ion-input>
+      </ion-item>
+      <ion-button expand="full" [disabled]="!forms.valid" (click)="registrarPersonal()">Registrar Personal</ion-button>
+    </form>
+  </div>
+  <div *ngIf="this.formFlag == 2">
+      <ion-card button *ngFor="let p of this.personalService.personal[0]?.personal">
+        <ion-card-header button >
+          <ion-card-subtitle>{{p._id}}</ion-card-subtitle>
+          <ion-card-title>{{p.datosGenerales.nombres+" "+p.datosGenerales.apellidos}}</ion-card-title>
+          <ion-text></ion-text><br />
+          <ion-text style="font-weight: bold;"></ion-text
+          ><br />
+          <ion-text></ion-text><br>
+          <ion-text style="font-weight: bold;"></ion-text>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon button (click)="deletePersonal(p._id)" name="trash" size="large"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+    
+    
+  </div>
+</ion-content>

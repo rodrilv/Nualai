@@ -55,7 +55,7 @@ export class PagosService {
               },
             });
             let subject: any = await this.http
-              .patch(`${this.devUrl}pagar-mensualidades/${id}`, pago)
+              .patch(`${this.devUrl}miembros/pagar-mensualidades/${id}`, pago)
               .toPromise();
             if (subject.ok) {
               console.log(subject.updDB);
@@ -104,7 +104,7 @@ export class PagosService {
       },
     });
     let subject: any = await this.http
-      .post(`${this.devUrl}enviar-recibo`, pago)
+      .post(`${this.devUrl}miembros/enviar-recibo`, pago)
       .toPromise();
     if (subject.ok) {
       this.closeSwal(true);

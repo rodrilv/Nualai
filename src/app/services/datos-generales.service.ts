@@ -24,7 +24,7 @@ export class DatosGeneralesService {
     });
     try {
       let subject: any = await this.http
-        .post(`${this.devUrl}registrar`, member)
+        .post(`${this.devUrl}miembros/registrar`, member)
         .toPromise();
       if (subject.ok == true) {
         this.closeSwal(subject.ok);
