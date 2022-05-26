@@ -10,7 +10,8 @@ export class Miembro {
         correo: "",
         ocupacion: "",
         estado_civil: "",
-        actividad_fisica: ""
+        actividad_fisica: "",
+        grado_de_estudios: ""
      }
  }
 }
