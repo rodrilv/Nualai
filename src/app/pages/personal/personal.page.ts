@@ -147,4 +147,7 @@ export class PersonalPage implements OnInit, AfterViewInit {
       Swal.close();
     }
   }
+  genderToUpperCase(){
+    this.newPersonal.Personal.genero = this.newPersonal.Personal.genero.substring(0,1).toUpperCase();
+  }
 }
