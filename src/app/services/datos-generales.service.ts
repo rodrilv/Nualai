@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ModalController } from '@ionic/angular';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -8,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class DatosGeneralesService {
   devUrl: String = environment.devUrl;
-  constructor(public http: HttpClient,) {
+  constructor(private http: HttpClient, private modal: ModalController) {
     
   }
 
@@ -34,9 +35,10 @@ export class DatosGeneralesService {
           confirmButtonColor: 'green',
           toast: true
         });
+        this.closeModal();
       } else {
         Swal.fire({
-          title: 'Hubo un error durante la operación...',
+          title: 'Este error puede ser normal, intenta el registro nuevamente!',
           icon: 'warning',
           confirmButtonColor: 'green',
           toast: true
@@ -46,7 +48,7 @@ export class DatosGeneralesService {
       this.closeSwal(true);
       Swal.fire({
         title: 'Hubo un error durante la operación...',
-        icon: 'warning',
+        icon: 'error',
         confirmButtonColor: 'green',
         toast: true
       });
@@ -59,5 +61,10 @@ export class DatosGeneralesService {
     } else {
       Swal.close();
     }
+  }
+  closeModal() {
+    this.modal.dismiss().then(() => {
+      this.modal = null;
+    });
   }
 }

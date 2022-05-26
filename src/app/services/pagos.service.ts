@@ -3,6 +3,10 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
+// As you can see in this service, I was handling the whole process in here,
+// this will change in future services creation, focusing only in data and requests management, ONLY.
+// ( beacuse they are injectable, of course (?) )
+
 @Injectable({
   providedIn: 'root',
 })

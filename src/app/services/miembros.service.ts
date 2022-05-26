@@ -28,15 +28,13 @@ export class MiembrosService {
         .toPromise()
         .then((result: any) => {
           this.miembros.push(result);
-          //this.miembros = result;
-          //console.log(this.miembros);
-
           this.closeSwal(true);
         });
     } catch (err) {
       this.closeSwal(true);
+      console.error("No se pudo conectar al servicio Nualai")
       Swal.fire({
-        title: 'Hubo un error',
+        title: 'No se pudo conectar al servicio Nualai"',
         icon: 'error',
         toast: true,
       });
@@ -74,7 +72,7 @@ export class MiembrosService {
           })
         } else {
           Swal.fire({
-            title: 'Hubo un error al eliminar el Miembro',
+            title: 'No se pudo conectar al servicio Nualai"',
             icon: 'error',
             toast: true,
           });

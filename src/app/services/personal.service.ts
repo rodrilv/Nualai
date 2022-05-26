@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+// At this point, now services will handle ONLY the requests and the data received,
+// not like before, that service was in charge of all the process, including the conditions,
+// which from now, is moved to the .ts file inside of each page/component (like it should be).
 @Injectable({
   providedIn: 'root',
 })
