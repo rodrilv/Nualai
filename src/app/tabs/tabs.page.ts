@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { SeguimientoService } from '../services/seguimiento.service';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
-export class TabsPage {
+export class TabsPage implements OnInit {
+  public member: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public seguimientoService: SeguimientoService) {}
+
+  ngOnInit(): void {
+    this.member = this.seguimientoService.miembro;
+  }
 
   toHomePage(){
     this.router.navigate(['/']);
