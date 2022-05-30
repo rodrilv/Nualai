@@ -11,20 +11,23 @@
 <ion-content>
   <ion-card button *ngFor="let member of this.miembroService.miembros[0]?.members | filter: text: '_id' ">
     <ion-card-header button (click)="seguimiento(member._id)">
-      <ion-card-subtitle>{{member._id}}</ion-card-subtitle>
-      <ion-card-title
-        >{{member.datosGenerales.nombres+"
-        "+member.datosGenerales.apellidos}}</ion-card-title
-      >
+        <ion-card-subtitle>{{member._id}}</ion-card-subtitle>
+      <ion-card-title>{{member.datosGenerales.nombres+"
+        "+member.datosGenerales.apellidos}}</ion-card-title>
       <ion-text>{{"Teléfono: "+member.datosGenerales.telefono}}</ion-text><br />
-      <ion-text style="font-weight: bold;">{{"Domicilio: "+member.datosGenerales.domicilio}}</ion-text
-      ><br />
+      <ion-text style="font-weight: bold;">{{"Domicilio: "+member.datosGenerales.domicilio}}</ion-text><br />
       <ion-text>{{"Correo: "+member.datosGenerales.correo}}</ion-text><br>
       <ion-text style="font-weight: bold;">{{"Género: "+member.datosGenerales.genero}}</ion-text>
+
+
+      <ion-item button>
+        <ion-icon size="large" slot="end" style="color: rgb(91, 50, 255)" name="clipboard-outline"></ion-icon>
+      </ion-item>
     </ion-card-header>
+
     <ion-card-content>
-      <ion-icon name="trash" size="large" (click)="eliminarMiembro(member._id)"></ion-icon>
+      <ion-icon slot="end" name="trash" style="color: rgb(255, 106, 106);" size="large"
+        (click)="eliminarMiembro(member._id)"></ion-icon>
     </ion-card-content>
   </ion-card>
 </ion-content>
-
