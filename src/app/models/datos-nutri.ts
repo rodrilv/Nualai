@@ -24,7 +24,7 @@ export class DatosNutriologo{
         H2O:{
             cantidad:""
         },
-        prefiere_no_consumir:"<p>En forma de lista:</p> <ul><li> <b> Alimento que prefiere no cosumir</b>: Razón de Por qué no quiere (Gases, Intolerancia, etc...) </li></ul>",
+        prefiere_no_consumir:"<ul><li> <b> Alimento</b>: Razón de por qué no quiere (Gases, Intolerancia, Alergia etc...) </li></ul>",
         peso: "",
         estatura: "",
         LDL: "",

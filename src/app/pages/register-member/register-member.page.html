@@ -39,6 +39,7 @@
         required
         name="genero"
         [(ngModel)]="this.miembro.miembro.datosGenerales.genero"
+        (focusout)="genderToUpperCase()"
       ></ion-input>
     </ion-item>
     <ion-item>

@@ -31,4 +31,7 @@ export class RegisterMemberPage implements OnInit {
       this.modal = null;
     });
   }
+  genderToUpperCase(){
+    this.miembro.miembro.datosGenerales.genero = this.miembro.miembro.datosGenerales.genero.substring(0,1).toUpperCase();
+  }
 }

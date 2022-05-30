@@ -133,32 +133,32 @@
     <ion-item>
       <ion-label position="floating">Peso</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.peso"
-      required name="peso" placeholder="Kg"></ion-input>
+      required type="number" name="peso" placeholder="Kg"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Estatura</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.estatura"
-      required name="estatura" placeholder="cm"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">LDL</ion-label>
-      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.LDL"
-      required name="ldl" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">HDL</ion-label>
-      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.HDL"
-      required name="hdl" placeholder=""></ion-input>
+      required type="number" name="estatura" placeholder="cm" (focusout)="calcularImc()"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">IMC</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.IMC"
-      required name="imc" placeholder="Kg/m2"></ion-input>
+      required type="number" name="imc" placeholder="Kg/m2"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">LDL</ion-label>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.LDL"
+      required type="number" name="ldl" placeholder="mg/dL"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">HDL</ion-label>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.HDL"
+      required type="number" name="hdl" placeholder="mg/dL"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nivel de Agua Corporal</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.nivel_de_agua_corporal"
-      required name="nivel_agua" placeholder=""></ion-input>
+      required type="number" name="nivel_agua" placeholder="Litros"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">IMM</ion-label>
