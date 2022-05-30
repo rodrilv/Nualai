@@ -1,5 +1,5 @@
 export class DatosNutriologo{
-    datosNutricionales:{
+    public datosNutricionales = {
         tratamiento_dietetico:{
             respuesta: "",
             hace_cuanto: ""
@@ -24,7 +24,7 @@ export class DatosNutriologo{
         H2O:{
             cantidad:""
         },
-        prefiere_no_consumir:[],
+        prefiere_no_consumir:"<p>En forma de lista:</p> <ul><li> <b> Alimento que prefiere no cosumir</b>: Razón de Por qué no quiere (Gases, Intolerancia, etc...) </li></ul>",
         peso: "",
         estatura: "",
         LDL: "",
