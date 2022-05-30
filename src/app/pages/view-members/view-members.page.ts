@@ -38,7 +38,6 @@ export class ViewMembersPage implements OnInit {
 
   async seguimiento(id: any){
     this.closeModal();
-    this.seguimientoService._id = id;
     Swal.fire({
       title: 'Cargando...',
       toast: true,
@@ -48,7 +47,7 @@ export class ViewMembersPage implements OnInit {
       },
       showConfirmButton: false
     });
-    let obj: any = await this.seguimientoService.getMemberFollowing();
+    let obj: any = await this.seguimientoService.getMemberFollowing(id);
     if(obj.ok){
       this.seguimientoService._id = obj?.member._id;
       this.seguimientoService.miembro = obj?.member;
