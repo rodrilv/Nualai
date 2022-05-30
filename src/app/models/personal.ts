@@ -8,6 +8,6 @@ export class Personal{
         telefono: "",
         correo: "",
         rol: "",
-        estado_civil: ""
+        estado_civil: "",
     }
 }

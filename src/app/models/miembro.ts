@@ -11,7 +11,7 @@ export class Miembro {
         ocupacion: "",
         estado_civil: "",
         actividad_fisica: "",
-        grado_de_estudios: ""
+        grado_de_estudio: ""
      }
  }
 }
