@@ -23,7 +23,7 @@ export class RegisterMemberPage implements OnInit {
 
   async register() {
     await this.datosGeneralesService.registerMember(this.miembro);
-    //console.log(this.miembro.miembro);
+    console.log(this.miembro.miembro);
   }
 
   closeModal() {
