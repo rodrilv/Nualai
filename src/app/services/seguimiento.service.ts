@@ -15,8 +15,8 @@ export class SeguimientoService {
     private http: HttpClient,
   ) { }
 
-  async getMemberFollowing(){
-    return await this.http.get(`${this.devUrl}miembros/obtener-miembro/${this._id}`).toPromise();
+  async getMemberFollowing(id: any){
+    return await this.http.get(`${this.devUrl}miembros/obtener-miembro/${id}`).toPromise();
   }
 
 
