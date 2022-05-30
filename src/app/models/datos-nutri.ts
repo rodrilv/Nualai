@@ -7,7 +7,7 @@ export class DatosNutriologo{
         apetito: "",
         funcionamiento_intestinal:"",
         sintomas_gastrointestinales:{
-            respuesa:"",
+            respuesta:"",
             tipo: "",
             hace_cuanto: ""
         },
@@ -32,7 +32,7 @@ export class DatosNutriologo{
         IMC: "",
         nivel_de_agua_corporal: "",
         IMM: "",
-        edad_biológica: "",
+        edad_biologica: "",
         peso_masa_osea: ""
     }
 }

@@ -12,21 +12,24 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Ha llevado algún tratamiento nutricional antes?</ion-label>
-      <ion-select required name="respuesta-1">
+      <ion-select required name="respuesta-1"
+        [(ngModel)]="this.datosNutriologo.datosNutricionales.tratamiento_dietetico.respuesta">
         <ion-select-option value="si">Sí</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Hace cuánto?</ion-label>
-      <ion-input required name="cuanto_dieta" placeholder="Semanas, Meses, Años o NA"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.tratamiento_dietetico.hace_cuanto" required
+        name="cuanto_dieta" placeholder="Semanas, Meses, Años o NA"></ion-input>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Apetito</ion-card-subtitle>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Por lo regular... ¿Cómo considera que es su apetito?</ion-label>
-      <ion-select required name="respuesta-2" cancelText="Cerrar" okText="OK">
+      <ion-select [(ngModel)]="this.datosNutriologo.datosNutricionales.apetito"
+      required name="respuesta-2" cancelText="Cerrar" okText="OK">
         <ion-select-option value="1 vez">Bueno</ion-select-option>
         <ion-select-option value="2 veces">No me da hambre</ion-select-option>
         <ion-select-option value="2 veces">Me da mucha hambre</ion-select-option>
@@ -37,7 +40,8 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Por lo regular... ¿Cuántas veces al día acude a defecar?</ion-label>
-      <ion-select required name="respuesta-3" cancelText="Cerrar" okText="OK">
+      <ion-select [(ngModel)]="this.datosNutriologo.datosNutricionales.funcionamiento_intestinal"
+      required name="respuesta-3" cancelText="Cerrar" okText="OK">
         <ion-select-option value="1 vez">1 vez</ion-select-option>
         <ion-select-option value="2 veces">2 veces</ion-select-option>
         <ion-select-option value="3 veces">3 veces</ion-select-option>
@@ -49,107 +53,127 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">En los útlimos días... ¿Ha sentido malestares estomacales?</ion-label>
-      <ion-select required name="respuesta-4" cancelText="Cerrar" okText="OK">
+      <ion-select [(ngModel)]="this.datosNutriologo.datosNutricionales.sintomas_gastrointestinales.respuesta" 
+      required name="respuesta-4" cancelText="Cerrar" okText="OK">
         <ion-select-option value="si">Sí</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Qué tipo de malestar?</ion-label>
-      <ion-input required name="malestar" placeholder="Especificar o NA"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.sintomas_gastrointestinales.tipo"
+      required name="malestar" placeholder="Especificar o NA"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Hace cúantos días los ha estado presentando?</ion-label>
-      <ion-input required name="cuanto_malestar" placeholder="Especificar días o NA"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.sintomas_gastrointestinales.hace_cuanto"
+      required name="cuanto_malestar" placeholder="Especificar días o NA"></ion-input>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Tabaquismo</ion-card-subtitle>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Fuma?</ion-label>
-      <ion-select required name="respuesta-5" cancelText="Cerrar" okText="OK">
+      <ion-select [(ngModel)]="this.datosNutriologo.datosNutricionales.tabaquismo.respuesta"
+      required name="respuesta-5" cancelText="Cerrar" okText="OK">
         <ion-select-option value="si">Sí</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Desde hace cúanto fuma?</ion-label>
-      <ion-input required name="cuanto_fuma" placeholder="Especificar o No Aplica"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.tabaquismo.hace_cuanto"
+      required name="cuanto_fuma" placeholder="Especificar o No Aplica"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Cuánto fuma?</ion-label>
-      <ion-input required name="fuma" placeholder="Especificar o NA"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.tabaquismo.cuanto"
+      required name="fuma" placeholder="Especificar o NA"></ion-input>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Alcoholismo</ion-card-subtitle>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Toma?</ion-label>
-      <ion-select required name="respuesta-6" cancelText="Cerrar" okText="OK">
+      <ion-select [(ngModel)]="this.datosNutriologo.datosNutricionales.alcoholismo.respuesta"
+      required name="respuesta-6" cancelText="Cerrar" okText="OK">
         <ion-select-option value="si">Sí</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Desde hace cúanto consume alcohol?</ion-label>
-      <ion-input required name="cuanto_alcohol" placeholder="Especificar o NA"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.alcoholismo.hace_cuanto"
+      required name="cuanto_alcohol" placeholder="Especificar o NA"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Cuánto alcohol consume?</ion-label>
-      <ion-input required name="alcohol" placeholder="Especificar o NA"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.alcoholismo.cuanto"
+      required name="alcohol" placeholder="Especificar o NA"></ion-input>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>H2O</ion-card-subtitle>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Cuánta agua ingiere al día?</ion-label>
-      <ion-input required name="h20" placeholder="ESPECIFICAR"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.H2O.cantidad"
+      required name="h20" placeholder="ESPECIFICAR"></ion-input>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Alimentos</ion-card-subtitle>
     </ion-item>
     <ion-item>
-      
-      <ckeditor name="prefiere_no_consumir" [editor]="Editor" [(ngModel)]="this.datosNutriologo.datosNutricionales.prefiere_no_consumir"></ckeditor>
+
+      <ckeditor name="prefiere_no_consumir" [editor]="Editor"
+        [(ngModel)]="this.datosNutriologo.datosNutricionales.prefiere_no_consumir"></ckeditor>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Inicia Exámen</ion-card-subtitle>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Peso</ion-label>
-      <ion-input required name="peso" placeholder="Kg"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.peso"
+      required name="peso" placeholder="Kg"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Estatura</ion-label>
-      <ion-input required name="estatura" placeholder="cm"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.estatura"
+      required name="estatura" placeholder="cm"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">LDL</ion-label>
-      <ion-input required name="ldl" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.LDL"
+      required name="ldl" placeholder=""></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">HDL</ion-label>
-      <ion-input required name="hdl" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.HDL"
+      required name="hdl" placeholder=""></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">IMC</ion-label>
-      <ion-input required name="imc" placeholder="Kg/m2"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.IMC"
+      required name="imc" placeholder="Kg/m2"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nivel de Agua Corporal</ion-label>
-      <ion-input required name="nivel_agua" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.nivel_de_agua_corporal"
+      required name="nivel_agua" placeholder=""></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">IMM</ion-label>
-      <ion-input required name="imm" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.IMM"
+      required name="imm" placeholder=""></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Edad Biológica</ion-label>
-      <ion-input required name="edad_bio" placeholder="Años"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.edad_biologica"
+      required name="edad_bio" placeholder="Años"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Peso de Masa Ósea</ion-label>
-      <ion-input required name="peso_masa" placeholder="%"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.peso_masa_osea"
+      required name="peso_masa" placeholder="%"></ion-input>
     </ion-item>
   </ion-content>
 </form>
