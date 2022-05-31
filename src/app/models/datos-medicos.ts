@@ -1,5 +1,11 @@
 export class DatosMedicos{
     public datosMedicos = {
+        antecedentes_clinicos:{
+            alergias:{
+                respuesta: "",
+                tipos: ""   
+            }
+        },
         presion_arterial:{
             sistolica: "",
             distolica: ""

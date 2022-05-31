@@ -1,16 +1,49 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 4
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<form #form="ngForm">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">Tab 4</ion-title>
+      <ion-button (click)="saveData()" [disabled]="!form.valid" slot="end" fill="clear">Guardar Entrevista</ion-button>
+      <app-back-button style="margin-left: 20px;"></app-back-button>
     </ion-toolbar>
   </ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-card-subtitle>Información General</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre:</ion-label>
+    <ion-input value="{{this.seguimientoService.miembro.datosGenerales.nombres}}" name="sistolica" readonly
+      type="text" placeholder="Sistólica"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Apellidos:</ion-label>
+    <ion-input value="{{this.seguimientoService.miembro.datosGenerales.apellidos}}" name="sistolica" readonly
+      type="text" placeholder="Sistólica"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Género:</ion-label>
+    <ion-input value="{{this.seguimientoService.miembro.datosGenerales.genero}}" name="sistolica" readonly
+      type="text" placeholder="Sistólica"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Edad:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosGenerales.edad}}" name="sistolica" readonly
+        type="text" placeholder="Sistólica"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Domicilio Actual:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosGenerales.domicilio}}" name="sistolica" readonly
+        type="text" placeholder="Sistólica"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ocupación Actual:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosGenerales.ocupacion}}" name="sistolica" readonly
+        type="text" placeholder="Sistólica"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Estado Civil:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosGenerales.estado_civil}}" name="sistolica" readonly
+        type="text" placeholder="Sistólica"></ion-input>
+    </ion-item>
 
 </ion-content>

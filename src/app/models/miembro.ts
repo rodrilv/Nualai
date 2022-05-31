@@ -6,6 +6,8 @@ export class Miembro {
         edad: "",
         genero: "",
         domicilio: "",
+        lugar_de_nacimiento:"",
+        pasatiempos:"",
         telefono: "",
         correo: "",
         ocupacion: "",
