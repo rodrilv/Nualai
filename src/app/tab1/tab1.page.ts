@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Miembro } from '../models/miembro';
+import { DatosMedicos } from '../models/datos-medicos';
 
 @Component({
   selector: 'app-tab1',
@@ -7,13 +7,17 @@ import { Miembro } from '../models/miembro';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  
+  public datosMedicos: DatosMedicos;
 
-  constructor(public miembro1 : Miembro) {
-    this.miembro1 = new Miembro();
+  constructor() {
+    this.datosMedicos = new DatosMedicos();
   }
 
   ngOnInit() {
-    console.log(this.miembro1.miembro);
+    
+  }
+  saveData(){
+    console.log(this.datosMedicos);
+    
   }
 }

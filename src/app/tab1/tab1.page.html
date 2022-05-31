@@ -1,21 +1,90 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Nutriologo.
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<form #form="ngForm">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-button (click)="saveData()" [disabled]="!form.valid" slot="end" fill="clear">Guardar Entrevista</ion-button>
+      <app-back-button style="margin-left: 20px;"></app-back-button>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content [fullscreen]="true">
-    <form #form="ngForm">
-      <ion-item>
-        <ion-card-subtitle>Tratamiento Dietético</ion-card-subtitle>
-      </ion-item>
+  <ion-content [fullscreen]="true">
+
     <ion-item>
-      
-      <ion-label position="stacked">¿Ha llevado algún tratamiento nutricional antes?</ion-label>
-      <ion-radio slot="start" value="griff"></ion-radio>
-      <ion-radio slot="start" value="griff"></ion-radio>
+      <ion-card-subtitle>Presión Arterial</ion-card-subtitle>
     </ion-item>
-  </form>
-</ion-content>
+    <ion-item>
+      <ion-label position="floating">Sistólica</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.presion_arterial.sistolica" required
+        name="sistolica" type="number" placeholder="Sistólica"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Distólica</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.presion_arterial.distolica" required
+        name="distolica" type="number" placeholder="Distólica"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Nivel de Insulina</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Insulina</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.insulina" required
+        name="insulina" type="number" placeholder="Insulina"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Nivel de Glucosa</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Glucosa</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.glucosa" required
+        name="glucosa" type="number" placeholder="Glucosa"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Nivel de Trigliceridos</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Trigliceridos</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.trigliceridos" required
+        name="trigliceridos" placeholder="Trigliceridos"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Niveles de Colesterol</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Colesterol Total</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.total" required
+        name="trigliceridos" type="number" placeholder="Total"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">No-HDL</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.no_hdl" required
+        name="no_hdl" placeholder="mg/dL"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">LDL</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.ldl" required
+        name="ldl" placeholder="mg/dL"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">HDL</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.hdl" required
+        name="hdl" placeholder="mg/dL"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Tiroides</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">TSH</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.tsh" required
+        name="tsh" placeholder="Nivel de TSH"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">T3</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.t3" required name="t3"
+        placeholder="T3"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">T4</ion-label>
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.t4" required name="t4"
+        placeholder="T4"></ion-input>
+    </ion-item>
+  </ion-content>
+</form>
