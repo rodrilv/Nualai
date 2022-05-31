@@ -4,7 +4,11 @@ export class DatosMedicos{
             alergias:{
                 respuesta: "",
                 tipos: ""   
-            }
+            },
+            medicamento_regular:{
+                respuesta:"",
+                motivo:""
+            },
         },
         presion_arterial:{
             sistolica: "",
