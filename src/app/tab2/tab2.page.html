@@ -117,15 +117,23 @@
     <ion-item>
       <ion-label position="floating">¿Cuánta agua ingiere al día?</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.H2O.cantidad"
-      required name="h20" placeholder="ESPECIFICAR"></ion-input>
+      type="number"
+      required name="h20" 
+      placeholder="Litros"></ion-input>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Alimentos</ion-card-subtitle>
     </ion-item>
     <ion-item>
-
+      <ion-label>¿Qué Alimentos prefiere no consumir?</ion-label>
+    </ion-item>
+    <ion-item>
       <ckeditor name="prefiere_no_consumir" [editor]="Editor"
-        [(ngModel)]="this.datosNutriologo.datosNutricionales.prefiere_no_consumir"></ckeditor>
+        [(ngModel)]="this.datosNutriologo.datosNutricionales.prefiere_no_consumir"
+        [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="deleteText()">Borrar Texto de Ejemplo</ion-button>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Inicia Exámen</ion-card-subtitle>

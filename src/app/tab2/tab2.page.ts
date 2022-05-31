@@ -25,8 +25,8 @@ export class Tab2Page {
 
     let imc = (peso / (Math.pow(estatura, 2)));
     this.datosNutriologo.datosNutricionales.IMC = imc.toString();
-
-
-
+  }
+  deleteText(){
+    this.datosNutriologo.datosNutricionales.prefiere_no_consumir = "";
   }
 }
