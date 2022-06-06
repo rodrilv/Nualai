@@ -29,6 +29,11 @@ export class PersonalService {
         this.personal.push(result);
       });
   }
+  async getPersonalByRole(rol: string){
+    return await this.http
+    .get(`${this.devUrl}personal/obtener-personal-rol/${rol}`)
+    .toPromise();
+  }
 
   async deletePersonal(id: any){
     return await this.http

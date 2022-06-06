@@ -14,12 +14,22 @@
         <ion-card-subtitle>{{member._id}}</ion-card-subtitle>
       <ion-card-title>{{member.datosGenerales.nombres+"
         "+member.datosGenerales.apellidos}}</ion-card-title>
-      <ion-text>{{"Teléfono: "+member.datosGenerales.telefono}}</ion-text><br />
-      <ion-text style="font-weight: bold;">{{"Domicilio: "+member.datosGenerales.domicilio}}</ion-text><br />
-      <ion-text>{{"Correo: "+member.datosGenerales.correo}}</ion-text><br>
-      <ion-text style="font-weight: bold;">{{"Género: "+member.datosGenerales.genero}}</ion-text>
-
-
+      <ion-item>
+      <ion-text *ngIf="member.datosEntrevista?.medica == 'no'" style="color: red;">No ha realizado entrevista Médica</ion-text><br />
+      <ion-text *ngIf="member.datosEntrevista?.medica == 'si'" style="color: green;">Ya realizó entrevista Médica</ion-text><br />
+      </ion-item>
+      <ion-item>
+      <ion-text *ngIf="member.datosEntrevista?.nutricional == 'no'" style="color: red;">No ha realizado entrevista Nutricional </ion-text><br />
+      <ion-text *ngIf="member.datosEntrevista?.nutricional == 'si'" style="color: green;">Ya realizó entrevista Nutricional</ion-text><br />
+    </ion-item>
+      <ion-item>
+      <ion-text *ngIf="member.datosEntrevista?.fisioterapia == 'no'" style="color: red;">No ha realizado entrevista de Fisioterapia</ion-text><br />
+      <ion-text *ngIf="member.datosEntrevista?.fisioterapia == 'si'" style="color: green;">Ya realizó entrevista médica</ion-text><br />
+    </ion-item>
+    <ion-item>
+      <ion-text *ngIf="member.datosEntrevista?.psicologica == 'no'" style="color: red;">No ha realizado entrevista Psicológica</ion-text><br />
+      <ion-text *ngIf="member.datosEntrevista?.psicologica == 'si'" style="color: green;">Ya realizó entrevista Psicológica</ion-text><br />
+    </ion-item>
       <ion-item button>
         <ion-icon size="large" slot="end" style="color: rgb(91, 50, 255)" name="clipboard-outline"></ion-icon>
       </ion-item>

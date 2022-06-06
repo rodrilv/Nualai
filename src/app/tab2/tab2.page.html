@@ -9,6 +9,14 @@
   <ion-content [fullscreen]="true">
 
     <ion-item>
+      <ion-label position="floating">Entrevistador(a)</ion-label>
+      <ion-select [(ngModel)]="this.datosNutriologo.datosNutricionales.atendio"
+      required name="realizo_entrevista" cancelText="Cerrar" okText="OK">
+        <ion-select-option *ngFor="let p of this.personal?.personal" value="{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}">{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
       <ion-card-subtitle>Tratamiento Dietético</ion-card-subtitle>
     </ion-item>
     <ion-item>
@@ -129,7 +137,7 @@
       <ion-label>¿Qué Alimentos prefiere no consumir?</ion-label>
     </ion-item>
     <ion-item>
-      <ckeditor name="prefiere_no_consumir" [editor]="Editor"
+      <ckeditor style="height: 35vh;" name="prefiere_no_consumir" [editor]="Editor"
         [(ngModel)]="this.datosNutriologo.datosNutricionales.prefiere_no_consumir"
         [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
     </ion-item>
@@ -155,13 +163,23 @@
       required type="number" name="imc" placeholder="Kg/m2"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">LDL</ion-label>
-      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.LDL"
-      required type="number" name="ldl" placeholder="mg/dL"></ion-input>
+      <ion-label position="floating">Colesterol Total</ion-label>
+      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.colesterol.total"
+      readonly type="number" name="ldl" placeholder="mg/dL"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">HDL</ion-label>
-      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.HDL"
+      <ion-label position="floating">Colesterol No-HDL</ion-label>
+      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.colesterol.no_hdl"
+      readonly type="number" name="ldl" placeholder="mg/dL"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Colesterol LDL</ion-label>
+      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.colesterol.ldl"
+      readonly type="number" name="ldl" placeholder="mg/dL"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Colesterol HDL</ion-label>
+      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.colesterol.hdl"
       required type="number" name="hdl" placeholder="mg/dL"></ion-input>
     </ion-item>
     <ion-item>

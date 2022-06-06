@@ -139,6 +139,12 @@ export class PersonalPage implements OnInit, AfterViewInit {
   changeFlag(event: any) {
     console.log(event.detail.value);
     this.formFlag = event.detail.value;
+    if(this.formFlag == 2){
+      this.ngOnInit();
+      console.log("Dude, I executed, but I dont know what happened"
+      );
+      
+    }
   }
   closeSwal(stat: boolean) {
     if (stat == true) {

@@ -49,8 +49,10 @@ export class ViewMembersPage implements OnInit {
     });
     let obj: any = await this.seguimientoService.getMemberFollowing(id);
     if(obj.ok){
+      this.seguimientoService.miembro = {};
       this.seguimientoService._id = obj?.member._id;
       this.seguimientoService.miembro = obj?.member;
+      
       this.router.navigate(['tabs']);
       this.closeSwal(true);
     }else{

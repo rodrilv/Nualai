@@ -34,6 +34,15 @@
       ></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label position="floating">Fecha de Nacimiento</ion-label>
+      <ion-input
+        required
+        name="fecha_de_nacimiento"
+        type="date"
+        [(ngModel)]="this.miembro.miembro.datosGenerales.fecha_de_nacimiento"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label position="floating">Genero</ion-label>
       <ion-input
         required
@@ -54,7 +63,7 @@
       <ion-label position="floating">Lugar de Nacimiento</ion-label>
       <ion-input
         required
-        name="domicilio"
+        name="lugar_de_nacimiento"
         [(ngModel)]="this.miembro.miembro.datosGenerales.lugar_de_nacimiento"
       ></ion-input>
     </ion-item>
@@ -62,16 +71,8 @@
       <ion-label position="floating">Pasatiempos</ion-label>
       <ion-input
         required
-        name="domicilio"
+        name="pasatiempos"
         [(ngModel)]="this.miembro.miembro.datosGenerales.pasatiempos"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Alergias</ion-label>
-      <ion-input
-        required
-        name="domicilio"
-        [(ngModel)]="this.miembro.miembro.datosGenerales.alergias"
       ></ion-input>
     </ion-item>
     <ion-item>
@@ -102,14 +103,17 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Estado Civil</ion-label>
-      <ion-input
-        required
-        name="estado_civil"
-        [(ngModel)]="this.miembro.miembro.datosGenerales.estado_civil"
-      ></ion-input>
+      <ion-select name="estado_civil" required [(ngModel)]="this.miembro.miembro.datosGenerales.estado_civil">
+        <ion-select-option value="Casado">Casado(a)</ion-select-option>
+        <ion-select-option value="Soltero">Soltero(a)</ion-select-option>
+        <ion-select-option value="Divorciado">Divorciado(a)</ion-select-option>
+        <ion-select-option value="Viuda">Viudo(a)</ion-select-option>
+        <ion-select-option value="Separacion en proceso judicial">Separación en proceso Judicial</ion-select-option>
+        <ion-select-option value="Concubinato">Concubinato</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Actividad Física</ion-label>
+      <ion-label position="floating">Actividad Física o Deportes</ion-label>
       <ion-input
       placeholder="Tipo de Actividad"
         required
@@ -118,12 +122,23 @@
       ></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label>Manual de Lateralidad</ion-label>
+      <ion-select name="lateralidad_manual" [(ngModel)]="this.miembro.miembro.datosGenerales.lateralidad_manual">
+        <ion-select-option value="Zurdo">Zurdo</ion-select-option>
+        <ion-select-option value="Diestro">Diestro</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
       <ion-label position="floating">Grado de Estudios</ion-label>
-      <ion-input
-        required
-        name="grado_de_estudios"
-        [(ngModel)]="this.miembro.miembro.datosGenerales.grado_de_estudio"
-      ></ion-input>
+      <ion-select name="grado_de_estudio" required [(ngModel)]="this.miembro.miembro.datosGenerales.grado_de_estudio">
+        <ion-select-option value="preescolar">Preescolar</ion-select-option>
+        <ion-select-option value="primaria">Primaria</ion-select-option>
+        <ion-select-option value="secundaria">Secundaria</ion-select-option>
+        <ion-select-option value="preparatoria">Preparatoria</ion-select-option>
+        <ion-select-option value="licenciatura">Licenciatura</ion-select-option>
+        <ion-select-option value="ingenieria">Ingeniería</ion-select-option>
+        <ion-select-option value="maestria o doctorado">Maestría o Doctorado</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-button
       expand="full"

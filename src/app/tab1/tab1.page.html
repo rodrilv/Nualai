@@ -1,12 +1,19 @@
 <form #form="ngForm">
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-button (click)="saveData()" [disabled]="!form.valid" slot="end" fill="clear">Guardar Entrevista</ion-button>
+      <ion-button (click)="saveData(this.seguimientoService.miembro._id)" [disabled]="!form.valid" slot="end" fill="clear">Guardar Entrevista</ion-button>
       <app-back-button style="margin-left: 20px;"></app-back-button>
     </ion-toolbar>
   </ion-header>
 
   <ion-content [fullscreen]="true">
+    <ion-item>
+      <ion-label position="floating">Entrevistador(a)</ion-label>
+      <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.atendio"
+      required name="realizo_entrevista" cancelText="Cerrar" okText="OK">
+        <ion-select-option *ngFor="let p of this.personal?.personal" value="{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}">{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}</ion-select-option>
+      </ion-select>
+    </ion-item>
     
 
       <ion-item>
@@ -15,22 +22,22 @@
       <ion-item>
         <ion-label position="floating">Nombre:</ion-label>
         <ion-input value="{{this.seguimientoService.miembro.datosGenerales.nombres}}" name="sistolica" readonly
-          type="text" placeholder="Sistólica"></ion-input>
+          type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Apellidos:</ion-label>
         <ion-input value="{{this.seguimientoService.miembro.datosGenerales.apellidos}}" name="sistolica" readonly
-          type="text" placeholder="Sistólica"></ion-input>
+          type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Género:</ion-label>
         <ion-input value="{{this.seguimientoService.miembro.datosGenerales.genero}}" name="sistolica" readonly
-          type="text" placeholder="Sistólica"></ion-input>
+          type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Edad:</ion-label>
           <ion-input value="{{this.seguimientoService.miembro.datosGenerales.edad}}" name="sistolica" readonly
-            type="text" placeholder="Sistólica"></ion-input>
+            type="text"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -57,7 +64,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Usted toma medicamento regular?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.respuesta"
+          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.medicamento_regular.respuesta"
           required name="medicamento_regular" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -67,8 +74,8 @@
           <ion-label>¿Para qué?</ion-label>
         </ion-item>
         <ion-item>
-          <ckeditor name="infacia" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.tipos"
+          <ckeditor name="respuesta-2" [editor]="Editor"
+            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.medicamento_regular.motivo"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -78,8 +85,8 @@
           <ion-label>¿Qué enfermedades ha padecido durante la infacia?</ion-label>
         </ion-item>
         <ion-item>
-          <ckeditor name="infacia" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.tipos"
+          <ckeditor name="respuesta-3" [editor]="Editor"
+            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.enfermedades_infancia.enfermedades"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -87,8 +94,8 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Usted ha sido intervenido quirúrgicamente alguna vez?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.respuesta"
-          required name="medicamento_regular" cancelText="Cerrar" okText="OK">
+          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.intervenciones_quirurgicas.respuesta"
+          required name="intervencion" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
           </ion-select>
@@ -97,8 +104,8 @@
           <ion-label>¿Por qué?</ion-label>
         </ion-item>
         <ion-item>
-          <ckeditor name="infacia" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.tipos"
+          <ckeditor name="respuesta-4" [editor]="Editor"
+            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.intervenciones_quirurgicas.motivo"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -106,8 +113,8 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Lo han hospitalizado?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.respuesta"
-          required name="medicamento_regular" cancelText="Cerrar" okText="OK">
+          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.hospitalizado.respuesta"
+          required name="hospitalizado" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
           </ion-select>
@@ -116,8 +123,8 @@
           <ion-label>¿Por qué?</ion-label>
         </ion-item>
         <ion-item>
-          <ckeditor name="infacia" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.tipos"
+          <ckeditor name="respuesta-5" [editor]="Editor"
+            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.hospitalizado.motivo"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -125,8 +132,8 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Ha sido vacunado contra la COVID-19?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.respuesta"
-          required name="medicamento_regular" cancelText="Cerrar" okText="OK">
+          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.vacuna_covid19.respuesta"
+          required name="vacunas" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
           </ion-select>
@@ -174,7 +181,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Colesterol Total</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.total" required name="trigliceridos"
+      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.total" required name="coelsterol"
         type="number" placeholder="Total"></ion-input>
     </ion-item>
     <ion-item>
