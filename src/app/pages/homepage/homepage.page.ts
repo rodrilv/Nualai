@@ -5,6 +5,7 @@ import { RegisterMemberPage } from '../register-member/register-member.page';
 import { ViewMembersPage } from '../view-members/view-members.page';
 import { DebtsPage } from '../debts/debts.page';
 import { PersonalPage } from '../personal/personal.page';
+import { ViewMemberFollowingsPage } from '../view-member-followings/view-member-followings.page';
 import Swal from 'sweetalert2';
 
 
@@ -28,6 +29,12 @@ export class HomepagePage implements OnInit {
     const modal = await this.modal.create({
       component: ViewMembersPage
     });
+    return await modal.present();
+  }
+  async openViewFollowing(){
+    const modal = await this.modal.create({
+      component: ViewMemberFollowingsPage
+    })
     return await modal.present();
   }
   async openRegisterMember(){

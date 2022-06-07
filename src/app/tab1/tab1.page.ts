@@ -39,7 +39,7 @@ export class Tab1Page {
     this.closeSwal(true);
   }
   async saveData(id: any) {
-    console.log(this.datosMedicos)
+    console.log(this.datosMedicos);
     Swal.fire({
       toast: true,
       icon: 'info',
@@ -76,8 +76,8 @@ export class Tab1Page {
           this.closeSwal(true);
           Swal.fire({
             toast: true,
-            icon: 'success',
-            title: 'Entrevista Guardada',
+            icon: 'error',
+            title: 'Hubo un error al guardar la entrevista',
           });
         }
       } else {

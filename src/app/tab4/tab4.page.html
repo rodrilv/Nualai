@@ -13,7 +13,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nombre:</ion-label>
-      <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.nombres}}" name="name" readonly type="text">
+      <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.nombres}}" name="name" readonly>
       </ion-input>
     </ion-item>
     <ion-item>
@@ -23,33 +23,33 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Género:</ion-label>
-      <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.genero}}" name="genero" readonly type="text">
+      <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.genero}}" name="genero" readonly>
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Edad:</ion-label>
-      <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.edad}}" name="edad" readonly type="text">
+      <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.edad}}" name="edad" readonly>
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Domicilio Actual:</ion-label>
-      <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.domicilio}}" name="domicilio" readonly
-        type="text"></ion-input>
+      <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.domicilio}}" name="domicilio" readonly>
+      </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Ocupación Actual:</ion-label>
       <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.ocupacion}}" name="ocupacion" readonly
-        type="text"></ion-input>
+        ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Estado Civil:</ion-label>
       <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.estado_civil}}" name="estado_civil" readonly
-        type="text"></ion-input>
+        ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Manual de Lateralidad:</ion-label>
       <ion-input value="{{this.seguimientoService.miembro.datosGenerales?.lateralidad_manual}}" name="estado_civil"
-        readonly type="text"></ion-input>
+        readonly></ion-input>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Antecedentes Clínicos</ion-card-subtitle>
@@ -127,19 +127,19 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Tiempo en que la cursó?</ion-label>
-      <ion-input name="tiempo_curso_escuela" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.tiempo_curso_escuela" required></ion-input>
+      <ion-input type="text" placeholder="Especifique" name="tiempo_curso_escuela" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.tiempo_curso_escuela" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Cuántos años tenía cuando entró a la secundaria?</ion-label>
-      <ion-input type="number" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.anos_secundaria" name="años_secundaria" required></ion-input>
+      <ion-input type="number" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.anos_secundaria" name="anos_secundaria" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Tiempo en que la cursó?</ion-label>
-      <ion-input name="tiempo_curso_secundaria" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.tiempo_curso_secundaria" required></ion-input>
+      <ion-input placeholder="Especifique" type="text" name="tiempo_curso_secundaria" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.tiempo_curso_secundaria" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Especifique si tuvo algún problema en su tiempo escolar</ion-label>
-      <ion-input name="problema_escolar" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.problema_escolar" required></ion-input>
+      <ion-textarea placeholder="Especificar" name="problema_escolar" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.problema_escolar" required></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label>¿Cuáles materias se le dificultaron más?</ion-label>
@@ -176,7 +176,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Cómo aprende más facilmente?</ion-label>
-      <ion-input [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.aprende_facilmente" type="text" name="aprende_facilmente" required></ion-input>
+      <ion-input placeholder="Leyendo, Escuchando..." [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.aprende_facilmente" type="text" name="aprende_facilmente" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Edad del primer noviazgo</ion-label>
@@ -356,7 +356,7 @@
     <ion-item>
       <ion-label position="floating">¿Qué posicion ocupa usted en el orden de nacimiento de su familia?</ion-label>
       <ion-input [(ngModel)]="this.datosPsicologicos.datosPsicologicos.informacion_familiar.hermanos.posicion_orden_nacimiento"
-      type="text" name="posicion_orden_nacimiento" required></ion-input>
+      type="text" placeholder="Primero, segundo..." name="posicion_orden_nacimiento" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nombre del hermano(a) con el que usted se lleva mejor</ion-label>

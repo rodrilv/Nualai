@@ -1,7 +1,7 @@
 <form #form="ngForm">
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-button (click)="saveData()" [disabled]="!form.valid" slot="end" fill="clear">Guardar Entrevista</ion-button>
+      <ion-button (click)="saveData(this.seguimientoService.miembro._id)" [disabled]="!form.valid" slot="end" fill="clear">Guardar Entrevista</ion-button>
       <app-back-button style="margin-left: 20px;"></app-back-button>
     </ion-toolbar>
   </ion-header>

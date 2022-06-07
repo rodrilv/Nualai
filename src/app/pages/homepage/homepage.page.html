@@ -25,7 +25,7 @@
         font-size: medium;
       ">Entrevistas</ion-text>
   </div>
-  <div button  class="card">
+  <div button (click)="openViewFollowing()" class="card">
     <ion-text style="
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
           'Lucida Sans', Arial, sans-serif;
@@ -48,6 +48,14 @@
         color: white;
         font-size: medium;
       ">Personal</ion-text>
+  </div>
+  <div button (click)="openViewFollowing()" class="card">
+    <ion-text style="
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+          'Lucida Sans', Arial, sans-serif;
+        color: white;
+        font-size: medium;
+      ">Chef</ion-text>
   </div>
   <div style="margin-left: auto; margin-right: auto; display:flex; align-items: center; flex-direction: column; padding: 1.5vh; font-size: small;">
     <ion-text>Sistema de Operación Administrativa Nualai</ion-text>

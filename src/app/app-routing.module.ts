@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
+    path: 'results',
+    loadChildren: () => import('./results-tabs/tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./pages/homepage/homepage.module').then(m => m.HomepagePageModule)
   },
@@ -17,7 +21,8 @@ const routes: Routes = [
   {
     path: 'homepage',
     loadChildren: () => import('./pages/homepage/homepage.module').then( m => m.HomepagePageModule)
-  },  {
+  },
+  {
     path: 'view-members',
     loadChildren: () => import('./pages/view-members/view-members.module').then( m => m.ViewMembersPageModule)
   },
@@ -28,7 +33,24 @@ const routes: Routes = [
   {
     path: 'personal',
     loadChildren: () => import('./pages/personal/personal.module').then( m => m.PersonalPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./results-tabs/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'tab1',
+    loadChildren: () => import('./results-tabs/tab1/tab1.module').then( m => m.Tab1PageModule)
+  },
+  {
+    path: 'view-member-followings',
+    loadChildren: () => import('./pages/view-member-followings/view-member-followings.module').then( m => m.ViewMemberFollowingsPageModule)
+  },
+  {
+    path: 'following',
+    loadChildren: () => import('./pages/following/following.module').then( m => m.FollowingPageModule)
   }
+
 
 
 ];

@@ -13,30 +13,76 @@ export class Tab2Page {
   public datosNutriologo: DatosNutriologo;
   public Editor = ClassicEditor;
   public personal: any;
-  public datosNutri: DatosNutriologo;
 
-  constructor(public seguimientoService: SeguimientoService, public personalService: PersonalService) {
+  constructor(
+    public seguimientoService: SeguimientoService,
+    public personalService: PersonalService
+  ) {
     this.datosNutriologo = new DatosNutriologo();
   }
-  async ngOnInit(){
+  async ngOnInit() {
     await this.getPersonal();
   }
 
-  saveData() {
+  async saveData(id: any) {
     console.log(this.datosNutriologo);
+    Swal.fire({
+      toast: true,
+      icon: 'info',
+      title:
+        'Procure revisar que los datos estén totalmente correctos antes de proceder...',
+      text: '¿Desea continuar y guardar la entrevista?',
+      showConfirmButton: true,
+      showDenyButton: true,
+      denyButtonText: 'Volver a revisar',
+      confirmButtonText: 'Guardar',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Guardando...',
+          toast: true,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+          showConfirmButton: false,
+        });
+        let obj: any = await this.seguimientoService.saveDatosNutricionalesInterview(
+          id,
+          this.datosNutriologo
+        );
+        if (obj.ok === true) {
+          this.closeSwal(true);
+          Swal.fire({
+            toast: true,
+            icon: 'success',
+            title: 'Entrevista Guardada',
+          });
+        } else {
+          this.closeSwal(true);
+          Swal.fire({
+            toast: true,
+            icon: 'error',
+            title: 'Hubo un error al guardar la entrevista',
+          });
+        }
+      } else {
+        this.closeSwal(true);
+      }
+    });
   }
   calcularImc() {
     let estatura = parseInt(this.datosNutriologo.datosNutricionales.estatura);
     let peso = parseInt(this.datosNutriologo.datosNutricionales.peso);
-    estatura = (estatura * 0.01);//We are converting cm to m
+    estatura = estatura * 0.01; //We are converting cm to m
 
-    let imc = (peso / (Math.pow(estatura, 2)));
+    let imc = peso / Math.pow(estatura, 2);
     this.datosNutriologo.datosNutricionales.IMC = imc.toFixed(2);
   }
-  deleteText(){
-    this.datosNutriologo.datosNutricionales.prefiere_no_consumir = "";
+  deleteText() {
+    this.datosNutriologo.datosNutricionales.prefiere_no_consumir = '';
   }
-  async getPersonal(){
+  async getPersonal() {
     Swal.fire({
       title: 'Cargando...',
       toast: true,
@@ -44,11 +90,10 @@ export class Tab2Page {
       didOpen: () => {
         Swal.showLoading();
       },
-      showConfirmButton: false
+      showConfirmButton: false,
     });
-    this.personal = await this.personalService.getPersonalByRole("Nutriologo");
+    this.personal = await this.personalService.getPersonalByRole('Nutriologo');
     this.closeSwal(true);
-
   }
   closeSwal(stat: boolean) {
     if (stat == true) {
