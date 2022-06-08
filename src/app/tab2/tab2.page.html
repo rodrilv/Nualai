@@ -180,27 +180,27 @@
     <ion-item>
       <ion-label position="floating">Colesterol HDL</ion-label>
       <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.colesterol.hdl"
-      required type="number" name="hdl" placeholder="mg/dL"></ion-input>
+      readonly type="number" name="hdl" placeholder="mg/dL"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nivel de Agua Corporal</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.nivel_de_agua_corporal"
-      required type="number" name="nivel_agua" placeholder="Litros"></ion-input>
+      required type="number" name="nivel_agua" placeholder="%"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">IMM</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.IMM"
-      required name="imm" placeholder=""></ion-input>
+      required type="number" name="imm" placeholder="Kg"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Edad Biológica</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.edad_biologica"
-      required name="edad_bio" placeholder="Años"></ion-input>
+      required type="number" name="edad_bio" placeholder="Años"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Peso de Masa Ósea</ion-label>
       <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.peso_masa_osea"
-      required name="peso_masa" placeholder="%"></ion-input>
+      required type="number" name="peso_masa" placeholder="Kg"></ion-input>
     </ion-item>
   </ion-content>
 </form>

@@ -4,6 +4,7 @@ import { MiembrosService } from 'src/app/services/miembros.service';
 import { SeguimientoService } from '../../services/seguimiento.service';
 import { FollowingPage } from '../following/following.page';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-member-followings',
@@ -25,10 +26,31 @@ export class ViewMemberFollowingsPage implements OnInit {
     await this.miembroService.getMiembros();
     this.members = this.miembroService.miembros[0].members;
   }
-  seguimiento(id: any) {
-    this.seguimientoService._id = id;
-    this.router.navigate(['following']);
-    this.closeModal();
+  async seguimiento(id: any) {
+      Swal.fire({
+        title: 'Cargando...',
+        toast: true,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+        showConfirmButton: false,
+      });
+      let obj: any = await this.seguimientoService.getMemberFollowing(id);
+      if (obj.ok) {
+        this.seguimientoService.miembro = {};
+        this.seguimientoService._id = obj?.member._id;
+        this.seguimientoService.miembro = obj?.member;
+        this.router.navigate(['following'])
+        console.log(this.seguimientoService.miembro);
+        this.seguimientoService._id 
+
+        this.closeSwal(true);
+        this.closeModal();
+      } else {
+        this.closeSwal(true);
+        Swal.fire({ toast: true, icon: 'error', title: 'Hubo un error!' });
+      }
   }
 
   buscarMiembro(event: any) {
@@ -39,5 +61,12 @@ export class ViewMemberFollowingsPage implements OnInit {
     this.modal.dismiss().then(() => {
       this.modal = null;
     });
+  }
+  closeSwal(stat: boolean) {
+    if (stat == true) {
+      Swal.close();
+    } else {
+      Swal.close();
+    }
   }
 }

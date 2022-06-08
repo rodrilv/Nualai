@@ -14,8 +14,9 @@ export class TabsPage implements OnInit {
   constructor(private router: Router, public seguimientoService: SeguimientoService) {}
 
   ngOnInit(): void {
-    
-    console.log(this.seguimientoService.miembro);
+    if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){
+      this.router.navigate(['/']);
+    }
     
   }
 
