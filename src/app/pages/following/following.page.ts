@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SeguimientoService } from 'src/app/services/seguimiento.service';
+import { ModalController } from '@ionic/angular';
 import Swal from 'sweetalert2';
+import { EntrevistaMedicaResultsModalPage } from 'src/app/results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.page';
+import { EntrevistaNutricionalModalPage } from 'src/app/results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.page';
 
 @Component({
   selector: 'app-following',
@@ -11,7 +14,8 @@ import Swal from 'sweetalert2';
 export class FollowingPage implements OnInit {
   constructor(
     private router: Router,
-    public seguimientoService: SeguimientoService
+    public seguimientoService: SeguimientoService,
+    private modal: ModalController
   ) {}
 
   async ngOnInit() {
@@ -19,31 +23,6 @@ export class FollowingPage implements OnInit {
       this.router.navigate(['/']);
     }
   }
-
-  async getMember() {
-    Swal.fire({
-      title: 'Cargando...',
-      toast: true,
-      timerProgressBar: true,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-      showConfirmButton: false,
-    });
-    let obj: any = await this.seguimientoService.getMemberFollowing(
-      this.seguimientoService._id
-    );
-    if (obj.ok) {
-      this.seguimientoService.miembro = {};
-      this.seguimientoService._id = obj?.member._id;
-      this.seguimientoService.miembro = obj?.member;
-      this.closeSwal(true);
-    } else {
-      this.closeSwal(true);
-      Swal.fire({ toast: true, icon: 'error', title: 'Hubo un error!' });
-    }
-  }
-
   closeSwal(stat: boolean) {
     if (stat == true) {
       Swal.close();
@@ -51,4 +30,17 @@ export class FollowingPage implements OnInit {
       Swal.close();
     }
   }
+  async openViewEntrevistaMedicaResults(){
+    const modal = await this.modal.create({
+      component: EntrevistaMedicaResultsModalPage
+    });
+    return await modal.present();
+  }
+  async openViewEntrevistaNutricionalResults(){
+    const modal = await this.modal.create({
+      component: EntrevistaNutricionalModalPage
+    });
+    return await modal.present();
+  }
 }
+

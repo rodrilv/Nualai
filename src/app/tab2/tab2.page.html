@@ -2,7 +2,7 @@
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-button (click)="saveData(this.seguimientoService.miembro._id)" [disabled]="!form.valid" slot="end" fill="clear">Guardar Entrevista</ion-button>
-      <app-back-button style="margin-left: 20px;"></app-back-button>
+      <app-back-button route="/" style="margin-left: 20px;"></app-back-button>
     </ion-toolbar>
   </ion-header>
 
@@ -39,9 +39,9 @@
       <ion-label position="floating">Por lo regular... ¿Cómo considera que es su apetito?</ion-label>
       <ion-select [(ngModel)]="this.datosNutriologo.datosNutricionales.apetito"
       required name="respuesta-2" cancelText="Cerrar" okText="OK">
-        <ion-select-option value="1 vez">Bueno</ion-select-option>
-        <ion-select-option value="2 veces">No me da hambre</ion-select-option>
-        <ion-select-option value="2 veces">Me da mucha hambre</ion-select-option>
+        <ion-select-option value="Bueno">Bueno</ion-select-option>
+        <ion-select-option value="No le da hambre">No me da hambre</ion-select-option>
+        <ion-select-option value="Le da mucha hambre">Me da mucha hambre</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -184,8 +184,8 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nivel de Agua Corporal</ion-label>
-      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.nivel_de_agua_corporal"
-      required type="number" name="nivel_agua" placeholder="%"></ion-input>
+      <ion-input [(ngModel)]="this.datosNutriologo.datosNutricionales.nivel_agua_corporal"
+      required type="number" name="nivel_agua" placeholder="L"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">IMM</ion-label>

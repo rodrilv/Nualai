@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      <app-back-button></app-back-button>
+      <app-back-button route="/"></app-back-button>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,10 +17,10 @@
               <ion-label>Ver Resultados de Entrevista:</ion-label>
             </ion-item>
             <ion-list slot="content">
-              <ion-item button [disabled]="this.seguimientoService.miembro?.datosEntrevista?.medica == 'no'">
+              <ion-item button (click)="openViewEntrevistaMedicaResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.medica == 'no'">
                 <ion-text>Médica</ion-text>
               </ion-item>
-              <ion-item button [disabled]="this.seguimientoService.miembro?.datosEntrevista?.nutricional == 'no'">
+              <ion-item button (click)="openViewEntrevistaNutricionalResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.nutricional == 'no'">
                 <ion-text>Nutricional</ion-text>
               </ion-item>
               <ion-item button [disabled]="this.seguimientoService.miembro?.datosEntrevista?.fisioterapia == 'no'">

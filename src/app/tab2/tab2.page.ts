@@ -78,6 +78,15 @@ export class Tab2Page {
 
     let imc = peso / Math.pow(estatura, 2);
     this.datosNutriologo.datosNutricionales.IMC = imc.toFixed(2);
+    this.calcularACT();
+  }
+  calcularACT(){
+    let peso = parseInt(this.datosNutriologo.datosNutricionales.peso);
+    if(this.seguimientoService.miembro.datosGenerales.genero == 'M'){
+      this.datosNutriologo.datosNutricionales.nivel_agua_corporal = (peso * 0.6).toFixed(2);
+    }else if(this.seguimientoService.miembro.datosGenerales.genero == 'F'){
+      this.datosNutriologo.datosNutricionales.nivel_agua_corporal = (peso * 0.5).toFixed(2);
+    }
   }
   deleteText() {
     this.datosNutriologo.datosNutricionales.prefiere_no_consumir = '';

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,13 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./back-button.component.scss'],
 })
 export class BackButtonComponent implements OnInit {
-
+  @Input() route = ""
   constructor(private router: Router) { }
 
   ngOnInit() {}
 
   toHomePage(){
-    this.router.navigate(['/']);
+    if(this.route){
+      this.router.navigate([this.route]);
+    }else{
+      return;
+    }
+    
   }
 
 }

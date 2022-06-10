@@ -30,7 +30,7 @@ export class DatosNutriologo {
     peso: '',
     estatura: '',
     IMC: '',
-    nivel_de_agua_corporal: '',
+    nivel_agua_corporal: '',
     IMM: '',
     edad_biologica: '',
     peso_masa_osea: '',

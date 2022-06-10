@@ -46,6 +46,7 @@
       <ion-label position="floating">Genero</ion-label>
       <ion-input
         required
+        placeholder="Masculino o Femenino"
         name="genero"
         [(ngModel)]="this.miembro.miembro.datosGenerales.genero"
         (focusout)="genderToUpperCase()"

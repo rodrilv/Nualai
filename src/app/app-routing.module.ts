@@ -49,7 +49,23 @@ const routes: Routes = [
   {
     path: 'following',
     loadChildren: () => import('./pages/following/following.module').then( m => m.FollowingPageModule)
+  },  {
+    path: 'entrevista-medica-results-modal',
+    loadChildren: () => import('./results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.module').then( m => m.EntrevistaMedicaResultsModalPageModule)
+  },
+  {
+    path: 'entrevista-nutricional-modal',
+    loadChildren: () => import('./results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.module').then( m => m.EntrevistaNutricionalModalPageModule)
+  },
+  {
+    path: 'tab2',
+    loadChildren: () => import('./results-tabs/tab2/tab2.module').then( m => m.Tab2PageModule)
+  },
+  {
+    path: 'view-member-prescription',
+    loadChildren: () => import('./pages/view-member-prescription/view-member-prescription.module').then( m => m.ViewMemberPrescriptionPageModule)
   }
+
 
 
 
