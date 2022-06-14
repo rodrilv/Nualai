@@ -177,15 +177,15 @@
   </ion-item>
   <ion-item>
     <ion-label>Colesterol LDL</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.ldl}}</ion-label>
     <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.ldl >= 50 && this.dataConvert.ldl < 110" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
     <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.ldl >= 50 && this.dataConvert.ldl < 110" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
     <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.ldl >= 50 && this.dataConvert.ldl < 110" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
     <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.ldl > 120" style="color: rgb(255, 196, 0);">Nivel Alto</ion-text>
     <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.ldl > 120" style="color: rgb(255, 162, 0);">Nivel Alto</ion-text>
     <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.ldl > 120" style="color: rgb(255, 162, 0);">Nivel Alto</ion-text>
-  </ion-item>
-  <ion-item>
-    <ion-label>{{this.dataConvert.ldl}}</ion-label>
   </ion-item>
 
 </ion-content>

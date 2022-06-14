@@ -64,6 +64,14 @@ const routes: Routes = [
   {
     path: 'view-member-prescription',
     loadChildren: () => import('./pages/view-member-prescription/view-member-prescription.module').then( m => m.ViewMemberPrescriptionPageModule)
+  },
+  {
+    path: 'entrevista-psicologica-results-modal',
+    loadChildren: () => import('./results-modals/entrevista-psicologica-results-modal/entrevista-psicologica-results-modal.module').then( m => m.EntrevistaPsicologicaResultsModalPageModule)
+  },
+  {
+    path: 'entrevista-fisioterapia-results-modal',
+    loadChildren: () => import('./results-modals/entrevista-fisioterapia-results-modal/entrevista-fisioterapia-results-modal.module').then( m => m.EntrevistaFisioterapiaResultsModalPageModule)
   }
 
 
