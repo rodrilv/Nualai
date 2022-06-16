@@ -54,6 +54,7 @@
           <ion-select-option value="Psicologo">Psicólogo</ion-select-option>
           <ion-select-option value="Fisioterapeuta">Fisioterapeuta</ion-select-option>
           <ion-select-option value="Nutriologo">Nutriólogo</ion-select-option>
+          <ion-select-option value="Secretaria">Secretaria</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
@@ -68,7 +69,7 @@
         <ion-card-header button >
           <ion-card-subtitle>{{p._id}}</ion-card-subtitle>
           <ion-card-title>{{p.datosGenerales.nombres+" "+p.datosGenerales.apellidos}}</ion-card-title>
-          <ion-text></ion-text><br />
+          <ion-text>{{p.datosGenerales.rol}}</ion-text><br />
           <ion-text style="font-weight: bold;"></ion-text
           ><br />
           <ion-text></ion-text><br>

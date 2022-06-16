@@ -1,10 +1,11 @@
 export class DatosPsicologicos {
   public datosPsicologicos = {
+    atendio: '',
     antecedentes_psicologicos: {
       anos_escuela: '',
       tiempo_curso_escuela: '',
       anos_secundaria: '',
-      tiempo_curso_secundaria:'',
+      tiempo_curso_secundaria: '',
       problema_escolar: '',
       materias_dificultad: '',
       materias_preferidas: '',
@@ -29,46 +30,46 @@ export class DatosPsicologicos {
         edad: '',
         vivo_muerto: '',
         grado_de_estudio: '',
-        ocupacion:'',
-        relacion:'',
+        ocupacion: '',
+        relacion: '',
       },
-      madre:{
+      madre: {
         nombre: '',
         edad: '',
         vivo_muerto: '',
         grado_de_estudio: '',
-        ocupacion:'',
-        relacion:'',
+        ocupacion: '',
+        relacion: '',
       },
-      estado_civil_padres:{
-          estado_civil:'',
-          motivo_separacion:'',
+      estado_civil_padres: {
+        estado_civil: '',
+        motivo_separacion: '',
       },
-      hermanos:{
-          cuantos_varones:'',
-          cuantos_mujeres:'',
-          posicion_orden_nacimiento:'',
-          nombre_hermano_mejor:'',
-          motivo:''
+      hermanos: {
+        cuantos_varones: '',
+        cuantos_mujeres: '',
+        posicion_orden_nacimiento: '',
+        nombre_hermano_mejor: '',
+        motivo: '',
       },
-      situacion_economica:'',
-      crianza:'',
-      hijo_favorito_padres:{
-          respuesta:'',
-          nombre:'',   
-      },
-      religion_padres:{
-        respuesta:'',
-        religion:''
-      },
-      opinion_padres:'',
-      antecedentes_maltrato: '',
-      antecedentes_alcoholismo:'',
-      casos_depresion:{
-          respuesta:'',
-          cuales:''
-      },
-      observaciones:''
     },
+    situacion_economica: '',
+    crianza: '',
+    hijo_favorito_padres: {
+      respuesta: '',
+      nombre: '',
+    },
+    religion_padres: {
+      respuesta: '',
+      religion: '',
+    },
+    opinion_padres: '',
+    antecedentes_maltrato: '',
+    antecedentes_alcoholismo: '',
+    casos_depresion: {
+      respuesta: '',
+      cuales: '',
+    },
+    observaciones: '',
   };
 }

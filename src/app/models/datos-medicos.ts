@@ -6,6 +6,14 @@ export class DatosMedicos {
         respuesta: '',
         tipos: '',
       },
+      cancer:{
+        respuesta: '',
+        tipo: ''
+      },
+      diabetes:{
+        respuesta:'',
+        tipo:''
+      },
       medicamento_regular: {
         respuesta: '',
         motivo: '',

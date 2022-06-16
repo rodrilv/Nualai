@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeguimientoService } from 'src/app/services/seguimiento.service';
 
 @Component({
   selector: 'app-entrevista-fisioterapia-results-modal',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntrevistaFisioterapiaResultsModalPage implements OnInit {
 
-  constructor() { }
+  constructor(public seguimientoService: SeguimientoService) { }
 
   ngOnInit() {
   }

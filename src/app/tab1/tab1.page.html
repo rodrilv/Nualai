@@ -21,22 +21,22 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Nombre:</ion-label>
-        <ion-input value="{{this.seguimientoService.miembro.datosGenerales.nombres}}" name="sistolica" readonly
+        <ion-input value="{{this.seguimientoService.miembro.datosGenerales.nombres}}" name="nombre" readonly
           type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Apellidos:</ion-label>
-        <ion-input value="{{this.seguimientoService.miembro.datosGenerales.apellidos}}" name="sistolica" readonly
+        <ion-input value="{{this.seguimientoService.miembro.datosGenerales.apellidos}}" name="apellidos" readonly
           type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Género:</ion-label>
-        <ion-input value="{{this.seguimientoService.miembro.datosGenerales.genero}}" name="sistolica" readonly
+        <ion-input value="{{this.seguimientoService.miembro.datosGenerales.genero}}" name="genero" readonly
           type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Edad:</ion-label>
-          <ion-input value="{{this.seguimientoService.miembro.datosGenerales.edad}}" name="sistolica" readonly
+          <ion-input value="{{this.seguimientoService.miembro.datosGenerales.edad}}" name="edad" readonly
             type="text"></ion-input>
         </ion-item>
 
@@ -61,6 +61,38 @@
         </ion-item>
         <ion-item>
           <ion-button (click)="deleteText()">Borrar Texto de Ejemplo</ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">¿Usted padece de Cáncer?</ion-label>
+          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.cancer.respuesta"
+          required name="cancer" cancelText="Cerrar" okText="OK">
+            <ion-select-option value="si">Sí</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">¿Qué tipo de cáncer?</ion-label>
+          <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.cancer.tipo" name="cancer_tipo" required
+            type="text" placeholder="Especifique el tipo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">¿Usted padece de Diabetes?</ion-label>
+          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.diabetes.respuesta"
+          required name="diabetes" cancelText="Cerrar" okText="OK">
+            <ion-select-option value="si">Sí</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">¿Qué tipo de Diabetes?</ion-label>
+          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.diabetes.tipo"
+          required name="medicamento_regular" cancelText="Cerrar" okText="OK">
+            <ion-select-option value="NA">NA</ion-select-option>
+            <ion-select-option value="Diabetes Tipo 1">Diabetes Tipo 1</ion-select-option>
+            <ion-select-option value="Diabetes Tipo 2">Diabetes Tipo 2</ion-select-option>
+            <ion-select-option value="Diabetes Gestacional">Diabetes Gestacional</ion-select-option>
+            <ion-select-option value="Diabetes Tipo LADA">Diabetes Tipo LADA</ion-select-option>
+          </ion-select>
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Usted toma medicamento regular?</ion-label>

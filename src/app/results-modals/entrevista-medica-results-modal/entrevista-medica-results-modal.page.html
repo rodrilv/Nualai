@@ -104,6 +104,28 @@
     <ion-text></ion-text>
   </ion-item>
   <ion-item>
+    <ion-card-subtitle>DIABETES</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Tiene diabetes?</ion-label>
+    <ion-text style="font-weight: bold;">{{this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos.diabetes?.respuesta}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Qué tipo de Diabetes?</ion-label>
+    <ion-text style="font-weight: bold;">{{this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos.diabetes?.tipo}}</ion-text>
+  </ion-item>
+    <ion-item>
+      <ion-card-subtitle>CANCER</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label>¿Tiene cáncer?</ion-label>
+      <ion-text style="font-weight: bold;">{{this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos.cancer?.respuesta}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>¿Qué tipo de cáncer?</ion-label>
+      <ion-text style="font-weight: bold;">{{this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos.cancer?.tipo}}</ion-text>
+    </ion-item>
+    <ion-item>
     <ion-card-subtitle>NIVEL DE GLUCOSA</ion-card-subtitle>
   </ion-item>
   <ion-item>

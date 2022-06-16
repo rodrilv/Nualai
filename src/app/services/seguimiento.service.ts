@@ -11,6 +11,7 @@ export class SeguimientoService {
   private devUrl: any = environment.devUrl;
   public _id: any;
   public miembro: any;
+  
   public datosMedicos: DatosMedicos;
   public datosNutricionales: DatosNutriologo;
 
@@ -34,6 +35,14 @@ export class SeguimientoService {
       .put(
         `${this.devUrl}miembros/agregar-datos-nutricionales/${id}`,
         datosNutricionales
+      )
+      .toPromise();
+  }
+  async saveDatosPsicologicosInterview(id: any, datosPsicologicos: any) {
+    return await this.http
+      .put(
+        `${this.devUrl}miembros/agregar-datos-psicologicos/${id}`,
+        datosPsicologicos
       )
       .toPromise();
   }

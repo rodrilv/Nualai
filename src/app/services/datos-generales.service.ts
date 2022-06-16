@@ -28,6 +28,7 @@ export class DatosGeneralesService {
       this.closeSwal(subject.ok);
       Swal.fire({
         title: 'Registrado Exitosamente!',
+        text: `El ID del miembro es: ${subject.memDB._id}`,
         icon: 'success',
         confirmButtonColor: 'green',
         toast: true,
