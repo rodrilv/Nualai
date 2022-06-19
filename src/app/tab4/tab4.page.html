@@ -133,7 +133,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Tiempo en que la cursó?</ion-label>
-      <ion-input placeholder="Años" type="text" placeholder="Especifique" name="tiempo_curso_escuela" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.tiempo_curso_escuela" required></ion-input>
+      <ion-input placeholder="Años o NA" type="number" placeholder="Especifique" name="tiempo_curso_escuela" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.tiempo_curso_escuela" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Cuántos años tenía cuando entró a la secundaria?</ion-label>
@@ -141,7 +141,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Tiempo en que la cursó?</ion-label>
-      <ion-input placeholder="Años o NA" type="text" name="tiempo_curso_secundaria" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.tiempo_curso_secundaria" required></ion-input>
+      <ion-input placeholder="Años o NA" type="number" name="tiempo_curso_secundaria" [(ngModel)]="this.datosPsicologicos.datosPsicologicos.antecedentes_psicologicos.tiempo_curso_secundaria" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Especifique si tuvo algún problema en su tiempo escolar</ion-label>

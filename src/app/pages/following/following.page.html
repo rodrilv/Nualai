@@ -26,7 +26,7 @@
               <ion-item button [disabled]="this.seguimientoService.miembro?.datosEntrevista?.fisioterapia == 'no'">
                 <ion-text>Fisioterapia</ion-text>
               </ion-item>
-              <ion-item button [disabled]="this.seguimientoService.miembro?.datosEntrevista?.psicologica == 'no'">
+              <ion-item button (click)="openViewEntrevistaPsicoResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.psicologica == 'no'">
                 <ion-text>Psicológica</ion-text>
               </ion-item>
 

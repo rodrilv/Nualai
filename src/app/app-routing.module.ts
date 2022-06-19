@@ -72,6 +72,10 @@ const routes: Routes = [
   {
     path: 'entrevista-fisioterapia-results-modal',
     loadChildren: () => import('./results-modals/entrevista-fisioterapia-results-modal/entrevista-fisioterapia-results-modal.module').then( m => m.EntrevistaFisioterapiaResultsModalPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   }
 
 

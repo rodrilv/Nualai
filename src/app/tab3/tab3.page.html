@@ -1,18 +1,21 @@
 <form #form="ngForm">
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-button (click)="saveData(this.seguimientoService.miembro._id)" [disabled]="!form.valid" slot="end" fill="clear">Guardar Entrevista
+      <ion-button (click)="saveData(this.seguimientoService.miembro._id)" [disabled]="!form.valid" slot="end"
+        fill="clear">Guardar Entrevista
       </ion-button>
-      <app-back-button route="/" style="margin-left: 20px;"></app-back-button>
+      <app-back-button route="/" style="margin-left: 20px"></app-back-button>
     </ion-toolbar>
   </ion-header>
 
   <ion-content [fullscreen]="true">
     <ion-item>
       <ion-label position="floating">Entrevistador(a)</ion-label>
-      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.atendio"
-      required name="realizo_entrevista" cancelText="Cerrar" okText="OK">
-        <ion-select-option *ngFor="let p of this.personal?.personal" value="{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}">{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}</ion-select-option>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.atendio" required name="realizo_entrevista"
+        cancelText="Cerrar" okText="OK">
+        <ion-select-option *ngFor="let p of this.personal?.personal"
+          value="{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}">{{p.datosGenerales.nombres+'
+          '+p.datosGenerales.apellidos}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -20,54 +23,55 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nombre:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosGenerales.nombres" name="nombre" readonly>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.nombres}}" name="nombre" readonly>
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Apellidos:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosGenerales.apellidos" name="apellidos" readonly>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.apellidos}}" name="apellidos" readonly>
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Edad:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosGenerales.edad" name="edad" readonly></ion-input>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.edad}}" name="edad" readonly></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Teléfono:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosGenerales.telefono" name="telefono" readonly>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.telefono}}" name="telefono" readonly>
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Dirección:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosGenerales.domicilio" name="direccion" readonly>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.domicilio}}" name="direccion" readonly>
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Estado Civil:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosGenerales.estado_civil" name="estado_civil"
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.estado_civil}}" name="estado_civil"
         readonly></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Pasatiempos:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosGenerales.pasatiempos" name="pasatiempos" readonly>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.pasatiempos}}" name="pasatiempos" readonly>
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Actividad Física:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro?.datosGenerales.actividad_fisica" name="actividad_fisica"
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.actividad_fisica}}" name="actividad_fisica"
         readonly></ion-input>
     </ion-item>
     <ion-item>
-      <ion-card-subtitle>Antecedentes Personales Patológicos y Heredofamiliares</ion-card-subtitle>
+      <ion-card-subtitle>Antecedentes Personales Patológicos y
+        Heredofamiliares</ion-card-subtitle>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Diabetes:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.diabetes.respuesta"
+      <ion-input value="{{this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.diabetes.respuesta}}"
         name="diabetes" readonly></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Cáncer:</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.cancer.respuesta"
+      <ion-input value="{{this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.cancer.respuesta}}"
         name="cancer" readonly></ion-input>
     </ion-item>
     <ion-item>
@@ -80,12 +84,12 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Alcoholismo</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro.datosNutricionales?.alcoholismo.respuesta"
+      <ion-input value="{{this.seguimientoService.miembro.datosNutricionales?.alcoholismo.respuesta}}"
         name="alcoholismo" readonly></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Tabaquismo</ion-label>
-      <ion-input [(ngModel)]="this.seguimientoService.miembro.datosNutricionales?.tabaquismo.respuesta"
+      <ion-input value="{{this.seguimientoService.miembro.datosNutricionales?.tabaquismo.respuesta}}"
         name="tabaquismo" readonly></ion-input>
     </ion-item>
     <ion-item>
@@ -96,7 +100,6 @@
         [(ngModel)]="this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.hospitalizado.motivo"
         [config]="{toolbar: []}"></ckeditor>
     </ion-item>
-
     <ion-item>
       <ion-label>Cirugías por:</ion-label>
     </ion-item>
@@ -107,77 +110,161 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">HTA:</ion-label>
-      <ion-input [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.HTA" type="text" name="hta" required></ion-input>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.HTA" type="text"
+        name="reumatologicas" required>
+        <ion-select-option value="si">Si</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Cardiopatía</ion-label>
-      <ion-input [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.cardiopatia" type="text" name="cardiopatia" required></ion-input>
+      <ion-label position="floating">¿Tiene antecedentes con enfermedades Reumatológicas?</ion-label>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.reumatologicas.antecedentes" type="text"
+        name="reuma_tologicas" required>
+        <ion-select-option value="si">Si</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Enfermedades Reumatológicas</ion-label>
-      <ion-input [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.reumatologicas" type="text" name="reumatologicas" required></ion-input>
+      <ion-label position="floating">¿Usted tiene enfermedades Reumatológicas?</ion-label>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.reumatologicas.respuesta" type="text"
+        name="reumatologicas" required>
+        <ion-select-option value="si">Si</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Tiene antecedentes con Cardiopatía?</ion-label>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.cardiopatia.antecedentes" type="text"
+        name="cardiopatia"required>
+        <ion-select-option value="si">Si</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Usted padece de Cardiopatía?</ion-label>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.cardiopatia.respuesta" type="text"
+        name="cardio_patia" required>
+        <ion-select-option value="si">Si</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Fracturas u otras lesiones:</ion-label>
     </ion-item>
     <ion-item>
-      <ckeditor name="respuesta-4" [editor]="Editor"
+      <ckeditor name="respuesta-4" [editor]="Editor" required
         [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.fracturas_lesiones"
         [config]="{toolbar: ['bold', '|', 'bulletedList', 'numberedList']}"></ckeditor>
     </ion-item>
-
-
-
-
-
-
-
-
-
+    <ion-item>
+      <ion-label position="floating">Transfusiones</ion-label>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.transfusiones" type="text"
+        name="transfusiones" required>
+        <ion-select-option value="si">Si</ion-select-option>
+        <ion-select-option value="no">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Accidentes:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-4" [editor]="Editor" required
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.accidentes"
+        [config]="{toolbar: ['bold', '|', 'bulletedList', 'numberedList']}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Signos Vitales</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frecuencia Cardiaca (Pulso)</ion-label>
+      <ion-input required type="number" placeholder="Latidos por minuto" name="fc"
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.fc"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Temperatura Corporal</ion-label>
+      <ion-input required type="number" name="temp" placeholder="°C"
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.temperatura_corporal"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frecuencia Respiratoria</ion-label>
+      <ion-input required type="number" name="fr" placeholder="Respiraciones por minuto"
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.fr"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Presión Arterial</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Presión durante entrevista médica:</ion-label>
+      <ion-input readonly name="presion_medica"
+        value="{{this.seguimientoService.miembro.datosMedicos.presion_arterial.sistolica+' / '+this.seguimientoService.miembro.datosMedicos.presion_arterial.distolica}}">
+      </ion-input>
+    </ion-item>
     <ion-item>
       <ion-label>Marcha/Deambulación:</ion-label>
     </ion-item>
     <ion-item>
-      <ckeditor name="respuesta-5" [editor]="Editor" [(ngModel)]="this.datosFisioterapia.datosFisioterapia.marcha_deambulacion"
+      <ckeditor name="respuesta-5" [editor]="Editor" required
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.marcha_deambulacion"
         [config]="{toolbar: ['bold', '|', 'insertTable']}"></ckeditor>
     </ion-item>
     <ion-item>
       <ion-label>Exploración de Fuerza Muscular:</ion-label>
     </ion-item>
     <ion-item>
-      <ckeditor name="respuesta-6" [editor]="Editor" [(ngModel)]="this.datosFisioterapia.datosFisioterapia.exploracion_fuerza_muscular"
+      <ckeditor name="respuesta-6" [editor]="Editor" required
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.exploracion_fuerza_muscular"
         [config]="{toolbar: ['bold', '|', 'insertTable']}"></ckeditor>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">¿Presenta Dolor o alguna molestia justo en este momento en alguna parte del cuerpo?
+      <ion-label position="floating">¿Presenta Dolor o alguna molestia justo en este momento en alguna parte
+        del cuerpo?
       </ion-label>
-      <ion-select name="dolor_molestia" required>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.respuesta" name="dolor_molestia" required>
         <ion-select-option value="si">Si</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Especifique:</ion-label>
-      <ion-input name="respuesta-7" required placeholder="Tobillo, Pies, Espalda..."></ion-input>
+      <ion-input name="donde" [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.donde" required placeholder="Tobillo, Pies, Espalda..."></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Cuánto le duele?</ion-label>
-      <ion-input name="respuesta-8" required placeholder="Véase la imagen de escala de dolor"></ion-input>
-      <ion-img style="height: 85%; width: 85%; margin-left: auto; margin-right: auto;" src="../../assets/semaforo.png">
+      <ion-input [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.escala" name="respuesta-8" required placeholder="Véase la imagen de escala de dolor"></ion-input>
+      <ion-img style="height: 85%; width: 85%; margin-left: auto; margin-right: auto" src="../../assets/semaforo.png">
       </ion-img>
     </ion-item>
     <ion-item>
       <ion-label>Exploración de Rangos de Movimiento:</ion-label>
     </ion-item>
     <ion-item>
-      <ckeditor name="respuesta-6" [editor]="Editor" [(ngModel)]="this.datosFisioterapia.datosFisioterapia.exploracion_rangos_movimiento"
+      <ckeditor name="respuesta-6" [editor]="Editor" required
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.exploracion_rangos_movimiento"
         [config]="{toolbar: ['bold', '|', 'insertTable']}"></ckeditor>
     </ion-item>
     <ion-item>
       <ion-label>Medición de Perímetros:</ion-label>
     </ion-item>
     <ion-item>
-      <ckeditor name="respuesta-7" [editor]="Editor" [(ngModel)]="this.datosFisioterapia.datosFisioterapia.medicion_perimetros"
+      <ckeditor name="respuesta-7" [editor]="Editor" required
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.medicion_perimetros"
         [config]="{toolbar: ['bold', '|', 'insertTable']}"></ckeditor>
     </ion-item>
+    <ion-item>
+      <ion-label>Objetivos a Trabajar</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-9" [editor]="Editor" required
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.objetivos_trabajar"
+        [config]="{toolbar: ['bold', '|', 'insertTable', '|', 'bulletedList', 'numberedList']}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label>Plan de Tratamiento</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-9" [editor]="Editor" required=""
+        [(ngModel)]="this.datosFisioterapia.datosFisioterapia.plan_tratamiento"
+        [config]="{toolbar: ['bold', '|', 'insertTable', '|', 'bulletedList', 'numberedList']}"></ckeditor>
+    </ion-item>
   </ion-content>
+</form>

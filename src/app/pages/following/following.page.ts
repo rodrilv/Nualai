@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import Swal from 'sweetalert2';
 import { EntrevistaMedicaResultsModalPage } from 'src/app/results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.page';
 import { EntrevistaNutricionalModalPage } from 'src/app/results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.page';
+import { EntrevistaPsicologicaResultsModalPage } from 'src/app/results-modals/entrevista-psicologica-results-modal/entrevista-psicologica-results-modal.page';
 
 @Component({
   selector: 'app-following',
@@ -39,6 +40,12 @@ export class FollowingPage implements OnInit {
   async openViewEntrevistaNutricionalResults(){
     const modal = await this.modal.create({
       component: EntrevistaNutricionalModalPage
+    });
+    return await modal.present();
+  }
+  async openViewEntrevistaPsicoResults(){
+    const modal = await this.modal.create({
+      component: EntrevistaPsicologicaResultsModalPage
     });
     return await modal.present();
   }

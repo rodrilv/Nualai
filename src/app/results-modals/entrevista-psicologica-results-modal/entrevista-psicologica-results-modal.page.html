@@ -1,9 +1,429 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>entrevista-psicologica-results-modal</ion-title>
+    <app-back-button (click)="closeModal()" style="margin-left: 20px"></app-back-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <ion-item>
+    <ion-card-subtitle>Atendió: {{this.seguimientoService.miembro.datosPsicologicos?.atendio}}</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Información General</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre:</ion-label>
+    <ion-input readonly value="{{this.seguimientoService.miembro?.datosGenerales.nombres}}" name="name" readonly>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Apellidos:</ion-label>
+    <ion-input readonly value="{{this.seguimientoService.miembro?.datosGenerales.apellidos}}" name="apellidos" readonly
+      type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Género:</ion-label>
+    <ion-input readonly value="{{this.seguimientoService.miembro?.datosGenerales.genero}}" name="genero" readonly>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Edad:</ion-label>
+    <ion-input readonly value="{{this.seguimientoService.miembro.datosGenerales.edad}}" name="edad" readonly>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Domicilio Actual:</ion-label>
+    <ion-input readonly value="{{this.seguimientoService.miembro?.datosGenerales.domicilio}}" name="domicilio" readonly>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Ocupación Actual:</ion-label>
+    <ion-input readonly value="{{this.seguimientoService.miembro?.datosGenerales.ocupacion}}" name="ocupacion" readonly>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Estado Civil:</ion-label>
+    <ion-input readonly value="{{this.seguimientoService.miembro?.datosGenerales.estado_civil}}" name="estado_civil" readonly>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Manual de Lateralidad:</ion-label>
+    <ion-input readonly value="{{this.seguimientoService.miembro?.datosGenerales.lateralidad_manual}}" name="estado_civil"
+      readonly></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Antecedentes Clínicos</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Usted padece de alguna Alergia?</ion-label>
+    <ion-input readonly name="alergias" readonly
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.alergias.respuesta">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Qué Alergias padece?</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor name="respuesta-1" [editor]="Editor" [disabled]="true"
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.alergias.tipos"
+      [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Usted toma medicamento regular?</ion-label>
+    <ion-input readonly readonly name="medicamento_regular"
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.medicamento_regular.respuesta">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Para qué?</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor name="respuesta-2" [editor]="Editor" [disabled]="true"
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.medicamento_regular.motivo"
+      [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Qué enfermedades ha padecido durante la infancia?</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor [editor]="Editor" [disabled]="true" name="enfermedadess_infancia"
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.enfermedades_infancia.enfermedades"
+      [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Usted ha sido intervenido quirúrgicamente?</ion-label>
+    <ion-input readonly readonly name="intervenciones_quirurgicas"
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.intervenciones_quirurgicas.respuesta">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Por qué?</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor [editor]="Editor" [disabled]="true" name="respuesta-3"
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.intervenciones_quirurgicas.motivo"
+      [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Lo han hospitalizado?</ion-label>
+    <ion-input readonly readonly name="hospitalizado"
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.hospitalizado.respuesta">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Por qué?</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor [editor]="Editor" [disabled]="true" name="respuesta-4"
+      [(ngModel)]="this.seguimientoService.miembro?.datosMedicos?.antecedentes_clinicos?.hospitalizado.motivo"
+      [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Cuántos años tenía cuando terminó la escuela?</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos?.antecedentes_psicologicos.anos_escuela">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Tiempo en que la cursó:</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos?.antecedentes_psicologicos.tiempo_curso_escuela">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Cuántos años tenía cuando terminó la secundaria?</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos?.antecedentes_psicologicos.anos_secundaria">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Tiempo en que la cursó:</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos?.antecedentes_psicologicos.tiempo_curso_secundaria">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Problema durante su tiempo escolar</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos?.antecedentes_psicologicos.problema_escolar">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Materias que se le dificultaron más</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos?.antecedentes_psicologicos.materias_dificultad"
+      [disabled]="true" [editor]="Editor" name="materias_dificultad" [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label>Materias preferidas</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.materias_preferidas"
+      required [editor]="Editor" name="materias_preferidas" [disabled]="true" [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label>Actividades en tiempo libre</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.actividades_tiempo_libre"
+      required [editor]="Editor" name="actividades" [disabled]="true" [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Repitió año en su vida escolar?</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.repitio_ano">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Cómo aprende más facilmente?</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.aprende_facilmente">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Edad del primer noviazgo</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.edad_primer_noviazgo">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Edad de la primera relacion sexual</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.edad_primer_relacion">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Dificultades con la ley</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.dificultades_ley.respuesta">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>De qué tipo:</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.dificultades_ley.tipo"
+      required [editor]="Editor" name="actividades_tiempo_libre" [disabled]="true" [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Prestó servicio militar?</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.servicio_militar">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Ha sufrido catastrofes naturales o guerras?</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.catastrofe_natural_guerras.respuesta">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Especificar</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_psicologicos.catastrofe_natural_guerras.especifica"
+      required [editor]="Editor" name="especificar_catastrofe" [disabled]="true" [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Información Familiar</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre del Padre</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.padre.nombre"
+      name="nombre_padre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Edad del Padre</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.padre.edad"
+      name="edad_padre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Vivo o Muerto</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.padre.vivo_muerto"
+      name="vivo_muerto">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Grado de Estudios del Padre</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.padre.grado_de_estudio"
+      name="grado_de_estudio"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Ocupación Actual del Padre</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.padre.ocupacion"
+      name="ocupacion_padre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Describa el tipo de relación que sostiene o sostenía con su padre</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.padre.relacion"
+      required [editor]="Editor" name="relacion_padre" [disabled]="true" [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nombre de la Madre</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.madre.nombre"
+      name="nombre_madre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Edad de la Madre</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.madre.edad"
+      name="edad_madre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Vivo o Muerto</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.madre.vivo_muerto"
+      name="vivo_muerto">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Grado de Estudios de la Madre</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.madre.grado_de_estudio">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Ocupación Actual de la Madre</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.madre.ocupacion"
+      type="text" name="ocupacion_madre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Describa el tipo de relación que sostiene o sostenía con su madre</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.madre.relacion"
+      [disabled]="true" [editor]="Editor" name="relacion_madre" [config]="{toolbar: []}">
+    </ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Estado Civil de sus Padres</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.estado_civil_padres.estado_civil"
+      name="estado_civil_padres">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Motivo de separación</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.estado_civil_padres.motivo_separacion"
+      [editor]="Editor" name="motivo_separacion" [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Cuántos Hermanos tiene?</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Varones</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.hermanos.cuantos_varones"
+      name="cuantos_hermanos_v"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Mujeres</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.hermanos.cuantos_mujeres"
+      name="cuantos_hermanos_m"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Qué posicion ocupa usted en el orden de nacimiento de su familia?</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.hermanos.posicion_orden_nacimiento"
+      name="posicion_orden_nacimiento"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre del hermano(a) con el que usted se lleva mejor</ion-label>
+    <ion-input readonly
+      [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.hermanos.nombre_hermano_mejor"
+      name="nombre_hermano_mejor"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Motivo:</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.informacion_familiar.hermanos.motivo"
+      [disabled]="true" [editor]="Editor" name="hermano_motivo" [config]="{toolbar: []}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Cómo considera su situación económica?</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.situacion_economica"
+      name="situacion_economica">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Quién fue el encargado de su crianza?</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.crianza" type="text"
+      name="encargado_crianza" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Usted cree que sus papás tienen un hijo(a) favorito?</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.hijo_favorito_padres.respuesta"
+      name="hijo_favorito">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre del hijo favorito:</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.hijo_favorito_padres.nombre" type="text"
+      name="nombre_hijo_favorito"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Profesan alguna religión sus padres?</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.religion_padres.respuesta"
+      name="religion_padres">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Qué religión profesa?</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.religion_padres.religion" name="religion"
+      ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Qué opina de sus padres?</ion-label>
+    <ion-textarea [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.opinion_padres" name="opinion_padres"
+      ></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Existen antecedentes de alcoholismo en su familia?</ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_alcoholismo"
+      name="antecedentes_alcoholismo">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Existen antecedentes de maltrato físico, verbal o psicológico en su familia?
+    </ion-label>
+    <ion-input readonly [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.antecedentes_maltrato"
+      name="antecedentes_maltrato">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">¿Se han presentado casos de depresión u otras enfermedades mentales en su familia?
+    </ion-label>
+    <ion-input [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.casos_depresion.respuesta"
+      name="casos_depresion">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>¿Cuáles?</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.casos_depresion.cuales" required
+      [editor]="Editor" name="depresion_cuales" [config]="{toolbar: []}" [disabled]="true"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Historia Feliz o Divertida en Familia</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Observaciones</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor [(ngModel)]="this.seguimientoService.miembro.datosPsicologicos.observaciones" required [editor]="Editor"
+      name="observaciones" [config]="{toolbar: []}" [disabled]="true"></ckeditor>
+  </ion-item>
+
 
 </ion-content>

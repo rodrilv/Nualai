@@ -11,13 +11,66 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   styleUrls: ['tab3.page.scss'],
 })
 export class Tab3Page implements OnInit {
-  editorText: any = "";
+  editorText: any = '';
   public personal: any;
   public Editor = ClassicEditor;
   public datosFisioterapia: DatosFisioterapia;
-  constructor(public seguimientoService: SeguimientoService, public personalService: PersonalService) {this.datosFisioterapia = new DatosFisioterapia()}
+  constructor(
+    public seguimientoService: SeguimientoService,
+    public personalService: PersonalService
+  ) {
+    this.datosFisioterapia = new DatosFisioterapia();
+  }
 
-  saveData(id: any) { console.log(this.editorText) }
+  saveData(id: any){
+    console.log(this.datosFisioterapia);
+    Swal.fire({
+      toast: true,
+      icon: 'info',
+      title:
+        'Procure revisar que los datos estén totalmente correctos antes de proceder...',
+      text: '¿Desea continuar y guardar la entrevista?',
+      showConfirmButton: true,
+      showDenyButton: true,
+      denyButtonText: 'Volver a revisar',
+      confirmButtonText: 'Guardar',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Guardando...',
+          toast: true,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+          showConfirmButton: false,
+        });
+        let obj: any = await this.seguimientoService.saveDatosFisioterapiaInterview(
+          id,
+          this.datosFisioterapia
+        );
+        if (obj.ok === true) {
+          this.closeSwal(true);
+          Swal.fire({
+            toast: true,
+            icon: 'success',
+            title: 'Entrevista Guardada',
+          });
+        } else {
+          this.closeSwal(true);
+          Swal.fire({
+            toast: true,
+            icon: 'error',
+            title: 'Hubo un error al guardar la entrevista',
+          });
+        }
+      } else {
+        this.closeSwal(true);
+      }
+    });
+
+  }
+
   ngOnInit(): void {
     this.getPersonal();
   }
@@ -32,7 +85,9 @@ export class Tab3Page implements OnInit {
       },
       showConfirmButton: false,
     });
-    this.personal = await this.personalService.getPersonalByRole('Fisioterapeuta');
+    this.personal = await this.personalService.getPersonalByRole(
+      'Fisioterapeuta'
+    );
     this.closeSwal(true);
   }
   closeSwal(stat: boolean) {
