@@ -46,4 +46,12 @@ export class SeguimientoService {
       )
       .toPromise();
   }
+  async saveDatosFisioterapiaInterview(id: any, datosFisioterapia: any){
+    return await this.http
+      .put(
+        `${this.devUrl}miembros/agregar-datos-fisioterapia/${id}`,
+        datosFisioterapia
+      )
+      .toPromise();
+  }
 }
