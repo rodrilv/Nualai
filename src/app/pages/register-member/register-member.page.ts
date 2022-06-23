@@ -12,7 +12,6 @@ import { DatosGeneralesService } from 'src/app/services/datos-generales.service'
 export class RegisterMemberPage implements OnInit {
   constructor(
     private modal: ModalController,
-    private platform: Platform,
     public miembro: Miembro,
     public datosGeneralesService: DatosGeneralesService
   ) {

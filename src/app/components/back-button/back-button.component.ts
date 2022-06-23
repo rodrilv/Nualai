@@ -7,14 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./back-button.component.scss'],
 })
 export class BackButtonComponent implements OnInit {
-  @Input() route = ""
+  @Input() route = "";
+  @Input() size = "";
   constructor(private router: Router) { }
 
   ngOnInit() {}
 
   toHomePage(){
     if(this.route){
-      this.router.navigate([this.route]);
+      this.router.navigate([this.route], {replaceUrl: true});
     }else{
       return;
     }

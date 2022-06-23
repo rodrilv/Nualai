@@ -5,11 +5,21 @@
     </ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar placeholder="Buscar por ID" (ionChange)="buscarMiembro($event)"></ion-searchbar>
+    <ion-segment color="success" (ionChange)="changeFlag($event)" [(ngModel)]="this.formFlag">
+      <ion-segment-button value="1">
+        <ion-label>Consultas</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Seguimientos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="this.formFlag == 2">
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar por ID" (ionChange)="buscarMiembro($event)"></ion-searchbar>
+  </ion-toolbar>
   <ion-card button *ngFor="let member of this.miembroService.miembros[0]?.members | filter: text: '_id' ">
     <ion-card-header button>
       <ion-card-subtitle>{{member._id}}</ion-card-subtitle>
@@ -21,4 +31,20 @@
       </ion-item>
     </ion-card-header>
   </ion-card>
+</ion-content>
+
+<ion-content *ngIf="this.formFlag == 1">
+  <ion-card button *ngFor="let c of this.miembroService.consultas[0]?.consultas.consultas | filter: text: '_id' ">
+    <ion-card-header button>
+      <ion-card-subtitle>{{c._id}}</ion-card-subtitle>
+      <ion-card-title>{{c.datosGenerales.nombres+"
+        "+c.datosGenerales.apellidos}}</ion-card-title>
+        <ion-label>{{c.fecha_consulta.day+"/"+c.fecha_consulta.month}}</ion-label>
+      <ion-item button (click)="seguimiento(c._id)">
+        <ion-text></ion-text>
+        <ion-icon slot="end" size="large" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+    </ion-card-header>
+  </ion-card>
+
 </ion-content>

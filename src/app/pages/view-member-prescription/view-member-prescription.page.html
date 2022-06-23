@@ -1,9 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>view-member-prescription</ion-title>
+    <ion-title>
+      <ion-icon (click)="closeModal()" name="arrow-back-outline"></ion-icon>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-toolbar>
+  <ion-searchbar placeholder="Buscar por ID" (ionChange)="buscarMiembro($event)"></ion-searchbar>
+</ion-toolbar>
 
+<ion-content>
+  <ion-card button *ngFor="let member of this.miembroService.miembros[0]?.members | filter: text: '_id' ">
+    <ion-card-header button>
+      <ion-card-subtitle>{{member._id}}</ion-card-subtitle>
+      <ion-card-title>{{member.datosGenerales.nombres+"
+        "+member.datosGenerales.apellidos}}</ion-card-title>
+      <ion-item button (click)="prescription(member._id)">
+        <ion-text>Crear Receta</ion-text>
+        <ion-icon slot="end" size="large" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+    </ion-card-header>
+  </ion-card>
 </ion-content>

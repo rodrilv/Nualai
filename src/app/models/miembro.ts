@@ -1,5 +1,5 @@
 export class Miembro {
-  public miembro: any = {
+  public miembro = {
     datosGenerales: {
       nombres: '',
       apellidos: '',

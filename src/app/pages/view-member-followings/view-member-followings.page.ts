@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MiembrosService } from 'src/app/services/miembros.service';
 import { SeguimientoService } from '../../services/seguimiento.service';
-import { FollowingPage } from '../following/following.page';
+import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -11,20 +11,27 @@ import Swal from 'sweetalert2';
   templateUrl: './view-member-followings.page.html',
   styleUrls: ['./view-member-followings.page.scss'],
 })
-export class ViewMemberFollowingsPage implements OnInit {
+export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
   public text: any;
   public members: any;
+  public formFlag: any;
 
   constructor(
     private modal: ModalController,
     public miembroService: MiembrosService,
     public seguimientoService: SeguimientoService,
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) {}
 
   async ngOnInit() {
     await this.miembroService.getMiembros();
     this.members = this.miembroService.miembros[0].members;
+  }
+  ngAfterViewInit(): void {
+    this.formFlag = 2;
+    this.ngOnInit();
+    this.cd.detectChanges();
   }
   async seguimiento(id: any) {
       Swal.fire({
@@ -43,7 +50,6 @@ export class ViewMemberFollowingsPage implements OnInit {
         this.seguimientoService.miembro = obj?.member;
         this.router.navigate(['following'])
         console.log(this.seguimientoService.miembro);
-        this.seguimientoService._id 
 
         this.closeSwal(true);
         this.closeModal();
@@ -67,6 +73,18 @@ export class ViewMemberFollowingsPage implements OnInit {
       Swal.close();
     } else {
       Swal.close();
+    }
+  }
+
+  changeFlag(event: any) {
+    console.log(event.detail.value);
+    this.formFlag = event.detail.value;
+    if(this.formFlag == 2){
+      this.ngOnInit();
+      console.log("Dude, I executed, but I dont know what happened"
+      );
+    }else{
+      this.miembroService.getConsultas();
     }
   }
 }

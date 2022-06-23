@@ -7,13 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { EntrevistaFisioterapiaResultsModalPageRoutingModule } from './entrevista-fisioterapia-results-modal-routing.module';
 
 import { EntrevistaFisioterapiaResultsModalPage } from './entrevista-fisioterapia-results-modal.page';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EntrevistaFisioterapiaResultsModalPageRoutingModule
+    EntrevistaFisioterapiaResultsModalPageRoutingModule,
+    CKEditorModule,
+    ComponentsModule
+
   ],
   declarations: [EntrevistaFisioterapiaResultsModalPage]
 })

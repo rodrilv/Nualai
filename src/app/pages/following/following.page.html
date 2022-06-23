@@ -23,7 +23,7 @@
               <ion-item button (click)="openViewEntrevistaNutricionalResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.nutricional == 'no'">
                 <ion-text>Nutricional</ion-text>
               </ion-item>
-              <ion-item button [disabled]="this.seguimientoService.miembro?.datosEntrevista?.fisioterapia == 'no'">
+              <ion-item button (click)="openViewEntrevistaFisioterapiaResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.fisioterapia == 'no'">
                 <ion-text>Fisioterapia</ion-text>
               </ion-item>
               <ion-item button (click)="openViewEntrevistaPsicoResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.psicologica == 'no'">
@@ -36,6 +36,49 @@
       </ion-card-content>
     </ion-card-header>
   </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Recetas</ion-card-title>
+      <ion-card-content>
+        <ion-accordion-group>
+          <ion-accordion toggle-icon="arrow-down-circle">
+            <ion-item slot="header">
+              <ion-label>Ver las recetas del miembro:</ion-label>
+            </ion-item>
+            <ion-list slot="content">
+              <ion-item *ngFor="let receta of this.recetaService.recetas[0]" button>
+                <ion-label>{{receta.nombre}}</ion-label>
+                <ion-text style="color: grey;">{{receta.motivo_receta}}</ion-text>
+              </ion-item>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-card-content>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Consultas</ion-card-title>
+      <ion-card-content>
+        <ion-accordion-group>
+          <ion-accordion toggle-icon="arrow-down-circle">
+            <ion-item slot="header">
+              <ion-label>Ver las consultas del miembro:</ion-label>
+            </ion-item>
+            <ion-list slot="content">
+              <ion-item button>
+                <ion-text>Consulta 1</ion-text>
+              </ion-item>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-card-content>
+    </ion-card-header>
+  </ion-card>
+
+
   <ion-card>
     <ion-card-header>
       <ion-item button>

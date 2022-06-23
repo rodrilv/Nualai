@@ -6,6 +6,9 @@ import Swal from 'sweetalert2';
 import { EntrevistaMedicaResultsModalPage } from 'src/app/results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.page';
 import { EntrevistaNutricionalModalPage } from 'src/app/results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.page';
 import { EntrevistaPsicologicaResultsModalPage } from 'src/app/results-modals/entrevista-psicologica-results-modal/entrevista-psicologica-results-modal.page';
+import { EntrevistaFisioterapiaResultsModalPage } from 'src/app/results-modals/entrevista-fisioterapia-results-modal/entrevista-fisioterapia-results-modal.page';
+import { RecetaService } from 'src/app/services/receta.service';
+import { ConsultasService } from 'src/app/services/consultas.service';
 
 @Component({
   selector: 'app-following',
@@ -13,16 +16,35 @@ import { EntrevistaPsicologicaResultsModalPage } from 'src/app/results-modals/en
   styleUrls: ['./following.page.scss'],
 })
 export class FollowingPage implements OnInit {
+  private uid: any;
+
   constructor(
     private router: Router,
     public seguimientoService: SeguimientoService,
-    private modal: ModalController
-  ) {}
+    private modal: ModalController,
+    public recetaService: RecetaService,
+    public consultasService: ConsultasService,
+  ) {
+    this.uid = this.seguimientoService._id
+  }
 
   async ngOnInit() {
-    if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){
-      this.router.navigate(['/']);
+    if(!this.checkMemberAvailabilty()){
+      Swal.fire({
+        title: 'Cargando...',
+        toast: true,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+        showConfirmButton: false,
+      });
+      this.getRecetas();
+      //this.getConsultas();
+      this.closeSwal(true);
     }
+    
+
   }
   closeSwal(stat: boolean) {
     if (stat == true) {
@@ -48,6 +70,29 @@ export class FollowingPage implements OnInit {
       component: EntrevistaPsicologicaResultsModalPage
     });
     return await modal.present();
+  }
+  async openViewEntrevistaFisioterapiaResults(){
+    const modal = await this.modal.create({
+      component: EntrevistaFisioterapiaResultsModalPage
+    });
+    return await modal.present();
+  }
+  async getRecetas(){
+    this.recetaService.recetas = [];
+    let obj: any = await this.recetaService.getPrescriptions(this.uid);
+    this.recetaService.recetas.push(obj.prescripts);
+    console.log(this.recetaService.recetas);
+  }
+  async getConsultas(){
+    let obj: any = await this.consultasService
+  }
+  checkMemberAvailabilty(): boolean{
+    if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){
+      this.router.navigate(['/'], { replaceUrl: true});
+      return true;
+    }else{
+      return false;
+    }
   }
 }
 

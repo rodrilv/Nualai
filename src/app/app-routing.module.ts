@@ -35,31 +35,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/personal/personal.module').then( m => m.PersonalPageModule)
   },
   {
-    path: 'tabs',
-    loadChildren: () => import('./results-tabs/tabs/tabs.module').then( m => m.TabsPageModule)
-  },
-  {
-    path: 'tab1',
-    loadChildren: () => import('./results-tabs/tab1/tab1.module').then( m => m.Tab1PageModule)
-  },
-  {
     path: 'view-member-followings',
     loadChildren: () => import('./pages/view-member-followings/view-member-followings.module').then( m => m.ViewMemberFollowingsPageModule)
   },
   {
     path: 'following',
     loadChildren: () => import('./pages/following/following.module').then( m => m.FollowingPageModule)
-  },  {
+  },
+  {
     path: 'entrevista-medica-results-modal',
     loadChildren: () => import('./results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.module').then( m => m.EntrevistaMedicaResultsModalPageModule)
   },
   {
     path: 'entrevista-nutricional-modal',
     loadChildren: () => import('./results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.module').then( m => m.EntrevistaNutricionalModalPageModule)
-  },
-  {
-    path: 'tab2',
-    loadChildren: () => import('./results-tabs/tab2/tab2.module').then( m => m.Tab2PageModule)
   },
   {
     path: 'view-member-prescription',

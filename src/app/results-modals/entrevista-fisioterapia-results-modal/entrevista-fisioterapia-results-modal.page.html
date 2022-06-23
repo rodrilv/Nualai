@@ -1,9 +1,233 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>entrevista-fisioterapia-results-modal</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <app-back-button (click)="closeModal()" style="margin-left: 20px"></app-back-button>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-
-</ion-content>
+  <ion-content [fullscreen]="true">
+    <ion-item>
+      <ion-label position="floating">Entrevistador(a)</ion-label>
+      <ion-input readonly value="{{this.seguimientoService.miembro?.datosFisioterapia?.atendio}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Datos Generales</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales?.nombres}}" name="nombre" readonly>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellidos:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales?.apellidos}}" name="apellidos" readonly>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Edad:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales?.edad}}" name="edad" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Teléfono:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales?.telefono}}" name="telefono" readonly>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Dirección:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales?.domicilio}}" name="direccion" readonly>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Estado Civil:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales?.estado_civil}}" name="estado_civil"
+        readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Pasatiempos:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales?.pasatiempos}}" name="pasatiempos" readonly>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Actividad Física:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales?.actividad_fisica}}" name="actividad_fisica"
+        readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Antecedentes Personales Patológicos y
+        Heredofamiliares</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Diabetes:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.diabetes.respuesta}}"
+        name="diabetes" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cáncer:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.cancer.respuesta}}"
+        name="cancer" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Alergias:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-1" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.alergias.tipos"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Alcoholismo</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosNutricionales?.alcoholismo.respuesta}}"
+        name="alcoholismo" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tabaquismo</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosNutricionales?.tabaquismo.respuesta}}"
+        name="tabaquismo" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hospitalizaciones</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-2" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.hospitalizado.motivo"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cirugías por:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-3" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro.datosMedicos?.antecedentes_clinicos?.intervenciones_quirurgicas.motivo"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">HTA:</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes?.HTA}}" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Tiene antecedentes con enfermedades Reumatológicas?</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes?.reumatologicas.antecedentes}}" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Usted tiene enfermedades Reumatológicas?</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes?.reumatologicas.respuesta}}" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Tiene antecedentes con Cardiopatía?</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes?.cardiopatia.antecedentes}}" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Usted padece de Cardiopatía?</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes?.cardiopatia.respuesta}}" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fracturas u otras lesiones:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-4" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro.datosFisioterapia?.antecedentes.fracturas_lesiones"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Transfusiones</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes.transfusiones}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Accidentes:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-4" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro.datosFisioterapia?.antecedentes.accidentes"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Signos Vitales</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frecuencia Cardiaca (Pulso)</ion-label>
+      <ion-input readonly
+        value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes.fc}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Temperatura Corporal</ion-label>
+      <ion-input readonly
+        value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes.temperatura_corporal}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frecuencia Respiratoria</ion-label>
+      <ion-input readonly
+        value="{{this.seguimientoService.miembro.datosFisioterapia?.antecedentes.fr}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Presión Arterial</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Presión durante entrevista médica:</ion-label>
+      <ion-input readonly
+        value="{{this.seguimientoService.miembro?.datosMedicos?.presion_arterial.sistolica+' / '+this.seguimientoService.miembro?.datosMedicos?.presion_arterial.distolica}}">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Marcha/Deambulación:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-5" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro?.datosFisioterapia.marcha_deambulacion"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label>Exploración de Fuerza Muscular:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-6" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro?.datosFisioterapia.exploracion_fuerza_muscular"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Presenta Dolor o alguna molestia justo en este momento en alguna parte
+        del cuerpo?
+      </ion-label>
+      <ion-input readonly value="{{this.seguimientoService.miembro?.datosFisioterapia?.escala_dolor.respuesta}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Especifique:</ion-label>
+      <ion-input readonly name="donde" value="{{this.seguimientoService.miembro.datosFisioterapia?.escala_dolor.donde}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Cuánto le duele?</ion-label>
+      <ion-input value="{{this.seguimientoService.miembro.datosFisioterapia?.escala_dolor.escala}}" name="respuesta-8" readonly></ion-input>
+      <ion-img style="height: 85%; width: 85%; margin-left: auto; margin-right: auto" src="../../assets/semaforo.png">
+      </ion-img>
+    </ion-item>
+    <ion-item>
+      <ion-label>Exploración de Rangos de Movimiento:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-6" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro?.datosFisioterapia.exploracion_rangos_movimiento"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label>Medición de Perímetros:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-7" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro?.datosFisioterapia.medicion_perimetros"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label>Objetivos a Trabajar</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-9" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro?.datosFisioterapia.objetivos_trabajar"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-label>Plan de Tratamiento</ion-label>
+    </ion-item>
+    <ion-item>
+      <ckeditor name="respuesta-9" [editor]="Editor" [disabled]="true"
+        [(ngModel)]="this.seguimientoService.miembro?.datosFisioterapia.plan_tratamiento"
+        [config]="{toolbar: []}"></ckeditor>
+    </ion-item>
+  </ion-content>

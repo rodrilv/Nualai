@@ -2,7 +2,7 @@
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-button (click)="saveData(this.seguimientoService.miembro._id)" [disabled]="!form.valid" slot="end"
-        fill="clear">Guardar Entrevista
+        fill="outline">Guardar Entrevista
       </ion-button>
       <app-back-button route="/" style="margin-left: 20px"></app-back-button>
     </ion-toolbar>
@@ -47,8 +47,8 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Estado Civil:</ion-label>
-      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.estado_civil}}" name="estado_civil"
-        readonly></ion-input>
+      <ion-input value="{{this.seguimientoService.miembro?.datosGenerales.estado_civil}}" name="estado_civil" readonly>
+      </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Pasatiempos:</ion-label>
@@ -89,8 +89,8 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Tabaquismo</ion-label>
-      <ion-input value="{{this.seguimientoService.miembro.datosNutricionales?.tabaquismo.respuesta}}"
-        name="tabaquismo" readonly></ion-input>
+      <ion-input value="{{this.seguimientoService.miembro.datosNutricionales?.tabaquismo.respuesta}}" name="tabaquismo"
+        readonly></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Hospitalizaciones</ion-label>
@@ -118,24 +118,24 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Tiene antecedentes con enfermedades Reumatológicas?</ion-label>
-      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.reumatologicas.antecedentes" type="text"
-        name="reuma_tologicas" required>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.reumatologicas.antecedentes"
+        type="text" name="reuma_tologicas" required>
         <ion-select-option value="si">Si</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Usted tiene enfermedades Reumatológicas?</ion-label>
-      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.reumatologicas.respuesta" type="text"
-        name="reumatologicas" required>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.reumatologicas.respuesta"
+        type="text" name="reumatologicas" required>
         <ion-select-option value="si">Si</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Tiene antecedentes con Cardiopatía?</ion-label>
-      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.cardiopatia.antecedentes" type="text"
-        name="cardiopatia"required>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.cardiopatia.antecedentes"
+        type="text" name="cardiopatia" required>
         <ion-select-option value="si">Si</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
@@ -219,18 +219,21 @@
       <ion-label position="floating">¿Presenta Dolor o alguna molestia justo en este momento en alguna parte
         del cuerpo?
       </ion-label>
-      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.respuesta" name="dolor_molestia" required>
+      <ion-select [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.respuesta" name="dolor_molestia"
+        required>
         <ion-select-option value="si">Si</ion-select-option>
         <ion-select-option value="no">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Especifique:</ion-label>
-      <ion-input name="donde" [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.donde" required placeholder="Tobillo, Pies, Espalda..."></ion-input>
+      <ion-input name="donde" [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.donde" required
+        placeholder="Tobillo, Pies, Espalda..."></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">¿Cuánto le duele?</ion-label>
-      <ion-input [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.escala" name="respuesta-8" required placeholder="Véase la imagen de escala de dolor"></ion-input>
+      <ion-input [(ngModel)]="this.datosFisioterapia.datosFisioterapia.escala_dolor.escala" name="respuesta-8" required
+        placeholder="Véase la imagen de escala de dolor"></ion-input>
       <ion-img style="height: 85%; width: 85%; margin-left: auto; margin-right: auto" src="../../assets/semaforo.png">
       </ion-img>
     </ion-item>
