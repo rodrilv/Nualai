@@ -185,6 +185,24 @@
         type="number" placeholder="Distólica"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-card-subtitle>Signos Vitales</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frecuencia Cardiaca (Pulso)</ion-label>
+      <ion-input required type="number" placeholder="Latidos por minuto" name="fc"
+        [(ngModel)]="this.datosMedicos.datosMedicos.signos_vitales.fc"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Temperatura Corporal</ion-label>
+      <ion-input required type="number" name="temp" placeholder="°C"
+        [(ngModel)]="this.datosMedicos.datosMedicos.signos_vitales.temperatura_corporal"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frecuencia Respiratoria</ion-label>
+      <ion-input required type="number" name="fr" placeholder="Respiraciones por minuto"
+        [(ngModel)]="this.datosMedicos.datosMedicos.signos_vitales.fr"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-card-subtitle>Nivel de Insulina</ion-card-subtitle>
     </ion-item>
     <ion-item>

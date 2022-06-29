@@ -54,4 +54,9 @@ export class SeguimientoService {
       )
       .toPromise();
   }
+  async saveConsulta(consulta: any){
+    return await this.http
+    .put(`${this.devUrl}miembros/crear-consulta`, consulta)
+    .toPromise();
+  }
 }

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <app-back-button (click)="closeModal()" style="margin-left: 20px"></app-back-button>
+    <app-back-button route="/following" [replace]="false" style="margin-left: 20px"></app-back-button>
   </ion-toolbar>
 </ion-header>
 
@@ -36,15 +36,16 @@
   </ion-item>
   <ion-item>
     <ion-label>Agua que ingiere durante el día:</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales?.H2O.cantidad+" Litros"}}</ion-text>
+    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales?.H2O.cantidad+" Litros"}}
+    </ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Alimentos que prefiere no consumir:</ion-label>
   </ion-item>
   <ion-item>
     <ckeditor name="respuesta-3" [editor]="Editor"
-      [(ngModel)]="this.seguimientoService.miembro.datosNutricionales.prefiere_no_consumir"
-      [config]="{toolbar: []}"></ckeditor>
+      [(ngModel)]="this.seguimientoService.miembro.datosNutricionales.prefiere_no_consumir" [config]="{toolbar: []}">
+    </ckeditor>
   </ion-item>
   <ion-item>
     <ion-label>Peso</ion-label>
@@ -68,7 +69,12 @@
     <ion-label>IMC</ion-label>
   </ion-item>
   <ion-item>
-    <ion-text>{{this.seguimientoService.miembro.datosNutricionales?.IMC+" Kg/m2"}}</ion-text>
+    <ion-label>{{this.seguimientoService.miembro.datosNutricionales?.IMC+" Kg/m2"}}</ion-label>
+    <ion-text style="color: rgb(123, 0, 255)" *ngIf="this.imc <= (18.5)">Peso Inferior</ion-text>
+    <ion-text style="color: rgb(0, 170, 255)" *ngIf="this.imc > (18.5) && this.imc < (24.9)">Peso Normal</ion-text>
+    <ion-text style="color: rgb(119, 255, 0)" *ngIf="this.imc > (24.9) && this.imc < (29.9)">Sobrepeso</ion-text>
+    <ion-text style="color: rgb(255, 208, 0)" *ngIf="this.imc > (29.9) && this.imc < (34.9)">Obesidad Moderada</ion-text>
+    <ion-text style="color: rgb(255, 68, 0)" *ngIf="this.imc > (34.9)">Obesidad Severa</ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Nivel de Agua Corporal Total</ion-label>
@@ -88,18 +94,20 @@
   <ion-item>
     <ion-text>{{this.seguimientoService.miembro.datosNutricionales?.peso_masa_osea+" Kg"}}</ion-text>
   </ion-item>
-  
-  
+
+
   <ion-item>
     <ion-card-subtitle>Tratamiento Dietético</ion-card-subtitle>
   </ion-item>
   <ion-item>
     <ion-label>¿Ha llevado tratamiento nutricional antes?</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.tratamiento_dietetico.respuesta}}</ion-text>
+    <ion-text style="font-weight:bold;">
+      {{this.seguimientoService.miembro.datosNutricionales.tratamiento_dietetico.respuesta}}</ion-text>
   </ion-item>
   <ion-item>
     <ion-label>¿Hace cuanto tiempo?</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.tratamiento_dietetico.hace_cuanto}}</ion-text>
+    <ion-text style="font-weight:bold;">
+      {{this.seguimientoService.miembro.datosNutricionales.tratamiento_dietetico.hace_cuanto}}</ion-text>
   </ion-item>
   <ion-item>
     <ion-card-subtitle>Apetito</ion-card-subtitle>
@@ -113,50 +121,78 @@
   </ion-item>
   <ion-item>
     <ion-label>Cuántas veces acude a defecar al día</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.funcionamiento_intestinal}}</ion-text>
+    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.funcionamiento_intestinal}}
+    </ion-text>
   </ion-item>
   <ion-item>
     <ion-card-subtitle>Síntomas Gastrointestinales</ion-card-subtitle>
   </ion-item>
   <ion-item>
     <ion-label>Malestares estomacales durante periodo de entrevista</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.sintomas_gastrointestinales.tipo}}</ion-text>
+    <ion-text style="font-weight:bold;">
+      {{this.seguimientoService.miembro.datosNutricionales.sintomas_gastrointestinales.tipo}}</ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Tiempo de los malestares estomacales durante periodo de entrevista</ion-label>
   </ion-item>
   <ion-item>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.sintomas_gastrointestinales.hace_cuanto}}</ion-text>
+    <ion-text style="font-weight:bold;">
+      {{this.seguimientoService.miembro.datosNutricionales.sintomas_gastrointestinales.hace_cuanto}}</ion-text>
   </ion-item>
   <ion-item>
     <ion-card-subtitle>Tabaquismo</ion-card-subtitle>
   </ion-item>
   <ion-item>
     <ion-label>Fuma:</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.tabaquismo.respuesta}}</ion-text>
+    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.tabaquismo.respuesta}}
+    </ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Cúanto fuma:</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.tabaquismo.cuanto}}</ion-text>
+    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.tabaquismo.cuanto}}
+    </ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Desde hace cuánto fuma:</ion-label>
-    <ion-text style="font-weight:bold;" style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.tabaquismo.hace_cuanto}}</ion-text>
+    <ion-text style="font-weight:bold;" style="font-weight:bold;">
+      {{this.seguimientoService.miembro.datosNutricionales.tabaquismo.hace_cuanto}}</ion-text>
   </ion-item>
   <ion-item>
     <ion-card-subtitle>Alcoholismo</ion-card-subtitle>
   </ion-item>
   <ion-item>
     <ion-label>Toma:</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.alcoholismo.respuesta}}</ion-text>
+    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.alcoholismo.respuesta}}
+    </ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Cuánto toma:</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.alcoholismo.cuanto}}</ion-text>
+    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.alcoholismo.cuanto}}
+    </ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Hace cuánto toma:</ion-label>
-    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.alcoholismo.hace_cuanto}}</ion-text>
+    <ion-text style="font-weight:bold;">{{this.seguimientoService.miembro.datosNutricionales.alcoholismo.hace_cuanto}}
+    </ion-text>
   </ion-item>
-  
-  
+  <ion-item>
+    <ion-card-subtitle>Plan de Alimentación</ion-card-subtitle>
+  </ion-item>
+  <div *ngIf="this.seguimientoService.miembro.datosNutricionales.plan_alimentacion == '' || this.seguimientoService.miembro.datosNutricionales.plan_alimentacion == undefined ">
+    <ion-item>
+      <ckeditor style="height: auto;" name="plan_alimentacion" [editor]="Editor" [(ngModel)]="this.plan_alimentacion.plan_alimentacion"
+        [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="guardarPlanAlimentacion()">Guardar Plan de Alimentación</ion-button>
+    </ion-item>
+  </div>
+  <div *ngIf="this.seguimientoService.miembro.datosNutricionales.plan_alimentacion">
+    <ion-item>
+      <ckeditor [disabled]="true" style="height: auto;" name="plan_alimentacion" [editor]="Editor" [(ngModel)]="this.seguimientoService.miembro.datosNutricionales.plan_alimentacion"
+        [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+    </ion-item>
+    <ion-item>
+      <ion-button [disabled]="true" (click)="guardarPlanAlimentacion()">Guardar Plan de Alimentación</ion-button>
+    </ion-item>
+  </div>

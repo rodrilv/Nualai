@@ -9,38 +9,13 @@ import Swal from 'sweetalert2';
 export class MiembrosService {
   private devUrl: String = environment.devUrl;
   public miembros: any = [];
-  public consultas: any = [];
   constructor(private http: HttpClient) {}
 
-async getConsultas() {
-    this.consultas = [];
-    Swal.fire({
-      title: 'Cargado... Sé paciente!',
-      toast: true,
-      timerProgressBar: true,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-      showConfirmButton: false,
-    });
-    try {
-      return await this.http
-        .get(`${this.devUrl}miembros/obtener-consultas`)
-        .toPromise()
-        .then((result: any) => {
-          this.consultas.push(result);
-          this.closeSwal(true);
-        });
-    } catch (err) {
-      this.closeSwal(true);
-      console.error("No se pudo conectar al servicio Nualai")
-      Swal.fire({
-        title: 'No se pudo conectar al servicio Nualai"',
-        icon: 'error',
-        toast: true,
-      });
-    }
-  }
+async savePlanAlimentacion(plan: any, id: any){
+  return this.http
+  .put(`${this.devUrl}miembros/agregar-plan-alimentacion/${id}`, plan)
+  .toPromise();
+}
   async getMiembros() {
     this.miembros = [];
     Swal.fire({

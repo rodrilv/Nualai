@@ -34,5 +34,6 @@ export class DatosNutriologo {
     IMM: '',
     edad_biologica: '',
     peso_masa_osea: '',
+    plan_alimentacion:'',
   };
 }

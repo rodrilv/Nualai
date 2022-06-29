@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-card-subtitle>Valoración Médica</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Presión Arterial</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Sistólica</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.presion_arterial.sistolica" required name="sistolica"
+      type="number" placeholder="Sistólica"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Distólica</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.presion_arterial.distolica" required name="distolica"
+      type="number" placeholder="Distólica"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Signos Vitales</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Frecuencia Cardiaca (Pulso)</ion-label>
+    <ion-input required type="number" placeholder="Latidos por minuto" name="fc"
+      [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.fc"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Temperatura Corporal</ion-label>
+    <ion-input required type="number" name="temp" placeholder="°C"
+      [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.temperatura_corporal"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Frecuencia Respiratoria</ion-label>
+    <ion-input required type="number" name="fr" placeholder="Respiraciones por minuto"
+      [(ngModel)]="this.datosFisioterapia.datosFisioterapia.antecedentes.fr"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Nivel de Insulina</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Insulina</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.insulina" required name="insulina" type="number"
+      placeholder="mg/dL"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Nivel de Glucosa</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Glucosa</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.glucosa" required name="glucosa" type="number"
+      placeholder="mg/dL"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Nivel de Trigliceridos</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Trigliceridos</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.trigliceridos" required name="trigliceridos"
+      placeholder="Trigliceridos"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Niveles de Colesterol</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Colesterol Total</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.colesterol.total" required name="coelsterol"
+      type="number" placeholder="mg/dL"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">No-HDL</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.colesterol.no_hdl" required name="no_hdl"
+      placeholder="mg/dL"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">LDL</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.colesterol.ldl" required name="ldl" placeholder="mg/dL">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">HDL</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.colesterol.hdl" required name="hdl" placeholder="mg/dL">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+</ion-content>

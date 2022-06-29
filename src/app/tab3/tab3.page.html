@@ -196,7 +196,7 @@
     <ion-item>
       <ion-label position="floating">Presión durante entrevista médica:</ion-label>
       <ion-input readonly name="presion_medica"
-        value="{{this.seguimientoService.miembro.datosMedicos.presion_arterial.sistolica+' / '+this.seguimientoService.miembro.datosMedicos.presion_arterial.distolica}}">
+        value="{{this.seguimientoService.miembro.datosMedicos?.presion_arterial.sistolica+' / '+this.seguimientoService.miembro.datosMedicos?.presion_arterial.distolica}}">
       </ion-input>
     </ion-item>
     <ion-item>

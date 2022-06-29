@@ -20,7 +20,7 @@
               <ion-item button (click)="openViewEntrevistaMedicaResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.medica == 'no'">
                 <ion-text>Médica</ion-text>
               </ion-item>
-              <ion-item button (click)="openViewEntrevistaNutricionalResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.nutricional == 'no'">
+              <ion-item button (click)="openRouteEntrevistaNutricionalResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.nutricional == 'no'">
                 <ion-text>Nutricional</ion-text>
               </ion-item>
               <ion-item button (click)="openViewEntrevistaFisioterapiaResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.fisioterapia == 'no'">
@@ -68,8 +68,9 @@
               <ion-label>Ver las consultas del miembro:</ion-label>
             </ion-item>
             <ion-list slot="content">
-              <ion-item button>
-                <ion-text>Consulta 1</ion-text>
+              <ion-item button *ngFor="let consulta of this.consultasService.consultasMember[0]">
+                <ion-label>Consulta: {{consulta.general.sesion}}</ion-label>
+                <ion-text>Fecha: {{consulta.general.fecha_consulta.day+"/"+consulta.general.fecha_consulta.month+"/"+consulta.general.fecha_consulta.year}}</ion-text>
               </ion-item>
             </ion-list>
           </ion-accordion>
@@ -81,7 +82,7 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-item button>
+      <ion-item button (click)="openViewCreateConsultas()">
         <ion-card-title>CREAR CONSULTA</ion-card-title>
         <ion-icon slot="end" name="duplicate-outline"></ion-icon>
       </ion-item>

@@ -13,7 +13,7 @@ export class TabsPage implements OnInit {
 
   ngOnInit() {
     if(this.seguimientoService.miembro == null || this.seguimientoService.miembro == undefined){
-      this.router.navigate(['/']);
+      this.router.navigate(['/'], {replaceUrl: true});
     }
   }
 

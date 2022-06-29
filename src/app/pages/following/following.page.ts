@@ -9,6 +9,7 @@ import { EntrevistaPsicologicaResultsModalPage } from 'src/app/results-modals/en
 import { EntrevistaFisioterapiaResultsModalPage } from 'src/app/results-modals/entrevista-fisioterapia-results-modal/entrevista-fisioterapia-results-modal.page';
 import { RecetaService } from 'src/app/services/receta.service';
 import { ConsultasService } from 'src/app/services/consultas.service';
+import { CreateConsultaPage } from '../create-consulta/create-consulta.page';
 
 @Component({
   selector: 'app-following',
@@ -40,7 +41,7 @@ export class FollowingPage implements OnInit {
         showConfirmButton: false,
       });
       this.getRecetas();
-      //this.getConsultas();
+      this.getConsultas();
       this.closeSwal(true);
     }
     
@@ -53,11 +54,20 @@ export class FollowingPage implements OnInit {
       Swal.close();
     }
   }
+  async openViewCreateConsultas(){
+    const modal = await this.modal.create({
+      component: CreateConsultaPage
+    });
+    return await modal.present();
+  }
   async openViewEntrevistaMedicaResults(){
     const modal = await this.modal.create({
       component: EntrevistaMedicaResultsModalPage
     });
     return await modal.present();
+  }
+  openRouteEntrevistaNutricionalResults(){
+    this.router.navigate(['entrevista-nutricional-results'])
   }
   async openViewEntrevistaNutricionalResults(){
     const modal = await this.modal.create({
@@ -84,7 +94,11 @@ export class FollowingPage implements OnInit {
     console.log(this.recetaService.recetas);
   }
   async getConsultas(){
-    let obj: any = await this.consultasService
+    this.consultasService.consultasMember = [];
+    let obj: any = await this.consultasService.getConsultasMember(this.uid);
+    this.consultasService.consultasMember.push(obj.consultas);
+    console.log(this.consultasService.consultasMember);
+    
   }
   checkMemberAvailabilty(): boolean{
     if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){
@@ -95,4 +109,3 @@ export class FollowingPage implements OnInit {
     }
   }
 }
-

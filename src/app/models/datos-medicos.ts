@@ -33,6 +33,11 @@ export class DatosMedicos {
         respuesta: '',
       },
     },
+    signos_vitales:{
+      fc:'',
+      fr:'',
+      temperatura_corporal:''
+    },
     presion_arterial: {
       sistolica: '',
       distolica: '',

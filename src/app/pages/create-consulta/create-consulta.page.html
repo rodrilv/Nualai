@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <app-back-button style="margin-left: 20px;" (click)="closeModal()"></app-back-button>
+    <ion-button (click)="saveConsulta()" style="margin-right: 20px;" slot="end" fill="outline">Guardar Consulta</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-card-subtitle>
+      Crear Consulta
+    </ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nombre:</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.general.nombre" readonly name="user_id"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>ID del miembro:</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.general.user_id" readonly name="user_id"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha de la Cita</ion-label>
+    <ion-input [(ngModel)]="this.fecha" name="date" type="date"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sesión:</ion-label>
+    <ion-input [(ngModel)]="this.consulta.consulta.general.sesion" name="sesion" placeholder="# de la sesión."></ion-input>
+  </ion-item>
+</ion-content>
