@@ -70,7 +70,9 @@
             <ion-list slot="content">
               <ion-item button *ngFor="let consulta of this.consultasService.consultasMember[0]">
                 <ion-label>Consulta: {{consulta.general.sesion}}</ion-label>
-                <ion-text>Fecha: {{consulta.general.fecha_consulta.day+"/"+consulta.general.fecha_consulta.month+"/"+consulta.general.fecha_consulta.year}}</ion-text>
+                <ion-text style="margin-right: 15px;">Fecha: {{consulta.general.fecha_consulta.day+"/"+consulta.general.fecha_consulta.month+"/"+consulta.general.fecha_consulta.year}}</ion-text>
+                <ion-button style="margin-right: 10px;" fill="clear">Ver</ion-button>
+                <ion-button fill="clear" (click)="startConsulta(consulta._id)">Iniciar</ion-button>
               </ion-item>
             </ion-list>
           </ion-accordion>

@@ -1,8 +1,13 @@
+
 <ion-header>
   <ion-toolbar>
+    <app-back-button style="margin-left: 15px;" route="following" [replace]="true"></app-back-button>
+    <ion-button *ngIf="this.consultasService.consultaMember.valoracion_medica?.status == 'Pendiente'" [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaMedica()">Guardar Consulta</ion-button>
+    <ion-button *ngIf="this.consultasService.consultaMember.valoracion_medica?.status == 'Completada'" [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaMedica()">Valoración Completada</ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <form #form="ngForm">
   <ion-item>
     <ion-card-subtitle>Valoración Médica</ion-card-subtitle>
   </ion-item>
@@ -43,7 +48,7 @@
   <ion-item>
     <ion-label position="floating">Insulina</ion-label>
     <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.insulina" required name="insulina" type="number"
-      placeholder="mg/dL"></ion-input>
+      placeholder="(Opcional)"></ion-input>
   </ion-item>
   <ion-item>
     <ion-card-subtitle>Nivel de Glucosa</ion-card-subtitle>
@@ -67,21 +72,22 @@
   <ion-item>
     <ion-label position="floating">Colesterol Total</ion-label>
     <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.total" required name="coelsterol"
-      type="number" placeholder="mg/dL"></ion-input>
+      type="number" placeholder="(Opcional)"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">No-HDL</ion-label>
     <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.no_hdl" required name="no_hdl"
-      placeholder="mg/dL"></ion-input>
+    placeholder="(Opcional)"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">LDL</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.ldl" required name="ldl" placeholder="mg/dL">
+    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.ldl" required name="ldl" placeholder="(Opcional)">
     </ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">HDL</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.hdl" required name="hdl" placeholder="mg/dL">
+    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.hdl" required name="hdl" placeholder="(Opcional)">
     </ion-input>
   </ion-item>
+</form>
 </ion-content>

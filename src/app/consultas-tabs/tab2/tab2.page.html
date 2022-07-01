@@ -1,9 +1,82 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab2</ion-title>
+    <app-back-button style="margin-left: 15px;" route="following" [replace]="true"></app-back-button>
+    <ion-button *ngIf="this.consultasService.consultaMember.valoracion_nutricional?.status == 'Pendiente'"
+      [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaNutricional()">Guardar Consulta
+    </ion-button>
+    <ion-button *ngIf="this.consultasService.consultaMember.valoracion_nutricional?.status == 'Completada'"
+      [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaNutricional()">Valoración Completada
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form #form="ngForm">
+    <ion-item>
+      <ion-label>Peso actual:</ion-label>
+      <ion-input type="number" placeholder="Kg" required name="peso_actual" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.peso"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estatura:</ion-label>
+      <ion-input type="number" (focusout)="calculos()" type="number" placeholder="cm" required name="estatura" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.estatura"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>IMC:</ion-label>
+      <ion-input type="number" required name="imc" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.IMC"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Edad Biológica:</ion-label>
+      <ion-input required name="edad_biologica" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.edad_biologica"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rango:</ion-label>
+      <ion-input required name="rango" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.rango"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Peso ideal:</ion-label>
+      <ion-input required name="peso_ideal" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.peso_ideal"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nivel de Agua Corporal:</ion-label>
+      <ion-input required name="nivel_agua_corporal" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.nivel_agua_corporal"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Mediciones</ion-card-subtitle>   
+     </ion-item>
+     <ion-item>
+      <ion-label>Cintura:</ion-label>
+      <ion-input required name="cintura" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.cintura"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Músculo:</ion-label>
+      <ion-input required name="musculo" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.musculo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kg Músculo:</ion-label>
+      <ion-input required name="kg_musculo" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.kg_musculo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Grasa:</ion-label>
+      <ion-input required name="grasa" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.grasa"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kg Grasa:</ion-label>
+      <ion-input required name="kg_grasa" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.kg_grasa"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kcal DTA:</ion-label>
+      <ion-input required name="kcal_dta" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.kcal_dta"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Macronutrientes:</ion-label>
+      <ion-input required name="macronutrientes" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.macronutrientes"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle>Plan de Alimentación</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ckeditor style="height: auto;" name="plan_alimentacion" [editor]="Editor" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.plan_alimentacion"
+        [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+    </ion-item>
+  </form>
 </ion-content>

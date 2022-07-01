@@ -6,8 +6,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ConsultasService {
+  public cid: any;
   public consultas: any;
   public consultasMember:any;
+  public consultaMember: any;
   private devUrl = environment.devUrl;
   constructor(private http: HttpClient) { }
 
@@ -17,7 +19,22 @@ export class ConsultasService {
   async getConsultasMember(uid: string){
     return await this.http.get(`${this.devUrl}miembros/obtener-consultas-miembro/${uid}`).toPromise();
   }
+  async getConsultaMember(cid: any){
+    return await this.http.get(`${this.devUrl}miembros/obtener-consulta-miembro/${cid}`).toPromise();
+  }
   async saveConsulta(consulta: any){
     return await this.http.post(`${this.devUrl}miembros/crear-consulta`, consulta).toPromise();
+  }
+  async updateConsultaMedica(cid: any, update: any){
+    return await this.http.put(`${this.devUrl}miembros/agregar-consulta-medica/${cid}`, update).toPromise();
+  }
+  async updateConsultaNutricional(cid: any, update: any){
+    return await this.http.put(`${this.devUrl}miembros/agregar-consulta-nutricional/${cid}`, update).toPromise();
+  }
+  async updateConsultaFisioterapia(cid: any, update: any){
+    return await this.http.put(`${this.devUrl}miembros/agregar-consulta-fisioterapia/${cid}`, update).toPromise();
+  }
+  async updateConsultaPsicologica(cid: any, update: any){
+    return await this.http.put(`${this.devUrl}miembros/agregar-consulta-psicologica/${cid}`, update).toPromise();
   }
 }

@@ -100,6 +100,31 @@ export class FollowingPage implements OnInit {
     console.log(this.consultasService.consultasMember);
     
   }
+  async startConsulta(cid: any){
+    this.consultasService.cid = cid;
+    Swal.fire({
+      title: 'Cargando...',
+      toast: true,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      showConfirmButton: false,
+    });
+    let obj: any = await this.consultasService.getConsultaMember(cid);
+    if(obj.ok === true){
+      this.consultasService.consultaMember = obj.consulta;
+      console.log(this.consultasService.consultaMember);
+      this.closeSwal(true);
+      this.router.navigate(['consultas-tabs/tab1']);
+    }else{
+      Swal.fire({toast: true, title: "Hubo un error al obtener la inforación necesaria...", text: 'Intenta nuevamente', icon: 'warning'});
+      this.closeSwal(true);
+    }
+
+    this.closeSwal(true);
+    this.router.navigate(['consultas-tabs/tab1']);
+  }
   checkMemberAvailabilty(): boolean{
     if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){
       this.router.navigate(['/'], { replaceUrl: true});

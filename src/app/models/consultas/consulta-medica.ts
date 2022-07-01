@@ -1,5 +1,6 @@
 export class ConsultaMedica {
   public valoracion_medica = {
+    status:'',
     presion_arterial: {
       sistolica: '',
       distolica: '',

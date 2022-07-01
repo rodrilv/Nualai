@@ -17,13 +17,13 @@ export class TabsPage implements OnInit {
     console.log(this.seguimientoService.miembro);
     
     if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){
-      this.router.navigate(['/']);
+      this.toHomePage();
     }
     
   }
 
   toHomePage(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/'], {replaceUrl: true});
   }
 
 }
