@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { DatosMedicos } from '../models/datos-medicos';
-import { DatosNutriologo } from '../models/datos-nutri';
+import { DatosMedicos } from '../models/entrevistas/datos-medicos';
+import { DatosNutriologo } from '../models/entrevistas/datos-nutri';
 
 @Injectable({
   providedIn: 'root',

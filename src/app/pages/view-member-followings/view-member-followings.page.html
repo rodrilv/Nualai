@@ -34,14 +34,14 @@
 </ion-content>
 
 <ion-content *ngIf="this.formFlag == 1">
-  <ion-card button *ngFor="let c of this.consultasService.consultas | date: date: 'day' ">
+  <ion-card button *ngFor="let c of this.consultasService.consultas | date: date: month: 'day': 'month' ">
     <ion-card-header button>
       <ion-card-subtitle>{{c._id}}</ion-card-subtitle>
       <ion-card-title>{{c.general.nombre}}</ion-card-title>
       <ion-label>{{c.general.fecha_consulta.day+"/"+c.general.fecha_consulta.month+"/"+c.general.fecha_consulta.year}}
       </ion-label>
       <ion-label>{{"Sesión: "+c.general.sesion}}</ion-label>
-      <ion-item button (click)="seguimiento(c._id)">
+      <ion-item button (click)="startConsulta(c._id, c.general.user_id)">
         <ion-text>Iniciar Consulta</ion-text>
         <ion-icon slot="end" size="large" name="chevron-forward-outline"></ion-icon>
       </ion-item>

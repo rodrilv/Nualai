@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DatosMedicos } from '../models/datos-medicos';
+import { DatosMedicos } from '../models/entrevistas/datos-medicos';
 import { SeguimientoService } from '../services/seguimiento.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { PersonalService } from '../services/personal.service';

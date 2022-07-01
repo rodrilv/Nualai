@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
   public text: any;
   public date: any;
+  public month: any;
   public members: any;
   public formFlag: any;
 
@@ -27,6 +28,7 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
     private cd: ChangeDetectorRef
   ) {
     this.date = new Date().getDate();
+    this.month = new Date().getMonth() + 1;
   }
 
   async ngOnInit() {
@@ -39,31 +41,31 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
     this.cd.detectChanges();
   }
   async seguimiento(id: any) {
-      Swal.fire({
-        title: 'Cargando...',
-        toast: true,
-        timerProgressBar: true,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-        showConfirmButton: false,
-      });
-      let obj: any = await this.seguimientoService.getMemberFollowing(id);
-      if (obj.ok) {
-        this.seguimientoService.miembro = {};
-        this.seguimientoService._id = obj?.member._id;
-        this.seguimientoService.miembro = obj?.member;
-        this.router.navigate(['following'])
-        console.log(this.seguimientoService.miembro);
+    Swal.fire({
+      title: 'Cargando...',
+      toast: true,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      showConfirmButton: false,
+    });
+    let obj: any = await this.seguimientoService.getMemberFollowing(id);
+    if (obj.ok) {
+      this.seguimientoService.miembro = {};
+      this.seguimientoService._id = obj?.member._id;
+      this.seguimientoService.miembro = obj?.member;
+      this.router.navigate(['following']);
+      console.log(this.seguimientoService.miembro);
 
-        this.closeSwal(true);
-        this.closeModal();
-      } else {
-        this.closeSwal(true);
-        Swal.fire({ toast: true, icon: 'error', title: 'Hubo un error!' });
-      }
+      this.closeSwal(true);
+      this.closeModal();
+    } else {
+      this.closeSwal(true);
+      Swal.fire({ toast: true, icon: 'error', title: 'Hubo un error!' });
+    }
   }
-  async getConsultas(){
+  async getConsultas() {
     Swal.fire({
       title: 'Cargando...',
       toast: true,
@@ -74,16 +76,16 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
       showConfirmButton: false,
     });
     let obj: any = await this.consultasService.getConsultas();
-    if(obj.ok == true){
+    if (obj.ok == true) {
       this.closeSwal(true);
       this.consultasService.consultas = obj.consultas;
       console.log(this.consultasService.consultas);
-    }else{
+    } else {
       this.closeSwal(true);
       Swal.fire({
         toast: true,
         title: 'Hubo un error al obtener las consultas',
-        icon: 'warning'
+        icon: 'warning',
       });
     }
   }
@@ -108,12 +110,46 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
   async changeFlag(event: any) {
     console.log(event.detail.value);
     this.formFlag = event.detail.value;
-    if(this.formFlag == 2){
+    if (this.formFlag == 2) {
       this.ngOnInit();
-      console.log("Dude, I executed, but I dont know what happened"
-      );
-    }else{
+      console.log('Dude, I executed, but I dont know what happened');
+    } else {
       await this.getConsultas();
+    }
+  }
+
+  async startConsulta(cid: any, id: any) {
+    this.consultasService.cid = cid;
+    Swal.fire({
+      title: 'Cargando...',
+      toast: true,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      showConfirmButton: false,
+    });
+    let obj: any = await this.consultasService.getConsultaMember(cid);
+    let obj2: any = await this.seguimientoService.getMemberFollowing(id);
+    if (obj2.ok == true) {
+      this.seguimientoService.miembro = {};
+      this.seguimientoService._id = obj2?.member._id;
+      this.seguimientoService.miembro = obj2?.member;
+    }
+    if (obj.ok === true) {
+      this.consultasService.consultaMember = obj.consulta;
+      console.log(this.consultasService.consultaMember);
+      this.closeSwal(true);
+      this.closeModal();
+      this.router.navigate(['consultas-tabs/tab1']);
+    } else {
+      Swal.fire({
+        toast: true,
+        title: 'Hubo un error al obtener la inforación necesaria...',
+        text: 'Intenta nuevamente',
+        icon: 'warning',
+      });
+      this.closeSwal(true);
     }
   }
 }

@@ -44,11 +44,11 @@ const routes: Routes = [
   },
   {
     path: 'entrevista-medica-results',
-    loadChildren: () => import('./results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.module').then( m => m.EntrevistaMedicaResultsModalPageModule)
+    loadChildren: () => import('./results-modals/entrevistas-results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.module').then( m => m.EntrevistaMedicaResultsModalPageModule)
   },
   {
     path: 'entrevista-nutricional-results',
-    loadChildren: () => import('./results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.module').then( m => m.EntrevistaNutricionalModalPageModule)
+    loadChildren: () => import('./results-modals/entrevistas-results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.module').then( m => m.EntrevistaNutricionalModalPageModule)
   },
   {
     path: 'view-member-prescription',
@@ -56,11 +56,11 @@ const routes: Routes = [
   },
   {
     path: 'entrevista-psicologica-results',
-    loadChildren: () => import('./results-modals/entrevista-psicologica-results-modal/entrevista-psicologica-results-modal.module').then( m => m.EntrevistaPsicologicaResultsModalPageModule)
+    loadChildren: () => import('./results-modals/entrevistas-results-modals/entrevista-psicologica-results-modal/entrevista-psicologica-results-modal.module').then( m => m.EntrevistaPsicologicaResultsModalPageModule)
   },
   {
     path: 'entrevista-fisioterapia-results',
-    loadChildren: () => import('./results-modals/entrevista-fisioterapia-results-modal/entrevista-fisioterapia-results-modal.module').then( m => m.EntrevistaFisioterapiaResultsModalPageModule)
+    loadChildren: () => import('./results-modals/entrevistas-results-modals/entrevista-fisioterapia-results-modal/entrevista-fisioterapia-results-modal.module').then( m => m.EntrevistaFisioterapiaResultsModalPageModule)
   },
   {
     path: 'login',
@@ -74,6 +74,23 @@ const routes: Routes = [
     path: 'consultas-tabs',
     loadChildren: () => import('./consultas-tabs/tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'consulta-medica-results-modal',
+    loadChildren: () => import('./results-modals/consultas-results-modals/consulta-medica-results-modal/consulta-medica-results-modal.module').then( m => m.ConsultaMedicaResultsModalPageModule)
+  },
+  {
+    path: 'consulta-nutricion-results-modal',
+    loadChildren: () => import('./results-modals/consultas-results-modals/consulta-nutricion-results-modal/consulta-nutricion-results-modal.module').then( m => m.ConsultaNutricionResultsModalPageModule)
+  },
+  {
+    path: 'consulta-fisioterapia-results-modal',
+    loadChildren: () => import('./results-modals/consultas-results-modals/consulta-fisioterapia-results-modal/consulta-fisioterapia-results-modal.module').then( m => m.ConsultaFisioterapiaResultsModalPageModule)
+  },
+  {
+    path: 'consulta-psicologica-results-modal',
+    loadChildren: () => import('./results-modals/consultas-results-modals/consulta-psicologica-results-modal/consulta-psicologica-results-modal.module').then( m => m.ConsultaPsicologicaResultsModalPageModule)
+  },
+
 
 
 

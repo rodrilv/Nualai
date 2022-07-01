@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { SeguimientoService } from 'src/app/services/seguimiento.service';
 import { ModalController } from '@ionic/angular';
 import Swal from 'sweetalert2';
-import { EntrevistaMedicaResultsModalPage } from 'src/app/results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.page';
-import { EntrevistaNutricionalModalPage } from 'src/app/results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.page';
-import { EntrevistaPsicologicaResultsModalPage } from 'src/app/results-modals/entrevista-psicologica-results-modal/entrevista-psicologica-results-modal.page';
-import { EntrevistaFisioterapiaResultsModalPage } from 'src/app/results-modals/entrevista-fisioterapia-results-modal/entrevista-fisioterapia-results-modal.page';
+import { EntrevistaMedicaResultsModalPage } from 'src/app/results-modals//entrevistas-results-modals/entrevista-medica-results-modal/entrevista-medica-results-modal.page';
+import { EntrevistaNutricionalModalPage } from 'src/app/results-modals/entrevistas-results-modals/entrevista-nutricional-modal/entrevista-nutricional-modal.page';
+import { EntrevistaPsicologicaResultsModalPage } from 'src/app/results-modals/entrevistas-results-modals/entrevista-psicologica-results-modal/entrevista-psicologica-results-modal.page';
+import { EntrevistaFisioterapiaResultsModalPage } from 'src/app/results-modals/entrevistas-results-modals/entrevista-fisioterapia-results-modal/entrevista-fisioterapia-results-modal.page';
 import { RecetaService } from 'src/app/services/receta.service';
 import { ConsultasService } from 'src/app/services/consultas.service';
 import { CreateConsultaPage } from '../create-consulta/create-consulta.page';
@@ -121,9 +121,6 @@ export class FollowingPage implements OnInit {
       Swal.fire({toast: true, title: "Hubo un error al obtener la inforación necesaria...", text: 'Intenta nuevamente', icon: 'warning'});
       this.closeSwal(true);
     }
-
-    this.closeSwal(true);
-    this.router.navigate(['consultas-tabs/tab1']);
   }
   checkMemberAvailabilty(): boolean{
     if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){

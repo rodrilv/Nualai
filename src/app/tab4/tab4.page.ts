@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SeguimientoService } from '../services/seguimiento.service';
 import { PersonalService } from '../services/personal.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { DatosPsicologicos } from '../models/datos-psicologicos';
+import { DatosPsicologicos } from '../models/entrevistas/datos-psicologicos';
 import Swal from 'sweetalert2';
 
 @Component({

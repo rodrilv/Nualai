@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatosNutriologo } from '../models/datos-nutri';
+import { DatosNutriologo } from '../models/entrevistas/datos-nutri';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SeguimientoService } from '../services/seguimiento.service';
 import { PersonalService } from '../services/personal.service';
