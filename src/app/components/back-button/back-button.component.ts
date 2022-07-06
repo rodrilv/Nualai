@@ -18,7 +18,7 @@ export class BackButtonComponent implements OnInit {
     if (this.route && this.replace) {
       this.router.navigate([this.route], { replaceUrl: true });
     } else if (this.route) {
-      this.router.navigate([this.route]);
+      this.router.navigateByUrl(this.route);
     } else {
       return;
     }

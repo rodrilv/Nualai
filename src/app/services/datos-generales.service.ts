@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { SeguimientoService } from './seguimiento.service';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -9,54 +11,12 @@ import Swal from 'sweetalert2';
 })
 export class DatosGeneralesService {
   devUrl: String = environment.devUrl;
-  constructor(private http: HttpClient, private modal: ModalController) {}
+  constructor(private http: HttpClient, private modal: ModalController, private router: Router, private seguimientoService: SeguimientoService) {}
 
   async registerMember(member: any) {
-    Swal.fire({
-      title: 'Registrando...',
-      toast: true,
-      timerProgressBar: true,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-      showConfirmButton: false,
-    });
-    let subject: any = await this.http
-      .post(`${this.devUrl}miembros/registrar`, member)
-      .toPromise();
-    if (subject.ok == true) {
-      this.closeSwal(subject.ok);
-      Swal.fire({
-        title: 'Registrado Exitosamente!',
-        text: `El ID del miembro es: ${subject.memDB._id}`,
-        icon: 'success',
-        confirmButtonColor: 'green',
-        toast: true,
-      });
-    } else if (subject.ok == false) {
-      Swal.fire({
-        title: 'Este error puede ser normal, intenta el registro nuevamente!',
-        icon: 'warning',
-        confirmButtonColor: 'green',
-        toast: true,
-      });
-    } else {
-      this.closeSwal(true);
-      Swal.fire({
-        title: 'Hubo un error durante la operación...',
-        icon: 'error',
-        confirmButtonColor: 'green',
-        toast: true,
-      });
-    }
-  }
-
-  closeSwal(stat: boolean) {
-    if (stat == true) {
-      Swal.close();
-    } else {
-      Swal.close();
-    }
+    return await this.http
+    .post(`${this.devUrl}miembros/registrar`, member)
+    .toPromise();
   }
   
 }

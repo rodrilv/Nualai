@@ -71,12 +71,5 @@
       <ion-label>Macronutrientes:</ion-label>
       <ion-input required name="macronutrientes" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.macronutrientes"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-card-subtitle>Plan de Alimentación</ion-card-subtitle>
-    </ion-item>
-    <ion-item>
-      <ckeditor style="height: auto;" name="plan_alimentacion" [editor]="Editor" [(ngModel)]="this.consultaNutricion.valoracion_nutricional.plan_alimentacion"
-        [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
-    </ion-item>
   </form>
 </ion-content>

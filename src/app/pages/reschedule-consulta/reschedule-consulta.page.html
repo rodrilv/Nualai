@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <app-back-button route="/" [replace]="true" style="margin-left: 20px"></app-back-button>
+    <ion-button [disabled]="!form.valid" (click)="updateConsulta()" style="margin-right: 20px" slot="end" fill="outline">
+      Actualizar Consulta</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm">
+    <ion-item>
+    <ion-label>Fecha:</ion-label>
+    <ion-input type="date" name="fecha" [(ngModel)]="this.fecha"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Hora:</ion-label>
+    <ion-input [(ngModel)]="this.hora" name="hora" type="number" placeholder="24"></ion-input>
+    <ion-label style="position: relative; right: 30%;">:</ion-label>
+    <ion-input [(ngModel)]="this.minutos" name="minutos" style="position: relative; right: 30%;" type="number"
+      placeholder="00"></ion-input>
+  </ion-item>
+  </form>
+</ion-content>

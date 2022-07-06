@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <app-back-button style="margin-left: 15px;" route="/following" [replace]="true"></app-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Peso</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-text>{{this.consultasService.consultaMember?.valoracion_nutricional?.peso+" Kg"}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Estatura</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-text>{{this.consultasService.consultaMember?.valoracion_nutricional?.estatura+" cm"}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>IMM</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-text>{{this.consultasService.consultaMember?.valoracion_nutricional?.IMM+" "}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>IMC</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.consultasService.consultaMember?.valoracion_nutricional?.IMC+" Kg/m2"}}</ion-label>
+    <ion-text style="color: rgb(123, 0, 255)" *ngIf="this.imc <= (18.5)">Peso Inferior</ion-text>
+    <ion-text style="color: rgb(0, 170, 255)" *ngIf="this.imc > (18.5) && this.imc < (24.9)">Peso Normal</ion-text>
+    <ion-text style="color: rgb(119, 255, 0)" *ngIf="this.imc > (24.9) && this.imc < (29.9)">Sobrepeso</ion-text>
+    <ion-text style="color: rgb(255, 208, 0)" *ngIf="this.imc > (29.9) && this.imc < (34.9)">Obesidad Moderada</ion-text>
+    <ion-text style="color: rgb(255, 68, 0)" *ngIf="this.imc > (34.9)">Obesidad Severa</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nivel de Agua Corporal Total</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-text>{{this.consultasService.consultaMember?.valoracion_nutricional?.nivel_agua_corporal+" L"}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Edad Biológica</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-text>{{this.consultasService.consultaMember?.valoracion_nutricional?.edad_biologica+" años"}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Mediciones</ion-card-subtitle>   
+   </ion-item>
+   <ion-item>
+    <ion-label>Cintura:</ion-label>
+    <ion-input required name="cintura" [(ngModel)]="this.consultasService.consultaMember?.valoracion_nutricional.cintura"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Músculo:</ion-label>
+    <ion-input required name="musculo" [(ngModel)]="this.consultasService.consultaMember?.valoracion_nutricional.musculo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Kg Músculo:</ion-label>
+    <ion-input required name="kg_musculo" [(ngModel)]="this.consultasService.consultaMember?.valoracion_nutricional.kg_musculo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Grasa:</ion-label>
+    <ion-input required name="grasa" [(ngModel)]="this.consultasService.consultaMember?.valoracion_nutricional.grasa"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Kg Grasa:</ion-label>
+    <ion-input required name="kg_grasa" [(ngModel)]="this.consultasService.consultaMember?.valoracion_nutricional.kg_grasa"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Kcal DTA:</ion-label>
+    <ion-input required name="kcal_dta" [(ngModel)]="this.consultasService.consultaMember?.valoracion_nutricional.kcal_dta"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Macronutrientes:</ion-label>
+    <ion-input required name="macronutrientes" [(ngModel)]="this.consultasService.consultaMember?.valoracion_nutricional.macronutrientes"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle>Plan de Alimentación</ion-card-subtitle>
+  </ion-item>
+  <ion-item *ngIf="this.consultasService.consultaMember?.valoracion_nutricional?.plan_alimentacion == undefined || this.consultasService.consultaMember?.valoracion_nutricional?.plan_alimentacion == '' ">
+    <ckeditor style="height: auto;" name="plan_alimentacion" [editor]="Editor" [(ngModel)]="this.plan_alimentacion.plan_alimentacion"
+      [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+      <ion-button (click)="guardarPlan(this.consultasService.consultaMember._id)" fill="clear">Guardar Plan de Alimentación</ion-button>
+  </ion-item>
+  <ion-item *ngIf="this.consultasService.consultaMember.valoracion_nutricional.plan_alimentacion">
+    <ckeditor style="height: auto;" name="plan_alimentacion" [editor]="Editor" [(ngModel)]="this.consultasService.consultaMember.valoracion_nutricional.plan_alimentacion"
+      [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+      <ion-button disabled fill="clear">Guardar Plan de Alimentación</ion-button>
+  </ion-item>
+  
+</ion-content>

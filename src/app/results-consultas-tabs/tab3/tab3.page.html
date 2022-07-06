@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <app-back-button style="margin-left: 15px;" route="/following" [replace]="true"></app-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Subjetivo</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor required style="height: auto;" name="subjetivo" [editor]="Editor"
+      [(ngModel)]="this.consultasService.consultaMember?.valoracion_fisioterapia.subjetivo"
+      [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label>Objetivo</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor required style="height: auto;" name="objetivo" [editor]="Editor"
+      [(ngModel)]="this.consultasService.consultaMember?.valoracion_fisioterapia.objetivo"
+      [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label>Análisis</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor required style="height: auto;" name="analisis" [editor]="Editor"
+      [(ngModel)]="this.consultasService.consultaMember?.valoracion_fisioterapia.analisis"
+      [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label>Plan</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor required style="height: auto;" name="plan" [editor]="Editor"
+      [(ngModel)]="this.consultasService.consultaMember?.valoracion_fisioterapia.plan"
+      [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+  </ion-item>
+  <ion-item>
+    <ion-label>Exploración de Fuerza Muscular:</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor required name="respuesta-1" [editor]="Editor" required
+      [(ngModel)]="this.consultasService.consultaMember?.valoracion_fisioterapia.exploracion_fuerza_muscular"
+      [config]="{toolbar: ['bold', '|', 'insertTable']}"></ckeditor>
+  </ion-item>
+</ion-content>

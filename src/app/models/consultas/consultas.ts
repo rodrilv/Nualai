@@ -9,6 +9,7 @@ export class Consultas {
         month: '',
         year: '',
       },
+      hora:''
     },
   };
 }

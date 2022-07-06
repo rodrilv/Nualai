@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { SeguimientoService } from 'src/app/services/seguimiento.service';
+import { ConsultasService } from 'src/app/services/consultas.service';
 import { Receta } from 'src/app/models/receta';
 import { RecetaService } from 'src/app/services/receta.service';
 import Swal from 'sweetalert2';
@@ -14,14 +15,13 @@ export class Tab2Page implements OnInit {
   fecha: any;
   public receta: Receta;
   Editor = ClassicEditor;
-  constructor(public seguimientoService: SeguimientoService, private recetaService: RecetaService) { 
+  constructor(public seguimientoService: SeguimientoService, private recetaService: RecetaService, public consultasService: ConsultasService) { 
     this.receta = new Receta();
     this.receta.receta.member_id = this.seguimientoService.miembro._id;
   }
   ngOnInit() {
     console.log(this.receta.receta.member_id);
   }
-
   async guardarReceta(){
     let fecha = this.fecha.split("-");
     this.receta.receta.fecha_receta.day = fecha[2];

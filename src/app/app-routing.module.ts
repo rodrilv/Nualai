@@ -90,13 +90,14 @@ const routes: Routes = [
     path: 'consulta-psicologica-results-modal',
     loadChildren: () => import('./results-modals/consultas-results-modals/consulta-psicologica-results-modal/consulta-psicologica-results-modal.module').then( m => m.ConsultaPsicologicaResultsModalPageModule)
   },
-
-
-
-
-
-
-
+  {
+    path: 'reschedule-consulta',
+    loadChildren: () => import('./pages/reschedule-consulta/reschedule-consulta.module').then( m => m.RescheduleConsultaPageModule)
+  },
+  {
+    path: 'results-consultas-tabs',
+    loadChildren: () => import('./results-consultas-tabs/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
 ];
 @NgModule({
   imports: [

@@ -3,6 +3,7 @@ import { RecetaService } from 'src/app/services/receta.service';
 import { MiembrosService } from 'src/app/services/miembros.service';
 import { SeguimientoService } from 'src/app/services/seguimiento.service';
 import { ModalController } from '@ionic/angular';
+import { ConsultasService } from 'src/app/services/consultas.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -19,6 +20,7 @@ export class ViewMemberPrescriptionPage implements OnInit {
     private modal: ModalController,
     private seguimientoService: SeguimientoService,
     private router: Router,
+    public consultasService: ConsultasService
   ) {}
 
   ngOnInit() {
@@ -35,10 +37,16 @@ export class ViewMemberPrescriptionPage implements OnInit {
       showConfirmButton: false,
     });
     let obj: any = await this.seguimientoService.getMemberFollowing(id);
-    if (obj.ok) {
+    let obj2: any = await this.consultasService.getConsultasMember(id);
+    if (obj.ok == true && obj2.ok == true) {
       this.seguimientoService.miembro = {};
       this.seguimientoService._id = obj?.member._id;
       this.seguimientoService.miembro = obj?.member;
+
+      this.consultasService.consultasMember = '';
+      this.consultasService.consultasMember = obj2.consultas;
+      console.log(this.consultasService.consultasMember);
+      
       this.router.navigate(['results/tab1'])
       console.log(this.seguimientoService.miembro);
 

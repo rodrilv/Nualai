@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-toolbar>
+    <app-back-button style="margin-left: 15px;" route="/following" [replace]="true"></app-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-card-subtitle>PRESION</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.sistolica+" / "+this.dataConvert.distolica+" mmHg"}}</ion-label>
+    <ion-text *ngIf="(this.dataConvert.sistolica <= 90 && this.dataConvert.distolica <= 60)"
+      style="color: rgb(230, 0, 214); ">Hipotensión</ion-text>
+    <ion-text
+      *ngIf="(this.dataConvert.sistolica >= 90 && this.dataConvert.distolica >= 60 && this.dataConvert.sistolica < 110 && this.dataConvert.distolica < 70)"
+      style="color: rgb(81, 0, 255); ">Baja</ion-text>
+    <ion-text
+      *ngIf="(this.dataConvert.sistolica >= 110 && this.dataConvert.distolica >= 70 && this.dataConvert.sistolica <= 120 && this.dataConvert.distolica <= 80)"
+      style="color: rgb(0, 222, 230); ">Óptima</ion-text>
+    <ion-text
+      *ngIf="(this.dataConvert.sistolica >= 120 && this.dataConvert.distolica >= 80 && this.dataConvert.sistolica < 130 && this.dataConvert.distolica < 85)"
+      style="color: rgb(6, 255, 80); ">Normal</ion-text>
+    <ion-text
+      *ngIf="(this.dataConvert.sistolica >= 130 && this.dataConvert.distolica >= 85 && this.dataConvert.sistolica < 139 && this.dataConvert.distolica < 89)"
+      style="color: rgb(127, 230, 0); ">Alta-Normal</ion-text>
+    <ion-text
+      *ngIf="(this.dataConvert.sistolica >= 140 && this.dataConvert.distolica >= 90 && this.dataConvert.sistolica < 159 && this.dataConvert.distolica < 99)"
+      style="color: rgb(226, 230, 0); ">Etapa 1 de Hipertensión (suave)</ion-text>
+    <ion-text
+      *ngIf="(this.dataConvert.sistolica >= 160 && this.dataConvert.distolica >= 100 && this.dataConvert.sistolica < 179 && this.dataConvert.distolica < 109)"
+      style="color: rgb(230, 134, 0); ">Etapa 2 de Hipertensión (moderada)</ion-text>
+    <ion-text *ngIf="(this.dataConvert.sistolica >= 180 && this.dataConvert.distolica >= 110)"
+      style="color: rgb(230, 0, 0); ">Etapa 3 de Hipertensión (Crisis Hipertensa)</ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-card-subtitle>Signos Vitales</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-item>
+      <ion-label position="floating">Frecuencia Cardiaca (Pulso)</ion-label>
+      <ion-input required type="number" placeholder="Latidos por minuto" name="fc"
+        [(ngModel)]="this.consultasService.consultaMember?.valoracion_medica?.signos_vitales.fc"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Temperatura Corporal</ion-label>
+      <ion-input required type="number" name="temp" placeholder="°C"
+        [(ngModel)]="this.consultasService.consultaMember?.valoracion_medica?.signos_vitales.temperatura_corporal"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frecuencia Respiratoria</ion-label>
+      <ion-input required type="number" name="fr" placeholder="Respiraciones por minuto"
+        [(ngModel)]="this.consultasService.consultaMember?.valoracion_medica?.signos_vitales.fr"></ion-input>
+    </ion-item>
+  </ion-item>
+
+  <ion-item>
+    <ion-card-subtitle>NIVEL DE INSULINA</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.insulina+" mg/dL"}}</ion-label>
+    <ion-text></ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-card-subtitle>NIVEL DE GLUCOSA</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sin Diabetes</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.glucosa+" mg/dL"}}</ion-label>
+    <ion-text *ngIf="this.dataConvert.glucosa <= 70" style="color: rgb(212, 0, 255);">Bajo</ion-text>
+    <ion-text *ngIf="this.dataConvert.glucosa > 70 && this.dataConvert.glucosa <= 110" style="color: rgb(0, 179, 255);">
+      Normal</ion-text>
+    <ion-text *ngIf="this.dataConvert.glucosa > 110" style="color: rgb(255, 115, 0);">Alta</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Con Diabetes</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.glucosa+" mg/dL"}}</ion-label>
+    <ion-text *ngIf="this.dataConvert.glucosa <= 80" style="color: rgb(212, 0, 255);">Bajo</ion-text>
+    <ion-text *ngIf="this.dataConvert.glucosa > 80 && this.dataConvert.glucosa <= 130" style="color: rgb(0, 179, 255);">
+      Normal</ion-text>
+    <ion-text *ngIf="this.dataConvert.glucosa > 130  && this.dataConvert.glucosa <= 180"
+      style="color: rgb(255, 115, 0);">Alta</ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-card-subtitle>NIVEL DE TRIGLICERIDOS</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.trigliceridos+" mg/dL"}}</ion-label>
+    <ion-text *ngIf="this.dataConvert.trigliceridos < 150" style="color: rgb(170, 0, 255);">Bajos</ion-text>
+    <ion-text *ngIf="this.dataConvert.trigliceridos >= 150 && this.dataConvert.trigliceridos <= 160" style="color: rgb(0, 165, 190);">Óptimo</ion-text>
+    <ion-text *ngIf="this.dataConvert.trigliceridos > 160 && this.dataConvert.trigliceridos <= 199 " style="color: rgb(237, 255, 70);">Límite</ion-text>
+    <ion-text *ngIf="this.dataConvert.trigliceridos >= 200 && this.dataConvert.trigliceridos <= 400" style="color: rgb(255, 191, 29);">Altos</ion-text>
+    <ion-text *ngIf="this.dataConvert.trigliceridos > 400" style="color: rgb(255, 0, 0);">Muy Altos</ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-card-subtitle>NIVELES DE COLESTEROL</ion-card-subtitle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Colesterol TOTAL</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.colesterol_total+" mg/dL"}}</ion-label>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.colesterol_total <= 170" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.colesterol_total > 125 && this.dataConvert.colesterol_total < 200" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.colesterol_total > 125 && this.dataConvert.colesterol_total < 200" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.colesterol_total >= 170" style="color: rgb(255, 196, 0);">Nivel NO Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.colesterol_total < 125 || this.dataConvert.colesterol_total > 200" style="color: rgb(255, 162, 0);">Nivel NO Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.colesterol_total < 125 || this.dataConvert.colesterol_total > 200" style="color: rgb(255, 162, 0);">Nivel NO Saludable</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Colesterol No-HDL</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.no_hdl}}</ion-label>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.no_hdl <= 120" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.no_hdl <= 130" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.no_hdl <= 130" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.no_hdl > 120" style="color: rgb(255, 196, 0);">Nivel NO Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.no_hdl > 130 " style="color: rgb(255, 162, 0);">Nivel NO Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.no_hdl > 130 " style="color: rgb(255, 162, 0);">Nivel NO Saludable</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Colesterol HDL</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.hdl}}</ion-label>
+    <ion-text *ngIf="this.dataConvert.hdl < 35" style="color: rgb(136, 0, 255);">Nivel Bajo</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.hdl >= 40 && this.dataConvert.hdl <= 70" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.hdl >= 35 && this.dataConvert.hdl <= 70" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.hdl >= 40 && this.dataConvert.hdl <= 70" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.hdl > 70" style="color: rgb(255, 196, 0);">Nivel Alto</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.hdl > 70" style="color: rgb(255, 162, 0);">Nivel Alto</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.hdl > 70" style="color: rgb(255, 162, 0);">Nivel Alto</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Colesterol LDL</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{this.dataConvert.ldl}}</ion-label>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.ldl >= 50 && this.dataConvert.ldl < 110" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.ldl >= 50 && this.dataConvert.ldl < 110" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.ldl >= 50 && this.dataConvert.ldl < 110" style="color: rgb(51, 255, 0);">Nivel Saludable</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad < 20 && this.dataConvert.ldl > 120" style="color: rgb(255, 196, 0);">Nivel Alto</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'M' && this.dataConvert.ldl > 120" style="color: rgb(255, 162, 0);">Nivel Alto</ion-text>
+    <ion-text *ngIf="this.seguimientoService.miembro.datosGenerales.edad > 20 && this.seguimientoService.miembro.datosGenerales.genero == 'F' && this.dataConvert.ldl > 120" style="color: rgb(255, 162, 0);">Nivel Alto</ion-text>
+  </ion-item>
+  
+</ion-content>

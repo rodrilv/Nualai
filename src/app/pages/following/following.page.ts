@@ -24,13 +24,13 @@ export class FollowingPage implements OnInit {
     public seguimientoService: SeguimientoService,
     private modal: ModalController,
     public recetaService: RecetaService,
-    public consultasService: ConsultasService,
+    public consultasService: ConsultasService
   ) {
-    this.uid = this.seguimientoService._id
+    this.uid = this.seguimientoService._id;
   }
 
   async ngOnInit() {
-    if(!this.checkMemberAvailabilty()){
+    if (!this.checkMemberAvailabilty()) {
       Swal.fire({
         title: 'Cargando...',
         toast: true,
@@ -44,8 +44,6 @@ export class FollowingPage implements OnInit {
       this.getConsultas();
       this.closeSwal(true);
     }
-    
-
   }
   closeSwal(stat: boolean) {
     if (stat == true) {
@@ -54,53 +52,69 @@ export class FollowingPage implements OnInit {
       Swal.close();
     }
   }
-  async openViewCreateConsultas(){
+  async openViewCreateConsultas() {
+    let obj: any = await this.consultasService.getUltimaConsulta(this.seguimientoService._id);
+    this.consultasService.autoIncrementConsultas = obj.data[0]?.general?.sesion;
+    if(this.consultasService.autoIncrementConsultas === undefined || this.consultasService.autoIncrementConsultas === '' || this.consultasService.autoIncrementConsultas === null ){
+      this.consultasService.autoIncrementConsultas = 0;
+    }
+    console.log(this.consultasService.autoIncrementConsultas);
+    
     const modal = await this.modal.create({
-      component: CreateConsultaPage
+      component: CreateConsultaPage,
     });
     return await modal.present();
   }
-  async openViewEntrevistaMedicaResults(){
+  async openViewEntrevistaMedicaResults() {
     const modal = await this.modal.create({
-      component: EntrevistaMedicaResultsModalPage
+      component: EntrevistaMedicaResultsModalPage,
     });
     return await modal.present();
   }
-  openRouteEntrevistaNutricionalResults(){
-    this.router.navigate(['entrevista-nutricional-results'])
+  openRouteEntrevistaNutricionalResults() {
+    this.router.navigate(['entrevista-nutricional-results']);
   }
-  async openViewEntrevistaNutricionalResults(){
+  async openViewEntrevistaNutricionalResults() {
     const modal = await this.modal.create({
-      component: EntrevistaNutricionalModalPage
+      component: EntrevistaNutricionalModalPage,
     });
     return await modal.present();
   }
-  async openViewEntrevistaPsicoResults(){
+  async openViewEntrevistaPsicoResults() {
     const modal = await this.modal.create({
-      component: EntrevistaPsicologicaResultsModalPage
+      component: EntrevistaPsicologicaResultsModalPage,
     });
     return await modal.present();
   }
-  async openViewEntrevistaFisioterapiaResults(){
+  async openViewEntrevistaFisioterapiaResults() {
     const modal = await this.modal.create({
-      component: EntrevistaFisioterapiaResultsModalPage
+      component: EntrevistaFisioterapiaResultsModalPage,
     });
     return await modal.present();
   }
-  async getRecetas(){
+  async getRecetas() {
     this.recetaService.recetas = [];
     let obj: any = await this.recetaService.getPrescriptions(this.uid);
     this.recetaService.recetas.push(obj.prescripts);
     console.log(this.recetaService.recetas);
   }
-  async getConsultas(){
+  async getConsultas() {
     this.consultasService.consultasMember = [];
     let obj: any = await this.consultasService.getConsultasMember(this.uid);
     this.consultasService.consultasMember.push(obj.consultas);
     console.log(this.consultasService.consultasMember);
+  }
+  async showResults(id: any) {
+    this.consultasService.consultaMember = {};
+    let obj: any = await this.consultasService.getConsultaMember(id);
+    if(obj.ok == true){
+      this.consultasService.consultaMember = obj.consulta;
+      console.log(this.consultasService.consultaMember);
+      this.router.navigate(['results-consultas-tabs/tab1']);
+    }
     
   }
-  async startConsulta(cid: any){
+  async startConsulta(cid: any, sesion: any) {
     this.consultasService.cid = cid;
     Swal.fire({
       title: 'Cargando...',
@@ -112,21 +126,33 @@ export class FollowingPage implements OnInit {
       showConfirmButton: false,
     });
     let obj: any = await this.consultasService.getConsultaMember(cid);
-    if(obj.ok === true){
+    if (obj.ok === true) {
       this.consultasService.consultaMember = obj.consulta;
       console.log(this.consultasService.consultaMember);
       this.closeSwal(true);
-      this.router.navigate(['consultas-tabs/tab1']);
-    }else{
-      Swal.fire({toast: true, title: "Hubo un error al obtener la inforación necesaria...", text: 'Intenta nuevamente', icon: 'warning'});
+      if (sesion == 'Entrevista') {
+        this.router.navigate(['tabs']);
+      } else {
+        this.router.navigate(['consultas-tabs/tab1']);
+      }
+    } else {
+      Swal.fire({
+        toast: true,
+        title: 'Hubo un error al obtener la inforación necesaria...',
+        text: 'Intenta nuevamente',
+        icon: 'warning',
+      });
       this.closeSwal(true);
     }
   }
-  checkMemberAvailabilty(): boolean{
-    if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){
-      this.router.navigate(['/'], { replaceUrl: true});
+  checkMemberAvailabilty(): boolean {
+    if (
+      this.seguimientoService.miembro === undefined ||
+      this.seguimientoService.miembro === null
+    ) {
+      this.router.navigate(['/'], { replaceUrl: true });
       return true;
-    }else{
+    } else {
       return false;
     }
   }

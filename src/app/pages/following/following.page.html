@@ -1,8 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      <app-back-button route="/"></app-back-button>
-    </ion-title>
+      <app-back-button style="margin-left: 15px;" route="/" [replace]="true"></app-back-button>
+      <ion-label slot="end" class="title">{{this.seguimientoService.miembro.datosGenerales.nombres +" "+ this.seguimientoService.miembro.datosGenerales.apellidos }}</ion-label>
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +28,6 @@
               <ion-item button (click)="openViewEntrevistaPsicoResults()" [disabled]="this.seguimientoService.miembro?.datosEntrevista?.psicologica == 'no'">
                 <ion-text>Psicológica</ion-text>
               </ion-item>
-
             </ion-list>
           </ion-accordion>
         </ion-accordion-group>
@@ -71,8 +69,8 @@
               <ion-item button *ngFor="let consulta of this.consultasService.consultasMember[0]">
                 <ion-label>Consulta: {{consulta.general.sesion}}</ion-label>
                 <ion-text style="margin-right: 15px;">Fecha: {{consulta.general.fecha_consulta.day+"/"+consulta.general.fecha_consulta.month+"/"+consulta.general.fecha_consulta.year}}</ion-text>
-                <ion-button style="margin-right: 10px;" fill="clear">Ver</ion-button>
-                <ion-button fill="clear" (click)="startConsulta(consulta._id)">Iniciar</ion-button>
+                <ion-button *ngIf="consulta.general.sesion != 'Entrevista'" style="margin-right: 10px;" fill="clear" (click)="showResults(consulta._id)">Ver</ion-button>
+                <ion-button fill="clear" (click)="startConsulta(consulta._id, consulta.general.sesion)">Iniciar</ion-button>
               </ion-item>
             </ion-list>
           </ion-accordion>

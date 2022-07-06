@@ -28,7 +28,7 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
     private cd: ChangeDetectorRef
   ) {
     this.date = new Date().getDate();
-    this.month = new Date().getMonth() + 1;
+    this.month = new Date().getMonth()+1;
   }
 
   async ngOnInit() {
@@ -117,8 +117,13 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
       await this.getConsultas();
     }
   }
+  async updateConsulta(cid: any){
+    this.consultasService.cid = cid;
+    this.router.navigate(['reschedule-consulta'], {replaceUrl: true});
+    this.closeModal();
+  }
 
-  async startConsulta(cid: any, id: any) {
+  async startConsulta(cid: any, id: any, sesion: any) {
     this.consultasService.cid = cid;
     Swal.fire({
       title: 'Cargando...',
@@ -140,8 +145,12 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
       this.consultasService.consultaMember = obj.consulta;
       console.log(this.consultasService.consultaMember);
       this.closeSwal(true);
+      if(sesion == "Entrevista"){
+        this.router.navigate(['tabs']);
+      }else{
+        this.router.navigate(['consultas-tabs/tab1']);
+      }
       this.closeModal();
-      this.router.navigate(['consultas-tabs/tab1']);
     } else {
       Swal.fire({
         toast: true,

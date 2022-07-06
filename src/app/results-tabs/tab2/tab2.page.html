@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-button slot="end" style="margin-right: 3vh;" fill="outline" (click)="guardarReceta()">Guardar Receta</ion-button>
-    <app-back-button style="margin-left: 3vh;" size="default" route="/"></app-back-button>
+    <app-back-button style="margin-left: 3vh;" size="default" route="/" [replace]="true"></app-back-button>
   </ion-toolbar>
 </ion-header>
 
@@ -24,7 +24,7 @@
   <ion-item>
     <ion-label position="floating">Motivo de la Receta</ion-label>
     <ion-select [(ngModel)]="this.receta.receta.motivo_receta">
-      <ion-select-option value="Entrevista">Entrevista</ion-select-option>
+      <ion-select-option *ngFor="let c of this.consultasService.consultasMember">{{"Consulta: "+c.general.sesion}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>

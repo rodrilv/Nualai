@@ -11,15 +11,16 @@ export class DatePipe implements PipeTransform {
     dia: string,
     mes: string
   ): any[] {
-    let arr: any[];
     if (array == undefined || array == null) {
       return;
     }
-    arr = array.filter((item) => {
-      return item.general.fecha_consulta[dia].toFixed().includes(date);
+    let arr = array.filter((item) => {
+      //return item.general.fecha_consulta[mes].toFixed().includes(month);
+      return item.general.fecha_consulta[mes] == month
     });
     return arr.filter((item) => {
-      return item.general.fecha_consulta[mes].toFixed().includes(month);
-    });
+      //return item.general.fecha_consulta[dia].toFixed().includes(date);
+      return item.general.fecha_consulta[dia] == date
+    }); 
   }
 }

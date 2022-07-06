@@ -1,11 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      <app-back-button route="/"></app-back-button>
-    </ion-title>
+      <app-back-button style="margin-left: 15px;" route="/" [replace]="true"></app-back-button>
+      <ion-label style="margin-right: 15px;" slot="end">{{this.seguimientoService.miembro.datosGenerales.nombres+" "+this.seguimientoService.miembro.datosGenerales.apellidos}}</ion-label>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-accordion-group>
+    <ion-accordion toggle-icon="arrow-down-circle">
+      <ion-item slot="header">
+        <ion-label>Entrevista</ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <ckeditor style="height: auto;" name="plan_alimentacion" [disabled]="true" [editor]="Editor" data="{{this.seguimientoService.miembro?.datosNutricionales?.plan_alimentacion}}"
+        [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
 
+  <div *ngFor="let c of this.consultasService.consultasMember">
+  <ion-accordion-group *ngIf="c.general.sesion != 'Entrevista' && c.valoracion_nutricional?.status == 'Completada' ">
+    <ion-accordion toggle-icon="arrow-down-circle">
+      <ion-item slot="header">
+        <ion-label>Consulta: {{c.general?.sesion}}</ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <ckeditor style="height: auto;" name="plan_alimentacion" [disabled]="true" [editor]="Editor" [(ngModel)]="c.valoracion_nutricional.plan_alimentacion"
+        [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
+</div>
 </ion-content>

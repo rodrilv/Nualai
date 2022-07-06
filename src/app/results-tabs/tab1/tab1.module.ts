@@ -8,6 +8,7 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
 
 import { Tab1Page } from './tab1.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     Tab1PageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    CKEditorModule
   ],
   declarations: [Tab1Page]
 })
