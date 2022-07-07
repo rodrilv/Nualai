@@ -10,6 +10,7 @@ import { EntrevistaFisioterapiaResultsModalPage } from 'src/app/results-modals/e
 import { RecetaService } from 'src/app/services/receta.service';
 import { ConsultasService } from 'src/app/services/consultas.service';
 import { CreateConsultaPage } from '../create-consulta/create-consulta.page';
+import { PrescriptionsViewPage } from '../prescriptions-view/prescriptions-view.page';
 
 @Component({
   selector: 'app-following',
@@ -44,6 +45,37 @@ export class FollowingPage implements OnInit {
       this.getConsultas();
       this.closeSwal(true);
     }
+  }
+  async openViewPrescription(id: any){
+    Swal.fire({
+      title: 'Cargando...',
+      toast: true,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      showConfirmButton: false,
+    });
+    let obj: any = await this.recetaService.getPrescription(this.seguimientoService._id, id);
+    if(obj.ok == true){
+      this.recetaService.receta = obj.prescript.receta;
+      this.openViewPrescript();
+      this.closeSwal(true);
+    }else{
+      Swal.fire({
+        toast: true,
+        title: 'Hubo un error al obtener la receta...',
+        icon :'error',
+        text: 'Prueba intentarlo de nuevo'
+      })
+    }
+
+  }
+  async openViewPrescript(){
+    const modal = await this.modal.create({
+      component: PrescriptionsViewPage
+    });
+    return await modal.present();
   }
   closeSwal(stat: boolean) {
     if (stat == true) {

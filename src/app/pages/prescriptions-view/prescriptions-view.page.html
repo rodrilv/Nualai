@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+      <app-back-button (click)="closeModal()" style="margin-left: 15px;"></app-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Receta</ion-label>
+  </ion-item>
+  <ion-item>
+      <ckeditor style="margin-left: auto; margin-right: auto; display: flex; flex-direction: column;" data="{{this.recetaService.receta}}" [editor]="Editor" name="receta" [disabled]="true"
+      [config]="{toolbar: ['bold', 'italic','|','bulletedList', 'numberedList', 'insertTable']}"></ckeditor>
+  </ion-item>
+</ion-content>

@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class Tab2Page implements OnInit {
   Editor = ClassicEditor;
-  public imc = parseFloat(this.seguimientoService.miembro.datosNutricionales.IMC);
+  public imc = parseFloat(this.consultasService.consultaMember?.valoracion_nutricional?.IMC);
   public plan_alimentacion = {
     plan_alimentacion:''
   }

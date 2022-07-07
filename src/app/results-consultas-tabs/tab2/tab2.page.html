@@ -80,6 +80,13 @@
   <ion-item>
     <ion-card-subtitle>Plan de Alimentación</ion-card-subtitle>
   </ion-item>
+  <ion-item>
+    <ion-label>Prefiere no consumir:</ion-label>
+  </ion-item>
+  <ion-item>
+    <ckeditor style="height: auto;" name="plan_alimentacion" [editor]="Editor" [(ngModel)]="this.seguimientoService.miembro?.datosNutricionales.prefiere_no_consumir"
+      [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
+  </ion-item>
   <ion-item *ngIf="this.consultasService.consultaMember?.valoracion_nutricional?.plan_alimentacion == undefined || this.consultasService.consultaMember?.valoracion_nutricional?.plan_alimentacion == '' ">
     <ckeditor style="height: auto;" name="plan_alimentacion" [editor]="Editor" [(ngModel)]="this.plan_alimentacion.plan_alimentacion"
       [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>

@@ -45,7 +45,7 @@
               <ion-label>Ver las recetas del miembro:</ion-label>
             </ion-item>
             <ion-list slot="content">
-              <ion-item *ngFor="let receta of this.recetaService.recetas[0]" button>
+              <ion-item *ngFor="let receta of this.recetaService.recetas[0]" button (click)="openViewPrescription(receta._id)">
                 <ion-label>{{receta.nombre}}</ion-label>
                 <ion-text style="color: grey;">{{receta.motivo_receta}}</ion-text>
               </ion-item>

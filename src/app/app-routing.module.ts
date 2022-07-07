@@ -97,7 +97,11 @@ const routes: Routes = [
   {
     path: 'results-consultas-tabs',
     loadChildren: () => import('./results-consultas-tabs/tabs/tabs.module').then( m => m.TabsPageModule)
+  },  {
+    path: 'prescriptions-view',
+    loadChildren: () => import('./pages/prescriptions-view/prescriptions-view.module').then( m => m.PrescriptionsViewPageModule)
   },
+
 ];
 @NgModule({
   imports: [

@@ -5,6 +5,7 @@ export class ConsultaNutricion {
     estatura: '',
     rango:'',
     IMC: '',
+    IMM:'',
     nivel_agua_corporal: '',
     edad_biologica: '',
     peso_ideal:'',
