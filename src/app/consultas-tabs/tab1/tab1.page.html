@@ -2,8 +2,8 @@
 <ion-header>
   <ion-toolbar>
     <app-back-button style="margin-left: 15px;" route="following" [replace]="true"></app-back-button>
-    <ion-button *ngIf="this.consultasService.consultaMember.valoracion_medica?.status == 'Pendiente'" [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaMedica()">Guardar Consulta</ion-button>
-    <ion-button *ngIf="this.consultasService.consultaMember.valoracion_medica?.status == 'Completada'" [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaMedica()">Valoración Completada</ion-button>
+    <ion-button *ngIf="this.consultasService.consultaMember?.valoracion_medica?.status == 'Pendiente'" [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaMedica()">Guardar Consulta</ion-button>
+    <ion-button *ngIf="this.consultasService.consultaMember?.valoracion_medica?.status == 'Completada'" [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaMedica()">Valoración Completada</ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -16,12 +16,12 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Sistólica</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.presion_arterial.sistolica" required name="sistolica"
+    <ion-input [(ngModel)]="this.consultaMedica?.valoracion_medica?.presion_arterial.sistolica" required name="sistolica"
       type="number" placeholder="Sistólica"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Distólica</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.presion_arterial.distolica" required name="distolica"
+    <ion-input [(ngModel)]="this.consultaMedica?.valoracion_medica?.presion_arterial.distolica" required name="distolica"
       type="number" placeholder="Distólica"></ion-input>
   </ion-item>
   <ion-item>
@@ -30,24 +30,24 @@
   <ion-item>
     <ion-label position="floating">Frecuencia Cardiaca (Pulso)</ion-label>
     <ion-input required type="number" placeholder="Latidos por minuto" name="fc"
-      [(ngModel)]="this.consultaMedica.valoracion_medica.signos_vitales.fc"></ion-input>
+      [(ngModel)]="this.consultaMedica?.valoracion_medica?.signos_vitales.fc"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Temperatura Corporal</ion-label>
     <ion-input required type="number" name="temp" placeholder="°C"
-      [(ngModel)]="this.consultaMedica.valoracion_medica.signos_vitales.temperatura_corporal"></ion-input>
+      [(ngModel)]="this.consultaMedica?.valoracion_medica?.signos_vitales.temperatura_corporal"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Frecuencia Respiratoria</ion-label>
     <ion-input required type="number" name="fr" placeholder="Respiraciones por minuto"
-      [(ngModel)]="this.consultaMedica.valoracion_medica.signos_vitales.fr"></ion-input>
+      [(ngModel)]="this.consultaMedica?.valoracion_medica?.signos_vitales.fr"></ion-input>
   </ion-item>
   <ion-item>
     <ion-card-subtitle>Nivel de Insulina</ion-card-subtitle>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Insulina</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.insulina" required name="insulina" type="number"
+    <ion-input [(ngModel)]="this.consultaMedica?.valoracion_medica.insulina" required name="insulina" type="number"
       placeholder="(Opcional)"></ion-input>
   </ion-item>
   <ion-item>
@@ -55,7 +55,7 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Glucosa</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.glucosa" required name="glucosa" type="number"
+    <ion-input [(ngModel)]="this.consultaMedica?.valoracion_medica.glucosa" required name="glucosa" type="number"
       placeholder="mg/dL"></ion-input>
   </ion-item>
   <ion-item>
@@ -63,7 +63,7 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Trigliceridos</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.trigliceridos" required name="trigliceridos"
+    <ion-input [(ngModel)]="this.consultaMedica?.valoracion_medica.trigliceridos" required name="trigliceridos"
       placeholder="Trigliceridos"></ion-input>
   </ion-item>
   <ion-item>
@@ -71,22 +71,22 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Colesterol Total</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.total" required name="coelsterol"
+    <ion-input [(ngModel)]="this.consultaMedica?.valoracion_medica.colesterol.total" required name="coelsterol"
       type="number" placeholder="(Opcional)"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">No-HDL</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.no_hdl" required name="no_hdl"
+    <ion-input [(ngModel)]="this.consultaMedica?.valoracion_medica?.colesterol.no_hdl" required name="no_hdl"
     placeholder="(Opcional)"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">LDL</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.ldl" required name="ldl" placeholder="(Opcional)">
+    <ion-input [(ngModel)]="this.consultaMedica?.valoracion_medica?.colesterol.ldl" required name="ldl" placeholder="(Opcional)">
     </ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">HDL</ion-label>
-    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica.colesterol.hdl" required name="hdl" placeholder="(Opcional)">
+    <ion-input [(ngModel)]="this.consultaMedica.valoracion_medica?.colesterol.hdl" required name="hdl" placeholder="(Opcional)">
     </ion-input>
   </ion-item>
 </form>

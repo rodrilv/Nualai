@@ -15,15 +15,16 @@ export class Tab4Page implements OnInit {
   public Editor = ClassicEditor;
   public datosPsicologicos: DatosPsicologicos = new DatosPsicologicos();
 
-  constructor(public seguimientoService: SeguimientoService,
-    public personalService: PersonalService) { }
+  constructor(
+    public seguimientoService: SeguimientoService,
+    public personalService: PersonalService
+  ) {}
 
   async ngOnInit() {
     await this.getPersonal();
   }
 
-  saveData(id: any){
-    console.log(this.datosPsicologicos);
+  saveData(id: any) {
     Swal.fire({
       toast: true,
       icon: 'info',
@@ -45,10 +46,11 @@ export class Tab4Page implements OnInit {
           },
           showConfirmButton: false,
         });
-        let obj: any = await this.seguimientoService.saveDatosPsicologicosInterview(
-          id,
-          this.datosPsicologicos
-        );
+        let obj: any =
+          await this.seguimientoService.saveDatosPsicologicosInterview(
+            id,
+            this.datosPsicologicos
+          );
         if (obj.ok === true) {
           this.closeSwal(true);
           Swal.fire({
@@ -68,7 +70,6 @@ export class Tab4Page implements OnInit {
         this.closeSwal(true);
       }
     });
-
   }
   async getPersonal() {
     Swal.fire({
@@ -91,5 +92,4 @@ export class Tab4Page implements OnInit {
       Swal.close();
     }
   }
-
 }

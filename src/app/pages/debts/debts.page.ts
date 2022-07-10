@@ -49,8 +49,6 @@ export class DebtsPage implements OnInit {
         }
       }
     }
-    console.log(this.total);
-    console.log(this.meses);
   }
   calcularPrecio() {
     this.mensualidad = this.mensualidad.detail.value;
@@ -115,7 +113,7 @@ export class DebtsPage implements OnInit {
     await this.pagoService.pagarMensualidades(id, pago);
   }
   buscarMiembro(event: any) {
-    console.log(event.detail.value);
+    
     this.text = event.detail.value;
   }
   closeModal() {

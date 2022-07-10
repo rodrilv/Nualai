@@ -34,7 +34,6 @@ export class Tab2Page implements OnInit {
     }else{
       Swal.fire({toast: true, title: 'Hubo un error al guardar la consulta', icon: 'warning', text: 'Intenta nuevamente'});
     }
-    console.log(this.consultaNutricion);
   }
   calcularImc() {
     let estatura = parseInt(this.consultaNutricion.valoracion_nutricional.estatura);

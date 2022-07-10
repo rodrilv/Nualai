@@ -45,11 +45,7 @@ export class ViewMemberPrescriptionPage implements OnInit {
 
       this.consultasService.consultasMember = '';
       this.consultasService.consultasMember = obj2.consultas;
-      console.log(this.consultasService.consultasMember);
-      
       this.router.navigate(['results/tab1'])
-      console.log(this.seguimientoService.miembro);
-
       this.closeSwal(true);
       this.closeModal();
     } else {
@@ -66,7 +62,6 @@ export class ViewMemberPrescriptionPage implements OnInit {
     });
   }
   buscarMiembro(event: any) {
-    console.log(event.detail.value);
     this.text = event.detail.value;
   }
   closeSwal(stat: boolean) {

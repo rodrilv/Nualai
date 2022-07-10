@@ -112,10 +112,11 @@ export class PersonalPage implements OnInit, AfterViewInit {
       } else if (result.isDenied) {
         let del: any = await this.personalService.deletePersonal(id);
         if (del.ok) {
-          Swal.fire({ title: 'Eliminado', icon: 'warning', toast: true })
-          .then(async () => {
-            await this.ngOnInit();
-          })
+          Swal.fire({ title: 'Eliminado', icon: 'warning', toast: true }).then(
+            async () => {
+              await this.ngOnInit();
+            }
+          );
         } else {
           Swal.fire({
             title: 'Hubo un error al eliminar el personal.',
@@ -137,13 +138,9 @@ export class PersonalPage implements OnInit, AfterViewInit {
     });
   }
   changeFlag(event: any) {
-    console.log(event.detail.value);
     this.formFlag = event.detail.value;
-    if(this.formFlag == 2){
+    if (this.formFlag == 2) {
       this.ngOnInit();
-      console.log("Dude, I executed, but I dont know what happened"
-      );
-      
     }
   }
   closeSwal(stat: boolean) {
@@ -153,7 +150,9 @@ export class PersonalPage implements OnInit, AfterViewInit {
       Swal.close();
     }
   }
-  genderToUpperCase(){
-    this.newPersonal.Personal.genero = this.newPersonal.Personal.genero.substring(0,1).toUpperCase();
+  genderToUpperCase() {
+    this.newPersonal.Personal.genero = this.newPersonal.Personal.genero
+      .substring(0, 1)
+      .toUpperCase();
   }
 }

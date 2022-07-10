@@ -27,7 +27,6 @@ export class TabsPage implements OnInit {
         this.seguimientoService._id
       );
       this.consultasService.consultasMember.push(obj.consultas);
-      console.log(this.consultasService.consultasMember);
     }*/
   }
 }

@@ -62,7 +62,6 @@ export class PagosService {
               .patch(`${this.devUrl}miembros/pagar-mensualidades/${id}`, pago)
               .toPromise();
             if (subject.ok) {
-              console.log(subject.updDB);
               Swal.fire({
                 //Pagado
                 toast: true,
@@ -77,7 +76,7 @@ export class PagosService {
               }).then(async (result) => {
                 if (result.isConfirmed) {
                   this.enviarRecibo(pago);
-                } 
+                }
               });
             } else {
               Swal.fire({

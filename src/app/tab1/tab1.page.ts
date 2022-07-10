@@ -23,7 +23,6 @@ export class Tab1Page {
 
   async ngOnInit() {
     await this.getPersonal();
-    console.log(this.personal.personal);
   }
   async getPersonal() {
     Swal.fire({
@@ -39,7 +38,6 @@ export class Tab1Page {
     this.closeSwal(true);
   }
   async saveData(id: any) {
-    console.log(this.datosMedicos);
     Swal.fire({
       toast: true,
       icon: 'info',

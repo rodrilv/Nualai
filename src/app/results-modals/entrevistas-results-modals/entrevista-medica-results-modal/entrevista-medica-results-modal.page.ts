@@ -41,7 +41,6 @@ export class EntrevistaMedicaResultsModalPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.dataConvert);
   }
 
   closeModal() {

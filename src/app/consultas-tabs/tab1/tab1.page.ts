@@ -39,6 +39,5 @@ export class Tab1Page implements OnInit {
     }else{
       Swal.fire({toast: true, title: 'Hubo un error al guardar la consulta', icon: 'success', text: 'Intenta nuevamente'});
     }
-    console.log(this.consultaMedica);
   }
 }

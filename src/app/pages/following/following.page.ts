@@ -90,7 +90,6 @@ export class FollowingPage implements OnInit {
     if(this.consultasService.autoIncrementConsultas === undefined || this.consultasService.autoIncrementConsultas === '' || this.consultasService.autoIncrementConsultas === null ){
       this.consultasService.autoIncrementConsultas = 0;
     }
-    console.log(this.consultasService.autoIncrementConsultas);
     
     const modal = await this.modal.create({
       component: CreateConsultaPage,
@@ -128,20 +127,20 @@ export class FollowingPage implements OnInit {
     this.recetaService.recetas = [];
     let obj: any = await this.recetaService.getPrescriptions(this.uid);
     this.recetaService.recetas.push(obj.prescripts);
-    console.log(this.recetaService.recetas);
+    
   }
   async getConsultas() {
     this.consultasService.consultasMember = [];
     let obj: any = await this.consultasService.getConsultasMember(this.uid);
     this.consultasService.consultasMember.push(obj.consultas);
-    console.log(this.consultasService.consultasMember);
+    
   }
   async showResults(id: any) {
     this.consultasService.consultaMember = {};
     let obj: any = await this.consultasService.getConsultaMember(id);
     if(obj.ok == true){
       this.consultasService.consultaMember = obj.consulta;
-      console.log(this.consultasService.consultaMember);
+      
       this.router.navigate(['results-consultas-tabs/tab1']);
     }
     
@@ -160,7 +159,7 @@ export class FollowingPage implements OnInit {
     let obj: any = await this.consultasService.getConsultaMember(cid);
     if (obj.ok === true) {
       this.consultasService.consultaMember = obj.consulta;
-      console.log(this.consultasService.consultaMember);
+      
       this.closeSwal(true);
       if (sesion == 'Entrevista') {
         this.router.navigate(['tabs']);

@@ -23,7 +23,6 @@ export class Tab3Page implements OnInit {
   }
 
   saveData(id: any){
-    console.log(this.datosFisioterapia);
     Swal.fire({
       toast: true,
       icon: 'info',

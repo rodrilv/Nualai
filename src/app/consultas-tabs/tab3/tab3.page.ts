@@ -32,7 +32,7 @@ export class Tab3Page implements OnInit {
     });
     let obj: any = await this.consultasService.updateConsultaFisioterapia(this.consultasService.cid, this.consultaFisioterapia);
     if(obj.ok === true){
-      Swal.fire({toast: true, title: 'Consulta Médica Guardada', icon: 'success',})
+      Swal.fire({toast: true, title: 'Consulta de Fisioterapia Guardada', icon: 'success',})
     }else{
       Swal.fire({toast: true, title: 'Hubo un error al guardar la consulta', icon: 'warning', text: 'Intenta nuevamente'});
     }

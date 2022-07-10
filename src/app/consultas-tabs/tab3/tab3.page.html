@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <app-back-button style="margin-left: 15px;" route="following" [replace]="true"></app-back-button>
-    <ion-button *ngIf="this.consultasService.consultaMember.valoracion_fisioterapia?.status == 'Pendiente'"
+    <ion-button *ngIf="this.consultasService?.consultaMember?.valoracion_fisioterapia?.status == 'Pendiente'"
       [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaFisioterapia()">Guardar Consulta
     </ion-button>
-    <ion-button *ngIf="this.consultasService.consultaMember.valoracion_fisioterapia?.status == 'Completada'"
+    <ion-button *ngIf="this.consultasService?.consultaMember?.valoracion_fisioterapia?.status == 'Completada'"
       [disabled]="!form.valid" fill="outline" slot="end" (click)="saveConsultaFisioterapia()">Valoración Completada
     </ion-button>
   </ion-toolbar>
@@ -17,7 +17,7 @@
     </ion-item>
     <ion-item>
       <ckeditor required style="height: auto;" name="subjetivo" [editor]="Editor"
-        [(ngModel)]="this.consultaFisioterapia.valoracion_fisioterapia.subjetivo"
+        [(ngModel)]="this.consultaFisioterapia?.valoracion_fisioterapia.subjetivo"
         [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
     </ion-item>
     <ion-item>
@@ -25,7 +25,7 @@
     </ion-item>
     <ion-item>
       <ckeditor required style="height: auto;" name="objetivo" [editor]="Editor"
-        [(ngModel)]="this.consultaFisioterapia.valoracion_fisioterapia.objetivo"
+        [(ngModel)]="this.consultaFisioterapia?.valoracion_fisioterapia.objetivo"
         [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
     </ion-item>
     <ion-item>
@@ -33,7 +33,7 @@
     </ion-item>
     <ion-item>
       <ckeditor required style="height: auto;" name="analisis" [editor]="Editor"
-        [(ngModel)]="this.consultaFisioterapia.valoracion_fisioterapia.analisis"
+        [(ngModel)]="this.consultaFisioterapia?.valoracion_fisioterapia.analisis"
         [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
     </ion-item>
     <ion-item>
@@ -41,7 +41,7 @@
     </ion-item>
     <ion-item>
       <ckeditor required style="height: auto;" name="plan" [editor]="Editor"
-        [(ngModel)]="this.consultaFisioterapia.valoracion_fisioterapia.plan"
+        [(ngModel)]="this.consultaFisioterapia?.valoracion_fisioterapia.plan"
         [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
     </ion-item>
     <ion-item>
@@ -49,7 +49,7 @@
     </ion-item>
     <ion-item>
       <ckeditor required name="respuesta-1" [editor]="Editor" required
-        [(ngModel)]="this.consultaFisioterapia.valoracion_fisioterapia.exploracion_fuerza_muscular"
+        [(ngModel)]="this.consultaFisioterapia?.valoracion_fisioterapia.exploracion_fuerza_muscular"
         [config]="{toolbar: ['bold', '|', 'insertTable']}"></ckeditor>
     </ion-item>
   </form>

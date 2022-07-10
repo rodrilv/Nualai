@@ -9,7 +9,7 @@
   <ion-content [fullscreen]="true">
     <ion-item>
       <ion-label position="floating">Entrevistador(a)</ion-label>
-      <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.atendio"
+      <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos.atendio"
       required name="realizo_entrevista" cancelText="Cerrar" okText="OK">
         <ion-select-option *ngFor="let p of this.personal?.personal" value="{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}">{{p.datosGenerales.nombres+' '+p.datosGenerales.apellidos}}</ion-select-option>
       </ion-select>
@@ -45,7 +45,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Usted padece de alguna Alergia?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.respuesta"
+          <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos?.alergias.respuesta"
           required name="alergias" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -56,7 +56,7 @@
         </ion-item>
         <ion-item>
           <ckeditor name="respuesta-1" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.alergias.tipos"
+            [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.alergias.tipos"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -64,7 +64,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Usted padece de Cáncer?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.cancer.respuesta"
+          <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.cancer.respuesta"
           required name="cancer" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -72,12 +72,12 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Qué tipo de cáncer?</ion-label>
-          <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.cancer.tipo" name="cancer_tipo" required
+          <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.cancer.tipo" name="cancer_tipo" required
             type="text" placeholder="Especifique el tipo"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Usted padece de Diabetes?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.diabetes.respuesta"
+          <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.diabetes.respuesta"
           required name="diabetes" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -85,7 +85,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Qué tipo de Diabetes?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.diabetes.tipo"
+          <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.diabetes.tipo"
           required name="medicamento_regular" cancelText="Cerrar" okText="OK">
             <ion-select-option value="NA">NA</ion-select-option>
             <ion-select-option value="Diabetes Tipo 1">Diabetes Tipo 1</ion-select-option>
@@ -96,7 +96,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Usted toma medicamento regular?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.medicamento_regular.respuesta"
+          <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.medicamento_regular.respuesta"
           required name="medicamento_regular" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -107,7 +107,7 @@
         </ion-item>
         <ion-item>
           <ckeditor name="respuesta-2" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.medicamento_regular.motivo"
+            [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.medicamento_regular.motivo"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -118,7 +118,7 @@
         </ion-item>
         <ion-item>
           <ckeditor name="respuesta-3" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.enfermedades_infancia.enfermedades"
+            [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.enfermedades_infancia.enfermedades"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -126,7 +126,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Usted ha sido intervenido quirúrgicamente alguna vez?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.intervenciones_quirurgicas.respuesta"
+          <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.intervenciones_quirurgicas.respuesta"
           required name="intervencion" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -137,7 +137,7 @@
         </ion-item>
         <ion-item>
           <ckeditor name="respuesta-4" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.intervenciones_quirurgicas.motivo"
+            [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.intervenciones_quirurgicas.motivo"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -145,7 +145,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Lo han hospitalizado?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.hospitalizado.respuesta"
+          <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.hospitalizado.respuesta"
           required name="hospitalizado" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -156,7 +156,7 @@
         </ion-item>
         <ion-item>
           <ckeditor name="respuesta-5" [editor]="Editor"
-            [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.hospitalizado.motivo"
+            [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.hospitalizado.motivo"
             [config]="{toolbar: ['bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable']}"></ckeditor>
         </ion-item>
         <ion-item>
@@ -164,7 +164,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">¿Ha sido vacunado contra la COVID-19?</ion-label>
-          <ion-select [(ngModel)]="this.datosMedicos.datosMedicos.antecedentes_clinicos.vacuna_covid19.respuesta"
+          <ion-select [(ngModel)]="this.datosMedicos?.datosMedicos?.antecedentes_clinicos.vacuna_covid19.respuesta"
           required name="vacunas" cancelText="Cerrar" okText="OK">
             <ion-select-option value="si">Sí</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -176,12 +176,12 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Sistólica</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.presion_arterial.sistolica" required name="sistolica"
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos?.presion_arterial.sistolica" required name="sistolica"
         type="number" placeholder="Sistólica"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Distólica</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.presion_arterial.distolica" required name="distolica"
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos?.presion_arterial.distolica" required name="distolica"
         type="number" placeholder="Distólica"></ion-input>
     </ion-item>
     <ion-item>
@@ -190,24 +190,24 @@
     <ion-item>
       <ion-label position="floating">Frecuencia Cardiaca (Pulso)</ion-label>
       <ion-input required type="number" placeholder="Latidos por minuto" name="fc"
-        [(ngModel)]="this.datosMedicos.datosMedicos.signos_vitales.fc"></ion-input>
+        [(ngModel)]="this.datosMedicos?.datosMedicos?.signos_vitales.fc"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Temperatura Corporal</ion-label>
       <ion-input required type="number" name="temp" placeholder="°C"
-        [(ngModel)]="this.datosMedicos.datosMedicos.signos_vitales.temperatura_corporal"></ion-input>
+        [(ngModel)]="this.datosMedicos?.datosMedicos?.signos_vitales.temperatura_corporal"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Frecuencia Respiratoria</ion-label>
       <ion-input required type="number" name="fr" placeholder="Respiraciones por minuto"
-        [(ngModel)]="this.datosMedicos.datosMedicos.signos_vitales.fr"></ion-input>
+        [(ngModel)]="this.datosMedicos?.datosMedicos?.signos_vitales.fr"></ion-input>
     </ion-item>
     <ion-item>
       <ion-card-subtitle>Nivel de Insulina</ion-card-subtitle>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Insulina</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.insulina" required name="insulina" type="number"
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos.insulina" required name="insulina" type="number"
         placeholder="mg/dL"></ion-input>
     </ion-item>
     <ion-item>
@@ -215,7 +215,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Glucosa</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.glucosa" required name="glucosa" type="number"
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos.glucosa" required name="glucosa" type="number"
         placeholder="mg/dL"></ion-input>
     </ion-item>
     <ion-item>
@@ -223,7 +223,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Trigliceridos</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.trigliceridos" required name="trigliceridos"
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos.trigliceridos" required name="trigliceridos"
         placeholder="Trigliceridos"></ion-input>
     </ion-item>
     <ion-item>
@@ -231,22 +231,22 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Colesterol Total</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.total" required name="coelsterol"
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos?.colesterol.total" required name="coelsterol"
         type="number" placeholder="mg/dL"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">No-HDL</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.no_hdl" required name="no_hdl"
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos?.colesterol.no_hdl" required name="no_hdl"
         placeholder="mg/dL"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">LDL</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.ldl" required name="ldl" placeholder="mg/dL">
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos?.colesterol.ldl" required name="ldl" placeholder="mg/dL">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">HDL</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.colesterol.hdl" required name="hdl" placeholder="mg/dL">
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos?.colesterol.hdl" required name="hdl" placeholder="mg/dL">
       </ion-input>
     </ion-item>
     <ion-item>
@@ -254,16 +254,16 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">TSH</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.tsh" required name="tsh" placeholder="Nivel de TSH">
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos.tsh" required name="tsh" placeholder="Nivel de TSH">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">T3</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.t3" required name="t3" placeholder="T3"></ion-input>
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos.t3" required name="t3" placeholder="T3"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">T4</ion-label>
-      <ion-input [(ngModel)]="this.datosMedicos.datosMedicos.t4" required name="t4" placeholder="T4"></ion-input>
+      <ion-input [(ngModel)]="this.datosMedicos?.datosMedicos.t4" required name="t4" placeholder="T4"></ion-input>
     </ion-item>
   </ion-content>
 </form>

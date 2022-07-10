@@ -20,7 +20,6 @@ export class Tab2Page implements OnInit {
     this.receta.receta.member_id = this.seguimientoService.miembro._id;
   }
   ngOnInit() {
-    console.log(this.receta.receta.member_id);
   }
   async guardarReceta(){
     let fecha = this.fecha.split("-");

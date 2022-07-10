@@ -6,24 +6,26 @@ import { SeguimientoService } from '../services/seguimiento.service';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss']
+  styleUrls: ['tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
   public member: any;
 
-  constructor(private router: Router, public seguimientoService: SeguimientoService) {}
+  constructor(
+    private router: Router,
+    public seguimientoService: SeguimientoService
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.seguimientoService.miembro);
-    
-    if(this.seguimientoService.miembro === undefined || this.seguimientoService.miembro === null){
+    if (
+      this.seguimientoService.miembro === undefined ||
+      this.seguimientoService.miembro === null
+    ) {
       this.toHomePage();
     }
-    
   }
 
-  toHomePage(){
-    this.router.navigate(['/'], {replaceUrl: true});
+  toHomePage() {
+    this.router.navigate(['/'], { replaceUrl: true });
   }
-
 }

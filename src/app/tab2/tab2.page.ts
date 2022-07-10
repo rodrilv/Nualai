@@ -25,7 +25,6 @@ export class Tab2Page {
   }
 
   async saveData(id: any) {
-    console.log(this.datosNutriologo);
     Swal.fire({
       toast: true,
       icon: 'info',
@@ -47,10 +46,11 @@ export class Tab2Page {
           },
           showConfirmButton: false,
         });
-        let obj: any = await this.seguimientoService.saveDatosNutricionalesInterview(
-          id,
-          this.datosNutriologo
-        );
+        let obj: any =
+          await this.seguimientoService.saveDatosNutricionalesInterview(
+            id,
+            this.datosNutriologo
+          );
         if (obj.ok === true) {
           this.closeSwal(true);
           Swal.fire({
@@ -80,12 +80,16 @@ export class Tab2Page {
     this.datosNutriologo.datosNutricionales.IMC = imc.toFixed(2);
     this.calcularACT();
   }
-  calcularACT(){
+  calcularACT() {
     let peso = parseInt(this.datosNutriologo.datosNutricionales.peso);
-    if(this.seguimientoService.miembro.datosGenerales.genero == 'M'){
-      this.datosNutriologo.datosNutricionales.nivel_agua_corporal = (peso * 0.6).toFixed(2);
-    }else if(this.seguimientoService.miembro.datosGenerales.genero == 'F'){
-      this.datosNutriologo.datosNutricionales.nivel_agua_corporal = (peso * 0.5).toFixed(2);
+    if (this.seguimientoService.miembro.datosGenerales.genero == 'M') {
+      this.datosNutriologo.datosNutricionales.nivel_agua_corporal = (
+        peso * 0.6
+      ).toFixed(2);
+    } else if (this.seguimientoService.miembro.datosGenerales.genero == 'F') {
+      this.datosNutriologo.datosNutricionales.nivel_agua_corporal = (
+        peso * 0.5
+      ).toFixed(2);
     }
   }
   deleteText() {

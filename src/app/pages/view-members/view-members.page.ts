@@ -32,7 +32,6 @@ export class ViewMembersPage implements OnInit {
   }
 
   buscarMiembro(event: any){
-    console.log(event.detail.value);
     this.text = event.detail.value;
   }
 

@@ -28,7 +28,7 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
     private cd: ChangeDetectorRef
   ) {
     this.date = new Date().getDate();
-    this.month = new Date().getMonth()+1;
+    this.month = new Date().getMonth() + 1;
   }
 
   async ngOnInit() {
@@ -56,7 +56,6 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
       this.seguimientoService._id = obj?.member._id;
       this.seguimientoService.miembro = obj?.member;
       this.router.navigate(['following']);
-      console.log(this.seguimientoService.miembro);
 
       this.closeSwal(true);
       this.closeModal();
@@ -79,7 +78,6 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
     if (obj.ok == true) {
       this.closeSwal(true);
       this.consultasService.consultas = obj.consultas;
-      console.log(this.consultasService.consultas);
     } else {
       this.closeSwal(true);
       Swal.fire({
@@ -91,7 +89,6 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
   }
 
   buscarMiembro(event: any) {
-    console.log(event.detail.value);
     this.text = event.detail.value;
   }
   closeModal() {
@@ -108,18 +105,18 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
   }
 
   async changeFlag(event: any) {
-    console.log(event.detail.value);
+    
     this.formFlag = event.detail.value;
     if (this.formFlag == 2) {
       this.ngOnInit();
-      console.log('Dude, I executed, but I dont know what happened');
+      
     } else {
       await this.getConsultas();
     }
   }
-  async updateConsulta(cid: any){
+  async updateConsulta(cid: any) {
     this.consultasService.cid = cid;
-    this.router.navigate(['reschedule-consulta'], {replaceUrl: true});
+    this.router.navigate(['reschedule-consulta'], { replaceUrl: true });
     this.closeModal();
   }
 
@@ -143,11 +140,10 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
     }
     if (obj.ok === true) {
       this.consultasService.consultaMember = obj.consulta;
-      console.log(this.consultasService.consultaMember);
       this.closeSwal(true);
-      if(sesion == "Entrevista"){
+      if (sesion == 'Entrevista') {
         this.router.navigate(['tabs']);
-      }else{
+      } else {
         this.router.navigate(['consultas-tabs/tab1']);
       }
       this.closeModal();
