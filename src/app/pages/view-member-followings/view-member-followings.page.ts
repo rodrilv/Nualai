@@ -157,4 +157,27 @@ export class ViewMemberFollowingsPage implements OnInit, AfterViewInit {
       this.closeSwal(true);
     }
   }
+  async sendRecordatory(userInfo: any){
+    Swal.fire({
+      title: 'Enviando Recordatorio...',
+      toast: true,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      showConfirmButton: false,
+    });
+    let obj: any = await this.seguimientoService.getMemberFollowing(userInfo.user_id);
+    if(obj.ok == true){
+      let obj2: any = await this.consultasService.sendEmailRecordatory(userInfo, obj.member.datosGenerales.correo);
+      if(obj2.ok == true){
+        Swal.fire({toast: true, title: 'Recordatorio Enviado', icon: 'success'});
+        return;
+      }
+    }else{
+      Swal.fire({toast: true, title: 'No se pudo enviar el recordatorio', icon: 'error'});
+      return;
+    }
+    
+  }
 }

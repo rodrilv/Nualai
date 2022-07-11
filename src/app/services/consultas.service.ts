@@ -47,4 +47,7 @@ export class ConsultasService {
   async updateConsultaPsicologica(cid: any, update: any){
     return await this.http.put(`${this.devUrl}miembros/agregar-consulta-psicologica/${cid}`, update).toPromise();
   }
+  async sendEmailRecordatory(userInfo: any, correo: any){
+    return await this.http.post(`${this.devUrl}miembros/enviar-recordatorio/${correo}`, userInfo).toPromise();
+  }
 }
